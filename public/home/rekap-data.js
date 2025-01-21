@@ -124,7 +124,7 @@ selectAllCheckboxKecelakaan.addEventListener("change", () => {
     const idsToDelete = selectedCheckboxes.map((checkbox) => checkbox.dataset.id);
 
     // Kirim permintaan DELETE ke backend
-    fetch("https://p2-k3-dashboard-web.vercel.app/delete-multiple-struktur", {
+    fetch("http://localhost:3000/delete-multiple-struktur", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ids: idsToDelete }),
@@ -162,7 +162,7 @@ selectAllCheckboxKecelakaan.addEventListener("change", () => {
     const idsToDelete = selectedCheckboxes.map((checkbox) => checkbox.dataset.id);
   
     // Kirim permintaan DELETE ke backend
-    fetch("https://p2-k3-dashboard-web.vercel.app/delete-multiple-personel", {
+    fetch("http://localhost:3000/delete-multiple-personel", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ids: idsToDelete }),
@@ -200,7 +200,7 @@ selectAllCheckboxKecelakaan.addEventListener("change", () => {
     const idsToDelete = selectedCheckboxes.map((checkbox) => checkbox.dataset.id);
   
     // Kirim permintaan DELETE ke backend
-    fetch("https://p2-k3-dashboard-web.vercel.app/delete-multiple-rekap", {
+    fetch("http://localhost:3000/delete-multiple-rekap", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ids: idsToDelete }),
@@ -240,7 +240,7 @@ deleteSelectedBtnKecelakaan.addEventListener("click", () => {
   const idsToDelete = selectedCheckboxes.map((checkbox) => checkbox.dataset.id);
 
   // Kirim permintaan DELETE ke backend
-  fetch("https://p2-k3-dashboard-web.vercel.app/delete-multiple-kecelakaan", {
+  fetch("http://localhost:3000/delete-multiple-kecelakaan", {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ ids: idsToDelete }),
@@ -274,7 +274,7 @@ deleteSelectedBtnKecelakaan.addEventListener("click", () => {
   }
 
   // Fetch data Struktur Organisasi
-  fetch("https://p2-k3-dashboard-web.vercel.app/getstruktur")
+  fetch("http://localhost:3000/getstruktur")
      .then((response) => response.json())
      .then((data) => {
         currentData = data.data || [];
@@ -294,7 +294,7 @@ deleteSelectedBtnKecelakaan.addEventListener("click", () => {
      });
 
   // Fetch data Personel Ahli K3
-  fetch("https://p2-k3-dashboard-web.vercel.app/getpersonel")
+  fetch("http://localhost:3000/getpersonel")
      .then((response) => response.json())
      .then((data) => {
         personelData = data.data || [];
@@ -314,11 +314,11 @@ deleteSelectedBtnKecelakaan.addEventListener("click", () => {
      });
 
 // Fetch data Rekap Data K3
-fetch("https://p2-k3-dashboard-web.vercel.app/getrekap")
+fetch("http://localhost:3000/getrekap")
   .then((response) => response.json())
   .then((data) => {
     const rekapData = data.data || [];
-    //console.log(data); // Pastikan data termasuk tahun dan bulan
+    console.log(data); // Pastikan data termasuk tahun dan bulan
     renderTableRekap(rekapData);
 
     // Tambahkan event listener untuk pencarian
@@ -340,7 +340,7 @@ fetch("https://p2-k3-dashboard-web.vercel.app/getrekap")
 
    
 // Fetch data Kecelakaan Kerja dari backend
-fetch("https://p2-k3-dashboard-web.vercel.app/getkecelakaankerja")
+fetch("http://localhost:3000/getkecelakaankerja")
   .then((response) => response.json())
   .then((data) => {
     kecelakaanData = data.data || [];
@@ -360,10 +360,10 @@ fetch("https://p2-k3-dashboard-web.vercel.app/getkecelakaankerja")
   });
 
   // Fetch data Kejadian Darurat
-fetch("https://p2-k3-dashboard-web.vercel.app/getkejadian")
+fetch("http://localhost:3000/getkejadian")
 .then((response) => response.json())
 .then((data) => {
-  //console.log("Kejadian Darurat Data:", data);
+  console.log("Kejadian Darurat Data:", data);
   const kejadianData = data.data || [];
   renderTableKejadian(kejadianData);
 
@@ -429,7 +429,7 @@ fetch("https://p2-k3-dashboard-web.vercel.app/getkejadian")
 
            // Confirm Delete
            if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
-              fetch(`https://p2-k3-dashboard-web.vercel.app/deletestruktur`, {
+              fetch(`http://localhost:3000/deletestruktur`, {
                     method: "DELETE",
                     headers: {
                        "Content-Type": "application/json",
@@ -516,7 +516,7 @@ fetch("https://p2-k3-dashboard-web.vercel.app/getkejadian")
 
            // Konfirmasi sebelum menghapus data
            if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
-              fetch(`https://p2-k3-dashboard-web.vercel.app/deletepersonel`, {
+              fetch(`http://localhost:3000/deletepersonel`, {
                     method: "DELETE",
                     headers: {
                        "Content-Type": "application/json",
@@ -632,7 +632,7 @@ function renderTableRekap(data) {
 
       // Confirm Delete
       if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
-        fetch(`https://p2-k3-dashboard-web.vercel.app/deleterekap`, {
+        fetch(`http://localhost:3000/deleterekap`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -731,7 +731,7 @@ function renderTableKecelakaan(data) {
        const id = e.target.dataset.id;
  
        if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
-         fetch(`https://p2-k3-dashboard-web.vercel.app/deletekecelakaan`, {
+         fetch(`http://localhost:3000/deletekecelakaan`, {
            method: "DELETE",
            headers: { "Content-Type": "application/json" },
            body: JSON.stringify({ kecelakaankerja_id: id }),
@@ -815,7 +815,7 @@ function renderTableKejadian(data) {
       const id = e.target.dataset.id;
 
       if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
-        fetch(`https://p2-k3-dashboard-web.vercel.app/deletekejadian`, {
+        fetch(`http://localhost:3000/deletekejadian`, {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ kejadian_id: id }),
@@ -901,7 +901,7 @@ closeModalKejadian.addEventListener("click", () => {
         posisi: document.getElementById("posisi").value,
      };
 
-     fetch("https://p2-k3-dashboard-web.vercel.app/addstruktur", {
+     fetch("http://localhost:3000/addstruktur", {
            method: "POST",
            headers: {
               "Content-Type": "application/json",
@@ -935,7 +935,7 @@ closeModalKejadian.addEventListener("click", () => {
         batas_masa_berlaku: document.getElementById("batas-masa-berlaku-personel").value,
      };
 
-     fetch("https://p2-k3-dashboard-web.vercel.app/addpersonel", {
+     fetch("http://localhost:3000/addpersonel", {
            method: "POST",
            headers: {
               "Content-Type": "application/json",
@@ -978,7 +978,7 @@ closeModalKejadian.addEventListener("click", () => {
           jumlah_hari_hilang: document.getElementById("jumlah-hari-hilang").value,
       };
   
-      fetch("https://p2-k3-dashboard-web.vercel.app/addrekap", {
+      fetch("http://localhost:3000/addrekap", {
           method: "POST",
           headers: {
               "Content-Type": "application/json",
@@ -1020,9 +1020,9 @@ addDataFormKecelakaan.addEventListener("submit", (e) => {
      keterangan: document.getElementById("keterangan").value,
    };
  
-   //console.log("Form Data:", formData); // Debugging log
+   console.log("Form Data:", formData); // Debugging log
  
-   fetch("https://p2-k3-dashboard-web.vercel.app/addkecelakaankerja", {
+   fetch("http://localhost:3000/addkecelakaankerja", {
      method: "POST",
      headers: {
        "Content-Type": "application/json",
@@ -1082,7 +1082,7 @@ addDataFormKecelakaan.addEventListener("submit", (e) => {
   }
 
   // Kirim data ke backend menggunakan fetch
-  fetch("https://p2-k3-dashboard-web.vercel.app/addkejadian", {
+  fetch("http://localhost:3000/addkejadian", {
     method: "POST",
     body: formData,
   })
@@ -1141,7 +1141,7 @@ closeEditModalKejadian.addEventListener("click", () => {
         posisi: document.getElementById("edit-posisi").value,
       };
   
-      fetch("https://p2-k3-dashboard-web.vercel.app/updatestruktur", {
+      fetch("http://localhost:3000/updatestruktur", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -1176,7 +1176,7 @@ closeEditModalKejadian.addEventListener("click", () => {
         batas_masa_berlaku: document.getElementById("edit-batas-masa-berlaku-personel").value,
      };
 
-     fetch("https://p2-k3-dashboard-web.vercel.app/updatepersonel", {
+     fetch("http://localhost:3000/updatepersonel", {
            method: "PUT",
            headers: {
               "Content-Type": "application/json",
@@ -1220,7 +1220,7 @@ closeEditModalKejadian.addEventListener("click", () => {
     jumlah_hari_hilang: document.getElementById("edit-jumlah-hari-hilang").value,
   };
 
-  fetch("https://p2-k3-dashboard-web.vercel.app/updaterekap", {
+  fetch("http://localhost:3000/updaterekap", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -1264,7 +1264,7 @@ editDataFormKecelakaan.addEventListener("submit", (e) => {
      keterangan: document.getElementById("edit-keterangan").value,
    };
  
-   fetch("https://p2-k3-dashboard-web.vercel.app/updatekecelakaan", {
+   fetch("http://localhost:3000/updatekecelakaan", {
      method: "PUT",
      headers: {
        "Content-Type": "application/json",
@@ -1305,7 +1305,7 @@ editDataFormKecelakaan.addEventListener("submit", (e) => {
     formData.append("evidence", evidenceFile);
   }
 
-  fetch("https://p2-k3-dashboard-web.vercel.app/updatekejadian", {
+  fetch("http://localhost:3000/updatekejadian", {
     method: "PUT",
     body: formData,
   })
