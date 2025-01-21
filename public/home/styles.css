@@ -1,0 +1,494 @@
+/* Gaya dasar untuk tabel dan halaman */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f9; /* Warna latar belakang */
+  color: #333;
+}
+
+.container {
+  max-width: 1200px; /* Ubah ukuran maksimal sesuai kebutuhan */
+  margin: 30px auto; /* Atur margin agar tetap di tengah */
+  padding: 30px; /* Perbesar padding untuk menambahkan ruang di dalam container */
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Tabel */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #ffffff;
+}
+
+table th, table td {
+  padding: 15px;
+  text-align: center;
+  border: 2px solid #0047AB;
+}
+
+table th {
+  background-color: #0047AB;
+  color: white;
+  text-transform: uppercase;
+}
+
+table td {
+  background-color: #E8F4FF;
+}
+
+table tr:hover td {
+  background-color: #CDE6FF;
+}
+
+/* Modal */
+.modal {
+  display: none; /* Hidden secara default */
+  position: fixed;
+  z-index: 9999; /* Pastikan modal berada di atas elemen lain */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Latar belakang gelap */
+}
+
+.modal-content {
+  background-color: #ffffff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative; /* Tetap berada di tengah modal */
+  z-index: 10000; /* Tambahkan ini jika diperlukan */
+}
+
+.modal-content h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal-content label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #45a049;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: red;
+}
+
+/* Navbar */
+.navbar {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 10px 20px; /* Sesuaikan padding */
+  background: linear-gradient(135deg, #ffdd00, #0047ab);
+  width: 100%;
+  display: flex;
+  align-items: center; /* Align vertikal ke tengah */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  position: relative; /* Untuk membuat elemen berada dalam konteks posisi */
+}
+
+/* Navbar Menu */
+.navbar ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li {
+  margin-right: 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+.navbar ul li a:hover {
+  text-decoration: underline;
+}
+
+.navbar-logo {
+  height: 50px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  margin-right: 20px; /* Tambahkan sedikit jarak dari judul */
+}
+
+/* Judul Navbar */
+.navbar-title {
+  position: absolute;
+  left: 50%; /* Pindahkan ke tengah secara horizontal */
+  transform: translateX(-50%); /* Koreksi posisi agar pas di tengah */
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  background: black;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  z-index: 1; /* Pastikan teks di atas pseudo elemen */
+
+}
+
+
+
+
+/* Tombol Logout */
+.logout-btn {
+  margin-left: auto; /* Pastikan tombol logout berada di ujung kanan */
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #e60000;
+}
+
+/* Tombol Navigasi */
+.navbar ul li img {
+  height: 60px;
+  margin-right: 10px;
+}
+
+
+/* Gaya Tombol Tindakan */
+button.edit-btn,
+button.edit-btn-personel,
+button.edit-btn-rekap,
+button.edit-btn-kecelakaan,
+button.edit-btn-kejadian,
+button.delete-btn,
+button.delete-btn-personel, 
+button.delete-btn-rekap,
+button.delete-btn-kecelakaan,
+button.delete-btn-kejadian {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  color: white;
+}
+
+
+/* Atur lebar kolom pertama (Selection) */
+#struktur-table th:first-child,
+#struktur-table td:first-child,
+#personel-table th:first-child,
+#personel-tabl td:first-child {
+  width: 5px; /* Ubah sesuai kebutuhan, misalnya 50px */
+  text-align: center; /* Pastikan checkbox berada di tengah */
+}
+
+#search-bar-struktur,
+#search-bar-personel,
+#search-bar-rekap,
+#search-bar-kecelakaan,
+#search-bar-kejadian {
+  width: 61.5%; /* Atur lebar sesuai kebutuhan */
+  height: 12px; /* Sesuaikan tinggi agar sama dengan tombol */
+  padding: 10px; /* Memberikan ruang dalam */
+  font-size: 16px; /* Ukuran teks */
+  border: 2px solid #007BFF; /* Warna border */
+  border-radius: 8px; /* Membuat sudut membulat */
+  outline: none; /* Menghapus outline default saat fokus */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+  transition: all 0.3s ease; /* Animasi transisi untuk hover */
+}
+
+#search-bar-struktur:focus {
+  border-color: #0056b3; /* Ubah warna border saat fokus */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Perbesar bayangan */
+}
+
+.search-container {
+  display: flex; /* Atur elemen dalam satu baris */
+  align-items: center; /* Vertikal rata tengah */
+  gap: 10px; /* Jarak antar elemen */
+}
+
+/* Gaya untuk tombol Export Excel */
+button.export-csv-btn-struktur,
+button.export-csv-btn-personel,
+button.export-csv-btn-rekap,
+button.export-csv-btn-kecelakaan,
+button.export-csv-btn-kejadian {
+  background-color: #28a745; /* Warna hijau */
+  color: white; /* Warna teks putih */
+  border: none; /* Hilangkan border */
+  padding: 12px 20px; /* Tambahkan spasi dalam tombol */
+  font-size: 12px; /* Ukuran font lebih besar */
+  font-weight: bold; /* Tebal font */
+  border-radius: 6px; /* Sudut melengkung */
+  cursor: pointer; /* Kursor menjadi pointer */
+  transition: background-color 0.3s, transform 0.2s; /* Animasi transisi */
+}
+
+/* Hover untuk tombol Export Excel */
+button.export-csv-btn-struktur:hover,
+button.export-csv-btn-personel:hover,
+button.export-csv-btn-rekap:hover,
+button.export-csv-btn-kecelakaan:hover,
+button.export-csv-btn-kejadian:hover {
+  background-color: #218838; /* Warna hijau lebih gelap saat hover */
+  transform: scale(1.05); /* Perbesar sedikit saat hover */
+}
+
+/* Gaya untuk tombol Tambah Data */
+button.add-data-btn-struktur,
+button.add-data-btn-personel,
+button.add-data-btn-rekap,
+button.add-data-btn-kecelakaan,
+button.add-data-btn-kejadian {
+  background-color: #dc3545; /* Warna merah */
+  color: white; /* Warna teks putih */
+  border: none; /* Hilangkan border */
+  padding: 12px 20px; /* Tambahkan spasi dalam tombol */
+  font-size: 12px; /* Ukuran font lebih besar */
+  font-weight: bold; /* Tebal font */
+  border-radius: 6px; /* Sudut melengkung */
+  cursor: pointer; /* Kursor menjadi pointer */
+  transition: background-color 0.3s, transform 0.2s; /* Animasi transisi */
+}
+
+/* Hover untuk tombol Tambah Data */
+button.add-data-btn-struktur:hover,
+button.add-data-btn-personel:hover,
+button.add-data-btn-rekap:hover,
+button.add-data-btn-kecelakaan:hover,
+button.add-data-btn-kejadian:hover {
+  background-color: #b02a37; /* Warna merah lebih gelap saat hover */
+  transform: scale(1.05); /* Perbesar sedikit saat hover */
+}
+
+/* Gaya untuk tombol Delete Selected */
+button.delete-selected-btn,
+button.delete-selected-btn-personel,
+button.delete-selected-btn-rekap,
+button.delete-selected-btn-kecelakaan {
+  background-color: #FF5733; /* Warna merah oranye */
+  color: white; /* Warna teks putih */
+  border: none; /* Hilangkan border */
+  padding: 12px 20px; /* Tambahkan spasi dalam tombol */
+  font-size: 12px; /* Ukuran font lebih besar */
+  font-weight: bold; /* Tebal font */
+  border-radius: 6px; /* Sudut melengkung */
+  cursor: pointer; /* Kursor menjadi pointer */
+  text-transform: uppercase; /* Huruf kapital */
+  transition: background-color 0.3s, transform 0.2s; /* Animasi hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+}
+
+/* Hover untuk tombol Delete Selected */
+button.delete-selected-btn:hover,
+button.delete-selected-btn-personel:hover,
+button.delete-selected-btn-rekap:hover,
+button.delete-selected-btn-kecelakaan:hover {
+  background-color: #c0392b; /* Warna merah gelap */
+  transform: scale(1.05); /* Perbesar sedikit saat hover */
+}
+
+/* Fokus untuk tombol Delete Selected */
+button.delete-selected-btn:focus,
+button.delete-selected-btn-personel:focus,
+button.delete-selected-btn-rekap:focus,
+button.delete-selected-btn-kecelakaan:focus {
+  outline: none; /* Hilangkan outline default */
+  box-shadow: 0 0 5px rgba(192, 57, 43, 0.6); /* Tambahkan efek fokus */
+}
+
+
+/* Gaya global untuk semua tombol */
+button {
+  font-family: 'Arial', sans-serif; /* Gunakan font profesional */
+  text-transform: uppercase; /* Huruf kapital semua */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan untuk tampilan elegan */
+}
+
+/* Fokus untuk tombol */
+button:focus {
+  outline: none; /* Hilangkan outline default */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Tambahkan efek fokus */
+}
+
+
+
+
+button.edit-btn,
+button.edit-btn-personel,
+button.edit-btn-rekap,
+button.edit-btn-kecelakaan,
+button.edit-btn-kejadian {
+  background-color: #007BFF;
+}
+
+button.edit-btn:hover,
+button.edit-btn-personel:hover,
+button.edit-btn-rekap:hover,
+button.edit-btn-kecelakaan:hover,
+button.edit-btn-kejadian:hover {
+  background-color: #0056b3;
+}
+
+button.delete-btn,
+button.delete-btn-personel, 
+button.delete-btn-rekap,
+button.delete-btn-kecelakaan,
+button.delete-btn-kejadian {
+  background-color: #FF5733;
+}
+
+button.delete-btn:hover,  
+button.delete-btn-personel:hover, 
+button.delete-btn-rekap:hover,
+button.delete-btn-kecelakaan:hover,
+button.delete-btn-kejadian:hover {
+  background-color: #c0392b;
+}
+
+.tabs-container {
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 2px solid #ccc;
+}
+
+.tabs .tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  background: #f9f9f9;
+}
+
+.tabs .tab.active {
+  background: #fff;
+  border-bottom: 2px solid white;
+}
+
+.tab-content {
+  padding: 20px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+
+.evidence-image {
+  width: 50%; /* Lebar 50% dari elemen induk */
+  height: auto; /* Tinggi disesuaikan agar rasio aspek tetap terjaga */
+  object-fit: cover; /* Sesuaikan gambar agar tetap proporsional */
+  border: 2px solid #ccc; /* (Opsional) Tambahkan border */
+  border-radius: 5px; /* (Opsional) Tambahkan sudut melengkung */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* (Opsional) Tambahkan efek bayangan */
+}
+
+
+.struktur-organisasi {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.struktur-organisasi h1 {
+  text-align: center;
+  color: #0047AB;
+}
+
+.jabatan {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.jabatan h2 {
+  color: #333;
+}
+
+.jabatan ul {
+  margin-left: 20px;
+}
+
+.jabatan p {
+  margin: 10px 0;
+}
+
+/* Gaya untuk dropdown */
+.modal-content select {
+  width: 100%; /* Sesuaikan dengan lebar input lainnya */
+  padding: 10px; /* Spasi dalam dropdown */
+  font-size: 16px; /* Ukuran teks */
+  border: 1px solid #ccc; /* Border seperti input lainnya */
+  border-radius: 4px; /* Membuat sudut sedikit melengkung */
+  margin-bottom: 15px; /* Jarak bawah antar elemen */
+  box-sizing: border-box; /* Agar padding tidak memengaruhi ukuran */
+}
+  
+
