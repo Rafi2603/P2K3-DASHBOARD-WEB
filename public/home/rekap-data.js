@@ -279,18 +279,25 @@ deleteSelectedBtnKecelakaan.addEventListener("click", () => {
      .then((data) => {
         currentData = data.data || [];
         renderTable(currentData);
+        renderTableStrukturWithPagination(currentData); // Panggil fungsi dengan data
+
 
         searchBar.addEventListener("input", () => {
           const searchTerm = searchBar.value.toLowerCase();
+          const keywords = searchTerm.split(" ").filter(Boolean); // Pecah berdasarkan spasi dan hilangkan keyword kosong
+          
+          const filteredItems = currentData.filter((item) => {
+              // Cek apakah setiap keyword ditemukan di salah satu properti
+              return keywords.every((keyword) =>
+                  item.nama.toLowerCase().includes(keyword) ||
+                  item.jabatan.toLowerCase().includes(keyword) ||
+                  item.posisi.toLowerCase().includes(keyword)
+              );
+          });
       
-          const filteredItems = currentData.filter((item) =>
-              item.nama.toLowerCase().includes(searchTerm) ||
-              item.jabatan.toLowerCase().includes(searchTerm) ||
-              item.posisi.toLowerCase().includes(searchTerm)
-          );
-      
-          renderTable(filteredItems);
+          renderTable(filteredItems); // Render ulang tabel dengan data hasil filter
       });
+
      });
 
   // Fetch data Personel Ahli K3
@@ -299,44 +306,53 @@ deleteSelectedBtnKecelakaan.addEventListener("click", () => {
      .then((data) => {
         personelData = data.data || [];
         renderTablePersonel(personelData);
+        renderTablePersonelWithPagination(personelData); // Panggil fungsi paginasi
+
 
         searchBarPersonel.addEventListener("input", () => {
           const searchTerm = searchBarPersonel.value.toLowerCase();
+          const keywords = searchTerm.split(" ").filter(Boolean); // Pecah berdasarkan spasi dan hilangkan kata kosong
+          
+          const filteredItems = personelData.filter((item) => {
+              // Cek apakah setiap keyword ditemukan di salah satu properti
+              return keywords.every((keyword) =>
+                  item.nama.toLowerCase().includes(keyword) ||
+                  item.keahlian.toLowerCase().includes(keyword) ||
+                  item.batas_masa_berlaku.toLowerCase().includes(keyword)
+              );
+          });
       
-          const filteredItems = personelData.filter((item) =>
-              item.nama.toLowerCase().includes(searchTerm) ||
-              item.keahlian.toLowerCase().includes(searchTerm) ||
-              item.batas_masa_berlaku.toLowerCase().includes(searchTerm)
-          );
-      
-          renderTablePersonel(filteredItems);
+          renderTablePersonel(filteredItems); // Render ulang tabel dengan data hasil filter
       });
+
      });
 
 // Fetch data Rekap Data K3
 fetch("http://localhost:3000/getrekap")
   .then((response) => response.json())
   .then((data) => {
-    const rekapData = data.data || [];
-    console.log(data); // Pastikan data termasuk tahun dan bulan
+    rekapData = data.data || []; // Simpan data ke variabel global
+    console.log(rekapData); // Pastikan data termasuk tahun dan bulan
     renderTableRekap(rekapData);
-
-    // Tambahkan event listener untuk pencarian
-    searchBarRekap.addEventListener("input", () => {
-      const searchTerm = searchBarRekap.value.toLowerCase();
-
-      // Filter data berdasarkan tahun atau bulan
-      const filteredItems = rekapData.filter(
-        (item) =>
-          item.tahun.toString().toLowerCase().includes(searchTerm) || // Filter tahun
-          item.bulan.toLowerCase().includes(searchTerm) // Filter bulan
-      );
-
-      renderTableRekap(filteredItems); // Render tabel berdasarkan hasil pencarian
-    });
+    renderTableRekapWithPagination(rekapData); // Panggil fungsi paginasi dengan data
   })
   .catch((error) => console.error("Error fetching rekap data:", error));
 
+// Event Listener untuk Pencarian
+searchBarRekap.addEventListener("input", () => {
+  const searchTerm = searchBarRekap.value.toLowerCase();
+  const keywords = searchTerm.split(" ").filter(Boolean); // Pecah menjadi kata kunci, hapus yang kosong
+
+  // Filter data berdasarkan tahun dan bulan
+  const filteredItems = rekapData.filter((item) =>
+    keywords.every((keyword) =>
+      item.tahun.toString().toLowerCase().includes(keyword) || // Filter tahun
+      item.bulan.toLowerCase().includes(keyword) // Filter bulan
+    )
+  );
+
+  renderTableRekapWithPagination(filteredItems); // Render ulang tabel dengan data hasil pencarian
+});
 
    
 // Fetch data Kecelakaan Kerja dari backend
@@ -345,43 +361,63 @@ fetch("http://localhost:3000/getkecelakaankerja")
   .then((data) => {
     kecelakaanData = data.data || [];
     renderTableKecelakaan(kecelakaanData);
+    renderTableKecelakaanWithPagination(kecelakaanData); // Panggil fungsi paginasi
 
-    // Filter pencarian
-    searchBarKecelakaan.addEventListener("input", () => {
-      const searchTerm = searchBarKecelakaan.value.toLowerCase();
-      const filteredItems = kecelakaanData.filter(
-        (item) =>
-          item.nama.toLowerCase().includes(searchTerm) ||
-          item.jabatan.toLowerCase().includes(searchTerm) ||
-          item.unit.toLowerCase().includes(searchTerm)
-      );
-      renderTableKecelakaan(filteredItems);
-    });
+
+// Filter pencarian untuk tabel Kecelakaan Kerja
+searchBarKecelakaan.addEventListener("input", () => {
+  const searchTerm = searchBarKecelakaan.value.toLowerCase();
+  const keywords = searchTerm.split(" ").filter(Boolean); // Pecah input menjadi kata kunci, hapus yang kosong
+
+  const filteredItems = kecelakaanData.filter((item) =>
+    keywords.every((keyword) =>
+      item.tanggal.toLowerCase().includes(keyword) || // Filter berdasarkan tanggal
+      item.nik.toLowerCase().includes(keyword) || // Filter berdasarkan NIK
+      item.nama.toLowerCase().includes(keyword) || // Filter berdasarkan nama
+      item.jabatan.toLowerCase().includes(keyword) || // Filter berdasarkan jabatan
+      item.unit.toLowerCase().includes(keyword) || // Filter berdasarkan unit
+      item.tempat_kejadian.toLowerCase().includes(keyword) || // Filter berdasarkan tempat kejadian
+      item.kategori_kecelakaan.toLowerCase().includes(keyword) || // Filter berdasarkan kategori kecelakaan
+      item.tindak_lanjut.toLowerCase().includes(keyword) || // Filter berdasarkan tindak lanjut
+      item.perawatan_rs?.toLowerCase().includes(keyword) || // Filter berdasarkan perawatan RS (cek null/undefined)
+      item.keterangan.toLowerCase().includes(keyword) // Filter berdasarkan keterangan
+    )
+  );
+
+  renderTableKecelakaan(filteredItems); // Render tabel berdasarkan hasil pencarian
+});
+
+
   });
 
-  // Fetch data Kejadian Darurat
+
+// Fetch data Kejadian Darurat dari backend
 fetch("http://localhost:3000/getkejadian")
-.then((response) => response.json())
-.then((data) => {
-  console.log("Kejadian Darurat Data:", data);
-  const kejadianData = data.data || [];
-  renderTableKejadian(kejadianData);
+  .then((response) => response.json())
+  .then((data) => {
+    kejadianData = data.data || [];
+    renderTableKejadian(kejadianData); // Render tabel Kejadian Darurat
+    renderTableKejadianWithPagination(kejadianData); // Panggil fungsi paginasi
 
-  // Event listener untuk pencarian
-  searchBarKejadian.addEventListener("input", () => {
-    const searchTerm = searchBarKejadian.value.toLowerCase();
+    // Filter pencarian untuk tabel Kejadian Darurat
+    searchBarKejadian.addEventListener("input", () => {
+      const searchTerm = searchBarKejadian.value.toLowerCase();
+      const keywords = searchTerm.split(" ").filter(Boolean); // Pecah input menjadi kata kunci, hapus yang kosong
 
-    // Filter data berdasarkan pencarian
-    const filteredItems = kejadianData.filter((item) =>
-      item.kejadian_darurat.toLowerCase().includes(searchTerm) ||
-      item.lokasi.toLowerCase().includes(searchTerm) ||
-      item.kronologi_kejadian.toLowerCase().includes(searchTerm)
-    );
+      const filteredItems = kejadianData.filter((item) =>
+        keywords.every((keyword) =>
+          item.kejadian_darurat.toLowerCase().includes(keyword) || // Filter berdasarkan kejadian darurat
+          item.lokasi.toLowerCase().includes(keyword) || // Filter berdasarkan lokasi
+          item.kronologi_kejadian.toLowerCase().includes(keyword) || // Filter berdasarkan kronologi kejadian
+          item.tindak_lanjut.toLowerCase().includes(keyword) // Filter berdasarkan tindak lanjut
+        )
+      );
 
-    renderTableKejadian(filteredItems);
-  });
-})
-.catch((error) => console.error("Error fetching Kejadian Darurat data:", error));
+      renderTableKejadian(filteredItems); // Render tabel berdasarkan hasil pencarian
+    });
+  })
+  .catch((error) => console.error("Error fetching Kejadian Darurat data:", error));
+
    
 
   // Fungsi render tabel Struktur Organisasi
@@ -397,8 +433,10 @@ fetch("http://localhost:3000/getkejadian")
          <td>${item.posisi}</td>
          <td>${formattedDate}</td>
          <td>
-           <button class="edit-btn" data-id="${item.struktur_id}" data-nama="${item.nama}" data-jabatan="${item.jabatan}" data-posisi="${item.posisi}">Edit</button>
-           <button class="delete-btn" data-id="${item.struktur_id}">Delete</button>
+      <button class="edit-btn" data-id="${item.struktur_id}" data-nama="${item.nama}" data-jabatan="${item.jabatan}" data-posisi="${item.posisi}">
+        ✏️
+      </button>           
+      <button class="delete-btn" data-id="${item.struktur_id}">🗑️</button>
          </td>
        </tr>`;
      });
@@ -457,8 +495,69 @@ fetch("http://localhost:3000/getkejadian")
         });
      });
 
-
   }
+
+  let currentPageStruktur = 1;
+  let rowsPerPageStruktur = 5; // Default jumlah baris per halaman
+  
+  function renderTableStrukturWithPagination(data) {
+    const totalPages = Math.ceil(data.length / rowsPerPageStruktur);
+  
+    // Render tabel berdasarkan halaman saat ini
+    renderTable(data.slice((currentPageStruktur - 1) * rowsPerPageStruktur, currentPageStruktur * rowsPerPageStruktur));
+  
+    // Render navigasi pagination
+    renderPaginationStruktur(totalPages, data);
+  }
+  
+  function renderPaginationStruktur(totalPages, data) {
+    const paginationContainer = document.getElementById('pagination-container');
+    paginationContainer.innerHTML = '';
+  
+    // Tombol "Previous"
+    const prevButton = document.createElement('button');
+    prevButton.textContent = 'Previous';
+    prevButton.disabled = currentPageStruktur === 1;
+    prevButton.addEventListener('click', () => {
+      currentPageStruktur--;
+      renderTableStrukturWithPagination(data);
+    });
+    paginationContainer.appendChild(prevButton);
+  
+    // Tombol halaman
+    for (let i = 1; i <= totalPages; i++) {
+      const pageButton = document.createElement('button');
+      pageButton.textContent = i;
+      pageButton.className = currentPageStruktur === i ? 'active' : '';
+      pageButton.addEventListener('click', () => {
+        currentPageStruktur = i;
+        renderTableStrukturWithPagination(data);
+      });
+      const pageItem = document.createElement('div');
+      pageItem.className = 'page-item';
+      pageItem.appendChild(pageButton);
+      paginationContainer.appendChild(pageItem);
+    }
+  
+    // Tombol "Next"
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Next';
+    nextButton.disabled = currentPageStruktur === totalPages;
+    nextButton.addEventListener('click', () => {
+      currentPageStruktur++;
+      renderTableStrukturWithPagination(data);
+    });
+    paginationContainer.appendChild(nextButton);
+  }
+  
+  // Event listener untuk mengubah jumlah baris per halaman
+  document.getElementById('rows-per-page').addEventListener('change', (e) => {
+    rowsPerPageStruktur = parseInt(e.target.value, 10); // Perbarui jumlah baris per halaman
+    currentPageStruktur = 1; // Reset ke halaman pertama
+    renderTableStrukturWithPagination(currentData); // Render ulang tabel dengan data terbaru
+  });
+  
+  
 
 
   // Fungsi render tabel Personel Ahli K3
@@ -478,11 +577,11 @@ fetch("http://localhost:3000/getkejadian")
                  data-nama="${item.nama}" 
                  data-keahlian="${item.keahlian}" 
                  data-batas="${item.batas_masa_berlaku}">
-           Edit
+           ✏️
          </button>
          <button class="delete-btn-personel" 
                  data-id="${item.personel_k3_id}">
-           Delete
+           🗑️
          </button>
        </td>
      </tr>`;
@@ -545,6 +644,72 @@ fetch("http://localhost:3000/getkejadian")
      });
   }
 
+  let currentPagePersonel = 1;
+  let rowsPerPagePersonel = 5; // Default jumlah baris per halaman
+  
+  function renderTablePersonelWithPagination(data) {
+    const totalPages = Math.ceil(data.length / rowsPerPagePersonel);
+  
+    // Render tabel berdasarkan halaman saat ini
+    renderTablePersonel(
+      data.slice(
+        (currentPagePersonel - 1) * rowsPerPagePersonel,
+        currentPagePersonel * rowsPerPagePersonel
+      )
+    );
+  
+    // Render navigasi pagination
+    renderPaginationPersonel(totalPages, data);
+  }
+  
+  function renderPaginationPersonel(totalPages, data) {
+    const paginationContainer = document.getElementById('pagination-container-personel');
+    paginationContainer.innerHTML = '';
+  
+    // Tombol "Previous"
+    const prevButton = document.createElement('button');
+    prevButton.textContent = 'Previous';
+    prevButton.disabled = currentPagePersonel === 1;
+    prevButton.addEventListener('click', () => {
+      currentPagePersonel--;
+      renderTablePersonelWithPagination(data);
+    });
+    paginationContainer.appendChild(prevButton);
+  
+    // Tombol halaman
+    for (let i = 1; i <= totalPages; i++) {
+      const pageButton = document.createElement('button');
+      pageButton.textContent = i;
+      pageButton.className = currentPagePersonel === i ? 'active' : '';
+      pageButton.addEventListener('click', () => {
+        currentPagePersonel = i;
+        renderTablePersonelWithPagination(data);
+      });
+      const pageItem = document.createElement('div');
+      pageItem.className = 'page-item';
+      pageItem.appendChild(pageButton);
+      paginationContainer.appendChild(pageItem);
+    }
+  
+    // Tombol "Next"
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Next';
+    nextButton.disabled = currentPagePersonel === totalPages;
+    nextButton.addEventListener('click', () => {
+      currentPagePersonel++;
+      renderTablePersonelWithPagination(data);
+    });
+    paginationContainer.appendChild(nextButton);
+  }
+  
+  // Event listener untuk mengubah jumlah baris per halaman
+  document.getElementById('rows-per-page-personel').addEventListener('change', (e) => {
+    rowsPerPagePersonel = parseInt(e.target.value, 10); // Perbarui jumlah baris per halaman
+    currentPagePersonel = 1; // Reset ke halaman pertama
+    renderTablePersonelWithPagination(personelData); // Render ulang tabel dengan data terbaru
+  });
+  
+
 
 // Fungsi render tabel Rekap Data K3
 function renderTableRekap(data) {
@@ -588,9 +753,9 @@ function renderTableRekap(data) {
                   data-fire_accident="${item.fire_accident}" 
                   data-damaged_property="${item.damaged_property}" 
                   data-jumlah_hari_hilang="${item.jumlah_hari_hilang}" >
-            Edit
+            ✏️
           </button>
-          <button class="delete-btn-rekap" data-id="${item.rekapdata_id}">Delete</button>
+          <button class="delete-btn-rekap" data-id="${item.rekapdata_id}">🗑️</button>
         </td>
       </tr>
     `;
@@ -659,6 +824,74 @@ function renderTableRekap(data) {
 }
 
 
+let currentPageRekap = 1;
+let rowsPerPageRekap = 5; // Default jumlah baris per halaman
+
+function renderTableRekapWithPagination(data) {
+  const totalPages = Math.ceil(data.length / rowsPerPageRekap);
+
+  // Render tabel berdasarkan halaman saat ini
+  renderTableRekap(
+    data.slice(
+      (currentPageRekap - 1) * rowsPerPageRekap,
+      currentPageRekap * rowsPerPageRekap
+    )
+  );
+
+  // Render navigasi pagination
+  renderPaginationRekap(totalPages, data);
+}
+
+function renderPaginationRekap(totalPages, data) {
+  const paginationContainer = document.getElementById('pagination-container-rekap');
+  paginationContainer.innerHTML = '';
+
+  // Tombol "Previous"
+  const prevButton = document.createElement('button');
+  prevButton.textContent = 'Previous';
+  prevButton.disabled = currentPageRekap === 1;
+  prevButton.addEventListener('click', () => {
+    currentPageRekap--;
+    renderTableRekapWithPagination(data);
+  });
+  paginationContainer.appendChild(prevButton);
+
+  // Tombol halaman
+  for (let i = 1; i <= totalPages; i++) {
+    const pageButton = document.createElement('button');
+    pageButton.textContent = i;
+    pageButton.className = currentPageRekap === i ? 'active' : '';
+    pageButton.addEventListener('click', () => {
+      currentPageRekap = i;
+      renderTableRekapWithPagination(data);
+    });
+    const pageItem = document.createElement('div');
+    pageItem.className = 'page-item';
+    pageItem.appendChild(pageButton);
+    paginationContainer.appendChild(pageItem);
+  }
+
+  // Tombol "Next"
+  const nextButton = document.createElement('button');
+  nextButton.textContent = 'Next';
+  nextButton.disabled = currentPageRekap === totalPages;
+  nextButton.addEventListener('click', () => {
+    currentPageRekap++;
+    renderTableRekapWithPagination(data);
+  });
+  paginationContainer.appendChild(nextButton);
+}
+
+// Event listener untuk mengubah jumlah baris per halaman
+document.getElementById('rows-per-page-rekap').addEventListener('change', (e) => {
+  rowsPerPageRekap = parseInt(e.target.value, 10); // Perbarui jumlah baris per halaman
+  currentPageRekap = 1; // Reset ke halaman pertama
+  renderTableRekapWithPagination(rekapData); // Render ulang tabel dengan data terbaru
+});
+
+
+
+
 // Render tabel Kecelakaan Kerja
 function renderTableKecelakaan(data) {
    tableBodyKecelakaan.innerHTML = "";
@@ -693,11 +926,11 @@ function renderTableKecelakaan(data) {
              data-tindak_lanjut="${item.tindak_lanjut}"
              data-perawatan_rs="${item.perawatan_rs || ""}"
              data-keterangan="${item.keterangan}">
-             Edit
+             ✏️
            </button>
          </div>
          <div>
-           <button class="delete-btn-kecelakaan" data-id="${item.kecelakaankerja_id}">Delete</button>
+           <button class="delete-btn-kecelakaan" data-id="${item.kecelakaankerja_id}">🗑️</button>
          </div>
          </td>
        </tr>
@@ -754,6 +987,75 @@ function renderTableKecelakaan(data) {
    });
  }
 
+ let currentPageKecelakaan = 1; // Halaman saat ini
+ let rowsPerPageKecelakaan = 5; // Default jumlah baris per halaman
+ 
+ // Fungsi untuk render tabel kecelakaan dengan pagination
+ function renderTableKecelakaanWithPagination(data) {
+   const totalPages = Math.ceil(data.length / rowsPerPageKecelakaan);
+ 
+   // Render tabel berdasarkan halaman saat ini
+   renderTableKecelakaan(
+     data.slice(
+       (currentPageKecelakaan - 1) * rowsPerPageKecelakaan,
+       currentPageKecelakaan * rowsPerPageKecelakaan
+     )
+   );
+ 
+   // Render navigasi pagination
+   renderPaginationKecelakaan(totalPages, data);
+ }
+ 
+ // Fungsi untuk render navigasi pagination kecelakaan
+ function renderPaginationKecelakaan(totalPages, data) {
+   const paginationContainer = document.getElementById('pagination-container-kecelakaan');
+   paginationContainer.innerHTML = '';
+ 
+   // Tombol "Previous"
+   const prevButton = document.createElement('button');
+   prevButton.textContent = 'Previous';
+   prevButton.disabled = currentPageKecelakaan === 1;
+   prevButton.addEventListener('click', () => {
+     currentPageKecelakaan--;
+     renderTableKecelakaanWithPagination(data);
+   });
+   paginationContainer.appendChild(prevButton);
+ 
+   // Tombol halaman
+   for (let i = 1; i <= totalPages; i++) {
+     const pageButton = document.createElement('button');
+     pageButton.textContent = i;
+     pageButton.className = currentPageKecelakaan === i ? 'active' : '';
+     pageButton.addEventListener('click', () => {
+       currentPageKecelakaan = i;
+       renderTableKecelakaanWithPagination(data);
+     });
+     const pageItem = document.createElement('div');
+     pageItem.className = 'page-item';
+     pageItem.appendChild(pageButton);
+     paginationContainer.appendChild(pageItem);
+   }
+ 
+   // Tombol "Next"
+   const nextButton = document.createElement('button');
+   nextButton.textContent = 'Next';
+   nextButton.disabled = currentPageKecelakaan === totalPages;
+   nextButton.addEventListener('click', () => {
+     currentPageKecelakaan++;
+     renderTableKecelakaanWithPagination(data);
+   });
+   paginationContainer.appendChild(nextButton);
+ }
+ 
+ // Event listener untuk mengubah jumlah baris per halaman
+ document.getElementById('rows-per-page-kecelakaan').addEventListener('change', (e) => {
+   rowsPerPageKecelakaan = parseInt(e.target.value, 10); // Perbarui jumlah baris per halaman
+   currentPageKecelakaan = 1; // Reset ke halaman pertama
+   renderTableKecelakaanWithPagination(kecelakaanData); // Render ulang tabel dengan data terbaru
+ });
+ 
+
+
 
  // Render tabel Kejadian Darurat
 function renderTableKejadian(data) {
@@ -783,11 +1085,11 @@ function renderTableKejadian(data) {
               data-lokasi="${item.lokasi}"
               data-kronologi_kejadian="${item.kronologi_kejadian}"
               data-tindak_lanjut="${item.tindak_lanjut}">
-              Edit
+              ✏️
             </button>
           </div>
           <div>
-            <button class="delete-btn-kejadian" data-id="${item.kejadian_id}">Delete</button>
+            <button class="delete-btn-kejadian" data-id="${item.kejadian_id}">🗑️</button>
           </div>
         </td>
       </tr>
@@ -837,6 +1139,76 @@ function renderTableKejadian(data) {
     });
   });
 }
+
+
+let currentPageKejadian = 1; // Halaman saat ini
+let rowsPerPageKejadian = 5; // Default jumlah baris per halaman
+
+// Fungsi untuk render tabel kejadian dengan pagination
+function renderTableKejadianWithPagination(data) {
+  const totalPages = Math.ceil(data.length / rowsPerPageKejadian);
+
+  // Render tabel berdasarkan halaman saat ini
+  renderTableKejadian(
+    data.slice(
+      (currentPageKejadian - 1) * rowsPerPageKejadian,
+      currentPageKejadian * rowsPerPageKejadian
+    )
+  );
+
+  // Render navigasi pagination
+  renderPaginationKejadian(totalPages, data);
+}
+
+// Fungsi untuk render navigasi pagination kejadian
+function renderPaginationKejadian(totalPages, data) {
+  const paginationContainer = document.getElementById('pagination-container-kejadian');
+  paginationContainer.innerHTML = '';
+
+  // Tombol "Previous"
+  const prevButton = document.createElement('button');
+  prevButton.textContent = 'Previous';
+  prevButton.disabled = currentPageKejadian === 1;
+  prevButton.addEventListener('click', () => {
+    currentPageKejadian--;
+    renderTableKejadianWithPagination(data);
+  });
+  paginationContainer.appendChild(prevButton);
+
+  // Tombol halaman
+  for (let i = 1; i <= totalPages; i++) {
+    const pageButton = document.createElement('button');
+    pageButton.textContent = i;
+    pageButton.className = currentPageKejadian === i ? 'active' : '';
+    pageButton.addEventListener('click', () => {
+      currentPageKejadian = i;
+      renderTableKejadianWithPagination(data);
+    });
+    const pageItem = document.createElement('div');
+    pageItem.className = 'page-item';
+    pageItem.appendChild(pageButton);
+    paginationContainer.appendChild(pageItem);
+  }
+
+  // Tombol "Next"
+  const nextButton = document.createElement('button');
+  nextButton.textContent = 'Next';
+  nextButton.disabled = currentPageKejadian === totalPages;
+  nextButton.addEventListener('click', () => {
+    currentPageKejadian++;
+    renderTableKejadianWithPagination(data);
+  });
+  paginationContainer.appendChild(nextButton);
+}
+
+// Event listener untuk mengubah jumlah baris per halaman
+document.getElementById('rows-per-page-kejadian').addEventListener('change', (e) => {
+  rowsPerPageKejadian = parseInt(e.target.value, 10); // Perbarui jumlah baris per halaman
+  currentPageKejadian = 1; // Reset ke halaman pertama
+  renderTableKejadianWithPagination(kejadianData); // Render ulang tabel dengan data terbaru
+});
+
+
 
 
   // Show Modal untuk tambah data STRUKTUR

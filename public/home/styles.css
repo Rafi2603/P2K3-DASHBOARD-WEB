@@ -125,7 +125,7 @@ table tr:hover td {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 10px 20px; /* Sesuaikan padding */
-  background: linear-gradient(135deg, #ffdd00, #0047ab);
+  background:  #ffdd00;
   width: 100%;
   display: flex;
   align-items: center; /* Align vertikal ke tengah */
@@ -244,7 +244,7 @@ button.delete-btn-kejadian {
 #search-bar-rekap,
 #search-bar-kecelakaan,
 #search-bar-kejadian {
-  width: 61.5%; /* Atur lebar sesuai kebutuhan */
+  width: 300px; /* Atur lebar sesuai kebutuhan */
   height: 12px; /* Sesuaikan tinggi agar sama dengan tombol */
   padding: 10px; /* Memberikan ruang dalam */
   font-size: 16px; /* Ukuran teks */
@@ -406,7 +406,7 @@ button.delete-btn-kejadian:hover {
 }
 
 .tabs-container {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .tabs {
@@ -421,19 +421,22 @@ button.delete-btn-kejadian:hover {
   padding: 10px 20px;
   cursor: pointer;
   font-weight: bold;
-  color: #333;
+  color: black;
   border: 1px solid #ccc;
   border-bottom: none;
   background: #f9f9f9;
 }
 
 .tabs .tab.active {
-  background: #fff;
+  background: greenyellow;
   border-bottom: 2px solid white;
 }
 
 .tab-content {
-  padding: 20px;
+  padding-top: 10px; /* Hanya padding atas */
+  padding-right: 80px; /* Anda bisa mengatur nilai lain untuk sisi ini */
+  padding-bottom: 15px; /* Anda bisa mengatur nilai lain untuk sisi ini */
+  padding-left: 80px; /* Anda bisa mengatur nilai lain untuk sisi ini */
   border: 1px solid #ccc;
   background: #fff;
 }
@@ -492,3 +495,157 @@ button.delete-btn-kejadian:hover {
 }
   
 
+.pagination-settings,
+.pagination-settings-personel,
+.pagination-settings-rekap,
+.pagination-settings-kecelakaan,
+.pagination-settings-kejadian {
+  display: flex;
+  justify-content: space-between; /* Menyebarkan elemen secara horizontal */
+  align-items: center; /* Menyelaraskan elemen secara vertikal */
+  margin-bottom: 15px; /* Memberi jarak dengan elemen lainnya */
+  gap: 10px;
+}
+
+
+
+
+/* General Pagination Container */
+.pagination-container,
+.pagination-container-personel,
+.pagination-container-rekap,
+.pagination-container-kecelakaan,
+.pagination-container-kejadian {
+  display: flex;
+  justify-content: flex-end; /* Sesuaikan agar berada di sebelah kanan */
+  align-items: center;
+  gap: 10px; /* Tambahkan spasi antar tombol */
+  margin-top: 15px;
+  padding: 10px; /* Berikan padding untuk ruang di sekitar pagination */
+  background-color: #f4f4f9; /* Latar belakang lembut */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan sedikit bayangan */
+
+
+  justify-content: flex-end; /* Memastikan tombol paginasi berada di sebelah kanan */
+
+  margin-top: 0; /* Hapus jarak tambahan agar sejajar dengan dropdown */
+
+}
+
+
+.rows-per-page,
+.rows-per-page-personel,
+.rows-per-page-rekap,
+.rows-per-page-kecelakaan,
+.rows-per-page-kejadian {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Jarak antara label dan dropdown */
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+
+#rows-per-page,
+#rows-per-page-personel,
+#rows-per-page-rekap,
+#rows-per-page-kecelakaan,
+#rows-per-page-kejadian {
+  padding: 5px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+#rows-per-page:hover,
+#rows-per-page-personel:hover,
+#rows-per-page-rekap:hover,
+#rows-per-page-kecelakaan:hover,
+#rows-per-page-kejadian:hover {
+  border-color: #0047AB;
+}
+
+#rows-per-page:focus,
+#rows-per-page-personel:focus,
+#rows-per-page-rekap:focus,
+#rows-per-page-kecelakaan:focus,
+#rows-per-page-kejadian:focus     {
+  outline: none;
+  border-color: #0047AB;
+  box-shadow: 0 0 5px rgba(0, 71, 171, 0.5);
+}
+
+/* Pagination Buttons */
+.pagination-container button,
+.pagination-container-personel button,
+.pagination-container-rekap button,
+.pagination-container-kecelakaan button,
+.pagination-container-kejadian button {
+  padding: 8px 14px; /* Perbesar tombol untuk klik yang lebih nyaman */
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif; /* Gunakan font Poppins */
+  font-weight: bold;
+  border: 1px solid #ccc;
+  background-color: #fff; /* Warna latar belakang putih */
+  color: #0047AB; /* Warna teks biru */
+  border-radius: 5px; /* Ujung tombol lebih halus */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Tambahkan efek transisi untuk hover */
+}
+
+/* Hover Effect for Buttons */
+.pagination-container button:hover:not(.active),
+.pagination-container-personel button:hover:not(.active),
+.pagination-container-rekap button:hover:not(.active),
+.pagination-container-kecelakaan button:hover:not(.active),
+.pagination-container-kejadian button:hover:not(.active) {
+  background-color: #f0f8ff; /* Biru muda saat hover */
+  border-color: #0047AB;
+}
+
+/* Active Button */
+.pagination-container button.active,
+.pagination-container-personel button.active,
+.pagination-container-rekap button.active,
+.pagination-container-kecelakaan button.active,
+.pagination-container-kejadian button.active {
+  background-color: #0047AB; /* Biru tua untuk tombol aktif */
+  color: #fff; /* Warna teks putih */
+  border-color: #0047AB;
+}
+
+/* Disabled Buttons */
+.pagination-container button:disabled,
+.pagination-container-personel button:disabled,
+.pagination-container-rekap button:disabled,
+.pagination-container-kecelakaan button:disabled,
+.pagination-container-kejadian button:disabled {
+  background-color: #ddd; /* Warna abu-abu untuk tombol dinonaktifkan */
+  color: #999; /* Teks lebih redup */
+  cursor: not-allowed;
+  border-color: #ddd;
+}
+
+/* Tambahkan efek responsif */
+@media screen and (max-width: 768px) {
+  .pagination-container,
+  .pagination-container-personel,
+  .pagination-container-rekap,
+  .pagination-container-kecelakaan,
+  .pagination-container-kejadian {
+    justify-content: center; /* Pindahkan pagination ke tengah pada layar kecil */
+  }
+
+  .pagination-container button,
+  .pagination-container-personel button,
+  .pagination-container-rekap button,
+  .pagination-container-kecelakaan button,
+  .pagination-container-kejadian button {
+    font-size: 12px; /* Perkecil ukuran font */
+    padding: 6px 10px; /* Sesuaikan padding untuk layar kecil */
+  }
+}

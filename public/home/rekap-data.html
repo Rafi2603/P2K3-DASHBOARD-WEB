@@ -41,11 +41,13 @@
       <li class="tab" data-tab="rekap-tab">Rekap Data K3</li>
       <li class="tab" data-tab="kecelakaan-tab">Kecelakaan Kerja</li>
       <li class="tab" data-tab="kejadian-darurat-tab">Kejadian Darurat</li>
+      <li class="tab" data-tab="checklist-k3-tab">Checklist K3</li>
     </ul>
   </div>
 
   <!-- Tab Content -->
   <div class="tab-content" id="struktur-tab">
+    
     <h1>Struktur Organisasi</h1>
     <div class="search-container">
       <input type="text" id="search-bar-struktur" placeholder="Search Bar">
@@ -53,6 +55,21 @@
       <button class="export-csv-btn-struktur" onclick="exportTableToXLSX('struktur-table', 'StrukturOrganisasi.xlsx', [1, 2, 3])">Export Excel</button>
       <button id="delete-selected-btn" class="delete-selected-btn">Delete Selected</button>
     </div>
+
+    <div class="pagination-settings">
+      <div class="rows-per-page">
+        <label for="rows-per-page">Rows per page:</label>
+        <select id="rows-per-page">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+      <div id="pagination-container" class="pagination-container"></div>
+    </div>
+    
+    
     <table id="struktur-table">
       <thead>
         <tr>
@@ -68,6 +85,8 @@
         <!-- Data akan dimasukkan di sini -->
       </tbody>
     </table>
+
+
 
     <div class="jabatan">
       <h2>1. Ketua</h2>
@@ -231,6 +250,21 @@
       <button id="delete-selected-btn-personel" class="delete-selected-btn-personel">Delete Selected</button>
 
     </div>
+
+    <div class="pagination-settings-personel">
+      <div class="rows-per-page-personel">
+        <label for="rows-per-page-personel">Rows per page:</label>
+        <select id="rows-per-page-personel">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+      <div id="pagination-container-personel" class="pagination-container"></div>
+    </div>
+
+
     <table id="personel-table">
       <thead>
         <tr>
@@ -256,6 +290,22 @@
       <button id="delete-selected-btn-rekap" class="delete-selected-btn-rekap">Delete Selected</button>
 
     </div>
+
+    <div class="pagination-settings-rekap">
+      <div class="rows-per-page-rekap">
+        <label for="rows-per-page-rekap">Rows per page:</label>
+        <select id="rows-per-page-rekap">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+      <div id="pagination-container-rekap" class="pagination-container"></div>
+    </div>
+    
+    
+
     <div style="overflow-x: auto;">
     <table id="rekap-table">
       <thead>
@@ -351,6 +401,22 @@
       <button id="delete-selected-btn-kecelakaan" class="delete-selected-btn-kecelakaan">Delete Selected</button>
 
     </div>
+
+    <div class="pagination-settings-kecelakaan">
+      <div class="rows-per-page-kecelakaan">
+        <label for="rows-per-page-kecelakaan">Rows per page:</label>
+        <select id="rows-per-page-kecelakaan">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+      <div id="pagination-container-kecelakaan" class="pagination-container"></div>
+    </div>
+    
+
+
     <div style="overflow-x: auto;">
     <table id="kecelakaan-table">
       <thead>
@@ -386,6 +452,22 @@
             Export Excel
         </button>
     </div>
+
+    <div class="pagination-settings-kejadian">
+      <div class="rows-per-page-kejadian">
+        <label for="rows-per-page-kejadian">Rows per page:</label>
+        <select id="rows-per-page-kejadian">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+      <div id="pagination-container-kejadian" class="pagination-container"></div>
+    </div>
+    
+
+
     <div style="overflow-x: auto;">
         <table id="kejadian-darurat-table">
             <thead>
