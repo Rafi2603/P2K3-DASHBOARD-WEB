@@ -353,7 +353,7 @@ router.delete('/delete-multiple-personel', async (req, res) => {
 // GET REKAP
 router.get("/getrekap", async (req, res) => {
     try {
-        const result = await db.query("SELECT * FROM rekap_data_k3 ORDER BY rekapdata_id");
+        const result = await db.query("SELECT * FROM rekap_data_k3 ORDER BY rekapdata_id DESC");
         res.status(200).json({ data: result.rows });
     } catch (error) {
         console.error("Error fetching Rekap Data K3:", error);
@@ -377,10 +377,6 @@ router.post("/addrekap", async (req, res) => {
     const jumlah_hari_hilang = Number(req.body.jumlah_hari_hilang);
 
 
-    if (!tahun || !bulan || !jumlah_hari_kerja || !jumlah_karyawan) {
-        return res.status(400).json({ message: "Field tahun, bulan, jumlah_hari_kerja, dan jumlah_karyawan wajib diisi" });
-    }
-
     try {
         const jumlah_jam_kerja = jumlah_hari_kerja * 8;
         const jumlah_hari_tanpa_hilang = jumlah_karyawan * jumlah_hari_kerja;
@@ -391,8 +387,8 @@ router.post("/addrekap", async (req, res) => {
         const frequency_rate = (total_kecelakaan * 1000000) / (man_hour || 1); // Hindari pembagian dengan nol
         const severity_rate = (jumlah_hari_hilang * 1000000) / (man_hour || 1);
 
-        //const incident_rate = ((total_kecelakaan / jumlah_karyawan) * 10000);
-        const incident_rate = ((total_kecelakaan / jumlah_karyawan) * 100).toFixed(2);
+        //const inchident_rate = ((total_kecelakaan / jumlah_karyawan) * 10000);
+        const inchident_rate = ((total_kecelakaan / jumlah_karyawan) * 100).toFixed(2);
 
 
 
@@ -409,40 +405,10 @@ router.post("/addrekap", async (req, res) => {
                 tahun, bulan, jumlah_jam_kerja, jumlah_hari_kerja, jumlah_karyawan,
                 kecelakaan_berat, kecelakaan_ringan, kecelakaan_meninggal, near_miss,
                 fire_accident, damaged_property, jumlah_hari_hilang, jumlah_hari_tanpa_hilang, lti, man_hour,
-                frequency_rate, severity_rate, incident_rate, atlr
+                frequency_rate, severity_rate, inchident_rate, atlr
             ]
         );
         res.status(201).json({ message: "Data berhasil ditambahkan dengan perhitungan otomatis" });
-        // console.log({
-        //     tahun,
-        //     bulan,
-        //     jumlah_hari_kerja,
-        //     jumlah_karyawan,
-        //     kecelakaan_berat,
-        //     kecelakaan_ringan,
-        //     kecelakaan_meninggal,
-        //     near_miss,
-        //     fire_accident,
-        //     damaged_property,
-        //     jumlah_hari_hilang
-        // });
-        // console.log({
-        //     jumlah_jam_kerja,
-        //     jumlah_hari_tanpa_hilang,
-        //     lti,
-        //     man_hour,
-        //     frequency_rate,
-        //     severity_rate,
-        //     incident_rate,
-        //     atlr
-        // });
-    
-
-        // console.log({
-        //     incident_rate,
-        //     total_kecelakaan,
-        //     jumlah_karyawan
-        // });
         
     } catch (error) {
         console.error("Error adding Rekap Data K3:", error);
@@ -490,8 +456,8 @@ router.put("/updaterekap", async (req, res) => {
         const frequency_rate = (total_kecelakaan * 1000000) / (man_hour || 1); // Hindari pembagian dengan nol
         const severity_rate = (jumlah_hari_hilang * 1000000) / (man_hour || 1);
 
-        //const incident_rate = ((total_kecelakaan / jumlah_karyawan) * 10000);
-        const incident_rate = ((total_kecelakaan / jumlah_karyawan) * 100).toFixed(2);
+        //const inchident_rate = ((total_kecelakaan / jumlah_karyawan) * 10000);
+        const inchident_rate = ((total_kecelakaan / jumlah_karyawan) * 100);
 
 
 
@@ -538,7 +504,7 @@ router.put("/updaterekap", async (req, res) => {
                 man_hour,
                 frequency_rate,
                 severity_rate,
-                incident_rate,
+                inchident_rate,
                 atlr,
                 rekapdata_id
             ]

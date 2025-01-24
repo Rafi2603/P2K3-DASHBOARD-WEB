@@ -15,6 +15,11 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
 
+  <!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+
 
 </head>
 <body>
@@ -497,8 +502,11 @@
       <label for="nama">Nama:</label>
       <input type="text" id="nama" name="nama" required>
       
+
       <label for="jabatan">Jabatan:</label>
-      <input type="text" id="jabatan" name="jabatan" required>
+      <select id="jabatan" name="jabatan" required>
+          <option value="" disabled selected>Pilih Jabatan</option>
+      </select>
       
       <label for="posisi">Posisi:</label>
       <select id="posisi" name="posisi" class="dropdown" required>
@@ -716,8 +724,15 @@
       <label for="tempat_kejadian">Tempat Kejadian:</label>
       <textarea id="tempat_kejadian" name="tempat_kejadian"></textarea>
 
+
       <label for="kategori_kecelakaan">Kategori Kecelakaan:</label>
-      <input type="text" id="kategori_kecelakaan" name="kategori_kecelakaan" required>
+      <select id="kategori_kecelakaan" name="kategori_kecelakaan" required>
+        <option value="" disabled selected>-- Pilih Kategori Kecelakaan --</option>
+        <option value="Kecelakaan Ringan">Kecelakaan Ringan</option>
+        <option value="Kecelakaan Berat">Kecelakaan Berat</option>
+        <option value="Kecelakaan Fatal">Kecelakaan Fatal</option>
+      </select>
+      
 
       <label for="tindak_lanjut">Tindak Lanjut:</label>
       <textarea id="tindak_lanjut" name="tindak_lanjut"></textarea>
@@ -977,6 +992,8 @@ function exportTableToXLSX(tableId, filename, selectedColumns) {
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
 
+<script src="dropdown-data.js"></script>
+<script src="script.js"></script>
 
   <script src="rekap-data.js"></script>
 </body>

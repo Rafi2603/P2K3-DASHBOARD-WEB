@@ -134,7 +134,11 @@ selectAllCheckboxKecelakaan.addEventListener("change", () => {
         return response.json();
       })
       .then(() => {
+
         alert("Data berhasil dihapus.");
+
+        window.location.reload();
+        
         // Hapus baris dari tabel
         idsToDelete.forEach((id) => {
           const row = document.querySelector(`#table-body-struktur tr[data-id="${id}"]`);
@@ -173,6 +177,7 @@ selectAllCheckboxKecelakaan.addEventListener("change", () => {
       })
       .then(() => {
         alert("Data berhasil dihapus.");
+
         // Hapus baris dari tabel
         idsToDelete.forEach((id) => {
           const row = document.querySelector(`#table-body-personel tr[data-id="${id}"]`);
@@ -211,6 +216,9 @@ selectAllCheckboxKecelakaan.addEventListener("change", () => {
       })
       .then(() => {
         alert("Data berhasil dihapus.");
+
+        window.location.reload();
+        
         // Hapus baris dari tabel
         idsToDelete.forEach((id) => {
           const row = document.querySelector(`#table-body-rekap tr[data-id="${id}"]`);
@@ -251,6 +259,7 @@ deleteSelectedBtnKecelakaan.addEventListener("click", () => {
     })
     .then(() => {
       alert("Data berhasil dihapus.");
+      window.location.reload();
       // Hapus baris dari tabel
       idsToDelete.forEach((id) => {
         const row = document.querySelector(`#table-body-kecelakaan tr[data-id="${id}"]`);
@@ -332,7 +341,7 @@ fetch("http://localhost:3000/getrekap")
   .then((response) => response.json())
   .then((data) => {
     rekapData = data.data || []; // Simpan data ke variabel global
-    console.log(rekapData); // Pastikan data termasuk tahun dan bulan
+    //console.log(rekapData); // Pastikan data termasuk tahun dan bulan
     renderTableRekap(rekapData);
     renderTableRekapWithPagination(rekapData); // Panggil fungsi paginasi dengan data
   })
@@ -483,7 +492,8 @@ fetch("http://localhost:3000/getkejadian")
                     return response.json();
                  })
                  .then(() => {
-                    alert("Data berhasil dihapus");
+                  alert("Data berhasil dihapus.");
+                  window.location.reload();
                     currentData = currentData.filter((item) => item.struktur_id != id); // Hapus dari array lokal
                     renderTable(currentData); // Render ulang tabel
                  })
@@ -631,7 +641,8 @@ fetch("http://localhost:3000/getkejadian")
                     return response.json();
                  })
                  .then(() => {
-                    alert("Data berhasil dihapus");
+                  alert("Data berhasil dihapus.");
+                  window.location.reload();
                     personelData = personelData.filter((item) => item.personel_k3_id != id); // Hapus data dari array lokal
                     renderTablePersonel(personelData); // Render ulang tabel
                  })
@@ -811,7 +822,8 @@ function renderTableRekap(data) {
             return response.json();
           })
           .then(() => {
-            alert("Data berhasil dihapus");
+            alert("Data berhasil dihapus.");
+            window.location.reload();
             rekapData = rekapData.filter((item) => item.rekapdata_id != id);
             renderTableRekap(rekapData);
           })
@@ -974,7 +986,8 @@ function renderTableKecelakaan(data) {
              return response.json();
            })
            .then(() => {
-             alert("Data berhasil dihapus");
+            alert("Data berhasil dihapus.");
+            window.location.reload();
              kecelakaanData = kecelakaanData.filter((item) => item.kecelakaankerja_id != id);
              renderTableKecelakaan(kecelakaanData);
            })
@@ -1127,7 +1140,8 @@ function renderTableKejadian(data) {
             return response.json();
           })
           .then(() => {
-            alert("Data berhasil dihapus");
+            alert("Data berhasil dihapus.");
+            window.location.reload();
             kejadianData = kejadianData.filter((item) => item.kejadian_id != id);
             renderTableKejadian(kejadianData);
           })
@@ -1287,7 +1301,8 @@ closeModalKejadian.addEventListener("click", () => {
            return response.json();
         })
         .then(() => {
-           alert("Data berhasil ditambahkan");
+          alert("Data berhasil ditambahkan");
+          
            modal.style.display = "none";
            window.location.reload();
         })
@@ -1295,6 +1310,7 @@ closeModalKejadian.addEventListener("click", () => {
            console.error("Error adding data:", error);
            alert("Error adding data");
         });
+
   });
 
   // Submit Form Data PERSONEL
@@ -1321,7 +1337,8 @@ closeModalKejadian.addEventListener("click", () => {
            return response.json();
         })
         .then(() => {
-           alert("Data berhasil ditambahkan");
+          alert("Data berhasil ditambahkan");
+          
            addModalPersonel.style.display = "none";
            window.location.reload(); // Reload halaman untuk memperbarui tabel
         })
@@ -1364,7 +1381,8 @@ closeModalKejadian.addEventListener("click", () => {
               return response.json();
           })
           .then(() => {
-              alert("Data berhasil ditambahkan");
+            alert("Data berhasil ditambahkan");
+            
               addModalRekap.style.display = "none";
               window.location.reload(); // Reload halaman untuk memperbarui tabel
           })
@@ -1406,7 +1424,8 @@ addDataFormKecelakaan.addEventListener("submit", (e) => {
        return response.json();
      })
      .then(() => {
-       alert("Data berhasil ditambahkan");
+      alert("Data berhasil ditambahkan");
+      
        addModalKecelakaan.style.display = "none";
        window.location.reload();
      })
@@ -1465,7 +1484,8 @@ addDataFormKecelakaan.addEventListener("submit", (e) => {
       return response.json();
     })
     .then((data) => {
-      alert("Data berhasil ditambahkan.");
+      alert("Data berhasil ditambahkan");
+      
       document.getElementById("add-data-modal-kejadian").style.display = "none";
       window.location.reload();
     })
