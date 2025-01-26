@@ -1,159 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url('jalantol.jpg') no-repeat center center fixed; /* Gambar latar belakang */
-            background-size: cover; /* Pastikan gambar mencakup seluruh layar */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #333;
-        }
-        .login-container {
-            background: rgba(255, 255, 255, 0.9); /* Warna putih dengan transparansi */
-            padding: 30px;
-            width: 400px;
-            border-radius: 10px;
-            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            position: relative;
-        }
-        .login-logo img {
-            width: 150px;
-            margin-bottom: 18px;
-        }
-        .login-container h1 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            position: relative;
-            z-index: 1;
-        }
-        /* Gaya untuk judul dengan efek gradasi */
-        .login-container h1:first-of-type {
-            font-size: 30px;
-            font-weight: bold;
-            color: transparent;
-            background: linear-gradient(90deg, #0047ab, #ffdd00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            animation: gradient-animation 3s infinite;
-            margin-bottom: 10px;
-        }
-        @keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .login-container h1:first-of-type {
-            background-size: 200% 200%;
-        }
-        .login-container h1:last-of-type {
-            color: #333;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .login-container input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
-            box-sizing: border-box;
-        }
-        .login-container input:focus {
-            border-color: #0047ab;
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 71, 171, 0.5);
-        }
-        .login-container button {
-            width: 100%;
-            padding: 12px;
-            background-color: #0047ab;
-            color: #ffdd00;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-        }
-        .login-container button:hover {
-            background-color: #003a8b;
-            transform: translateY(-2px);
-        }
-        .warning-message {
-            margin-top: 15px;
-            color: red;
-            font-size: 14px;
-        }
-        .login-footer {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #666;
-        }
-        .login-footer a {
-            color: #0047ab;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .login-footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <div class="login-container">
-        <div class="login-logo">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Login Page</title>
+      <link rel="stylesheet" href="styles.css">
+   </head>
+   <body>
+      <div class="login-container">
+         <div class="login-logo">
             <img src="logo-jasmar.png" alt="Logo Perusahaan">
-        </div>
-        <h1>DASHBOARD P2K3</h1>
-        <h1>Login</h1>
-        <form id="loginForm">
+         </div>
+         <h1>DASHBOARD P2K3</h1>
+         <h1>Login</h1>
+         <form id="loginForm">
             <input id="username" name="username" type="text" placeholder="Masukkan Username" required>
             <input id="password" name="password" type="password" placeholder="Masukkan Password" required>
             <button type="button" id="submitbutton">Login</button>
-        </form>
-        <div class="warning-message" id="warningMessage"></div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-        document.getElementById('submitbutton').addEventListener('click', async () => {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            try {
-                const response = await axios.post('https://backend-web-ten.vercel.app/login-encrypt', {
-                    username: username,
-                    password: password
-                });
-
-                const user = response.data.showItems[0];
-
-                switch (user.username) {
-                    case 'rafi':
-                        alert("Selamat Datang!");
-                        window.location.href = 'home/rekap-data.html';
-                        break;
-                    default:
-                        alert("Akses tidak diizinkan untuk Username ini.");
-                }
-            } catch (error) {
-                document.getElementById('warningMessage').textContent = error.response ? error.response.data.message : 'An error occurred. Please try again.';
-                console.error('Error logging in:', error);
-                alert("Username atau Password Salah");
-            }
-        });
-    </script>
-</body>
+         </form>
+         <div class="warning-message" id="warningMessage"></div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script>
+         document.getElementById('submitbutton').addEventListener('click', async () => {
+             const username = document.getElementById('username').value;
+             const password = document.getElementById('password').value;
+         
+             try {
+                 const response = await axios.post('http://localhost:3000/login-encrypt', {
+                     username: username,
+                     password: password
+                 });
+         
+                 const user = response.data.showItems[0];
+         
+                 switch (user.username) {
+                     case 'rafi':
+                         alert("Selamat Datang!");
+                         window.location.href = 'home/rekap-data.html';
+                         break;
+                     default:
+                         alert("Akses tidak diizinkan untuk Username ini.");
+                 }
+             } catch (error) {
+                 document.getElementById('warningMessage').textContent = error.response ? error.response.data.message : 'An error occurred. Please try again.';
+                 console.error('Error logging in:', error);
+                 alert("Username atau Password Salah");
+             }
+         });
+      </script>
+   </body>
 </html>

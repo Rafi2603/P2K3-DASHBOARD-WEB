@@ -806,13 +806,258 @@ router.delete('/deletekejadian', async (req, res) => {
 });
 
 
+// DELETE MULTIPLE DATA KEJADIAN DARURAT
+router.delete('/delete-multiple-kejadian', async (req, res) => {
+    const { ids } = req.body;
+
+    // Validasi input
+    if (!Array.isArray(ids) || ids.length === 0) {
+        return res.status(400).json({ message: "Tidak ada ID yang diterima untuk dihapus." });
+    }
+
+    try {
+        // Buat placeholder untuk query
+        const placeholders = ids.map((_, index) => `$${index + 1}`).join(", ");
+        const query = `DELETE FROM kejadian_darurat WHERE kejadian_id IN (${placeholders})`;
+
+        // Eksekusi query dengan array ID
+        await db.query(query, ids);
+
+        res.status(200).json({ message: "Data berhasil dihapus." });
+    } catch (error) {
+        console.error("Error deleting kejadian darurat data:", error);
+        res.status(500).json({ message: "Error deleting data." });
+    }
+});
+
+
+
+// ROUTING TABEL CHECKLIST K3
+// GET CHECKLIST K3
+router.get('/getchecklist', async (req, res) => {
+    try {
+        const result = await db.query('SELECT * FROM checklist_k3 ORDER BY checklist_id');
+        const checklistData = result.rows.map((item) => {
+            return {
+                ...item,
+                checklist_pemeriksaan: item.checklist_pemeriksaan
+                    ? `data:image/jpeg;base64,${item.checklist_pemeriksaan.toString('base64')}`
+                    : null,
+                apar: item.apar
+                    ? `data:image/jpeg;base64,${item.apar.toString('base64')}`
+                    : null,
+                rambu_apar: item.rambu_apar
+                    ? `data:image/jpeg;base64,${item.rambu_apar.toString('base64')}`
+                    : null,
+                kelengkapan_box_hydrant: item.kelengkapan_box_hydrant
+                    ? `data:image/jpeg;base64,${item.kelengkapan_box_hydrant.toString('base64')}`
+                    : null,
+                ruang_laktasi: item.ruang_laktasi
+                    ? `data:image/jpeg;base64,${item.ruang_laktasi.toString('base64')}`
+                    : null,
+                ruang_p3k: item.ruang_p3k
+                    ? `data:image/jpeg;base64,${item.ruang_p3k.toString('base64')}`
+                    : null,
+                organik: item.organik
+                    ? `data:image/jpeg;base64,${item.organik.toString('base64')}`
+                    : null,
+                non_organik: item.non_organik
+                    ? `data:image/jpeg;base64,${item.non_organik.toString('base64')}`
+                    : null,
+                limbah_b3: item.limbah_b3
+                    ? `data:image/jpeg;base64,${item.limbah_b3.toString('base64')}`
+                    : null,
+                smoking_area: item.smoking_area
+                    ? `data:image/jpeg;base64,${item.smoking_area.toString('base64')}`
+                    : null,
+                dll: item.dll
+                    ? `data:image/jpeg;base64,${item.dll.toString('base64')}`
+                    : null,
+            };
+        });
+
+        res.status(200).json({ message: 'Data Found', data: checklistData });
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).json({ message: 'Error fetching data' });
+    }
+});
+
+
+
+// ADD KEJADIAN DARURAT
+router.post('/addchecklist', upload.fields([
+    { name: 'checklist_pemeriksaan' },
+    { name: 'apar' },
+    { name: 'rambu_apar' },
+    { name: 'kelengkapan_box_hydrant' },
+    { name: 'ruang_laktasi' },
+    { name: 'ruang_p3k' },
+    { name: 'organik' },
+    { name: 'non_organik' },
+    { name: 'limbah_b3' },
+    { name: 'smoking_area' },
+    { name: 'dll' }
+]), async (req, res) => {
+    const {
+        section,
+        indikator_k3,
+        expired_date
+    } = req.body;
+
+    // Ambil file dari request
+    const checklist_pemeriksaan = req.files['checklist_pemeriksaan'] ? req.files['checklist_pemeriksaan'][0].buffer : null;
+    const apar = req.files['apar'] ? req.files['apar'][0].buffer : null;
+    const rambu_apar = req.files['rambu_apar'] ? req.files['rambu_apar'][0].buffer : null;
+    const kelengkapan_box_hydrant = req.files['kelengkapan_box_hydrant'] ? req.files['kelengkapan_box_hydrant'][0].buffer : null;
+    const ruang_laktasi = req.files['ruang_laktasi'] ? req.files['ruang_laktasi'][0].buffer : null;
+    const ruang_p3k = req.files['ruang_p3k'] ? req.files['ruang_p3k'][0].buffer : null;
+    const organik = req.files['organik'] ? req.files['organik'][0].buffer : null;
+    const non_organik = req.files['non_organik'] ? req.files['non_organik'][0].buffer : null;
+    const limbah_b3 = req.files['limbah_b3'] ? req.files['limbah_b3'][0].buffer : null;
+    const smoking_area = req.files['smoking_area'] ? req.files['smoking_area'][0].buffer : null;
+    const dll = req.files['dll'] ? req.files['dll'][0].buffer : null;
+
+    // Validasi input
+    if (!section || !indikator_k3 || !expired_date) {
+        return res.status(400).json({ message: 'Field section, indikator_k3, dan expired_date wajib diisi.' });
+    }
+
+    try {
+        // Insert data ke database
+        await db.query(
+            `INSERT INTO checklist_k3 (
+                section, indikator_k3, expired_date, checklist_pemeriksaan, apar,
+                rambu_apar, kelengkapan_box_hydrant, ruang_laktasi, ruang_p3k,
+                organik, non_organik, limbah_b3, smoking_area, dll
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)`,
+            [
+                section,
+                indikator_k3,
+                expired_date,
+                checklist_pemeriksaan,
+                apar,
+                rambu_apar,
+                kelengkapan_box_hydrant,
+                ruang_laktasi,
+                ruang_p3k,
+                organik,
+                non_organik,
+                limbah_b3,
+                smoking_area,
+                dll
+            ]
+        );
+
+        res.status(201).json({ message: 'Data checklist K3 berhasil ditambahkan.' });
+    } catch (error) {
+        console.error('Error inserting data into checklist_k3:', error);
+        res.status(500).json({ message: 'Error inserting data.' });
+    }
+});
+
+
+
+router.put("/updatechecklist", upload.fields([
+    { name: "checklist_pemeriksaan" },
+    { name: "apar" },
+    { name: "rambu_apar" },
+    { name: "kelengkapan_box_hydrant" },
+    { name: "ruang_laktasi" },
+    { name: "ruang_p3k" },
+    { name: "organik" },
+    { name: "non_organik" },
+    { name: "limbah_b3" },
+    { name: "smoking_area" },
+    { name: "dll" }
+]), async (req, res) => {
+    const { checklist_id, section, indikator_k3, expired_date } = req.body;
+    const files = req.files;
+    const fileColumns = [
+        "checklist_pemeriksaan", "apar", "rambu_apar", "kelengkapan_box_hydrant",
+        "ruang_laktasi", "ruang_p3k", "organik", "non_organik", "limbah_b3",
+        "smoking_area", "dll"
+    ];
+
+    try {
+        const updates = [];
+        const values = [section, indikator_k3, expired_date, checklist_id];
+
+        fileColumns.forEach((column) => {
+            if (files[column]) {
+                updates.push(`${column} = $${values.length + 1}`);
+                values.push(files[column][0].buffer);
+            }
+        });
+
+        const query = `
+            UPDATE checklist_k3
+            SET section = $1, indikator_k3 = $2, expired_date = $3
+            ${updates.length ? `, ${updates.join(", ")}` : ""}
+            WHERE checklist_id = $${values.length};
+        `;
+
+        await db.query(query, values);
+        res.status(200).json({ message: "Data berhasil diperbarui." });
+    } catch (error) {
+        console.error("Error updating data:", error);
+        res.status(500).json({ message: "Error updating data." });
+    }
+});
 
 
 
 
+// DELETE Checklist K3
+router.delete('/deletechecklist', async (req, res) => {
+    const { checklist_id } = req.body;
+
+    if (!checklist_id) {
+        return res.status(400).json({ message: 'ID checklist wajib diisi' });
+    }
+
+    try {
+        const result = await db.query(
+            'DELETE FROM checklist_k3 WHERE checklist_id = $1',
+            [checklist_id]
+        );
+
+        if (result.rowCount === 0) {
+            return res.status(404).json({ message: 'Data tidak ditemukan' });
+        }
+
+        res.status(200).json({ message: 'Data berhasil dihapus', data: result.rows[0] });
+    } catch (error) {
+        console.error('Error deleting data:', error);
+        res.status(500).json({ message: 'Error deleting data' });
+    }
+});
 
 
-  
+// DELETE MULTIPLE DATA CHECKLIST K3
+router.delete('/delete-multiple-checklist', async (req, res) => {
+    const { ids } = req.body;
+
+    // Validasi input
+    if (!Array.isArray(ids) || ids.length === 0) {
+        return res.status(400).json({ message: "Tidak ada ID yang diterima untuk dihapus." });
+    }
+
+    try {
+        // Buat placeholder untuk query
+        const placeholders = ids.map((_, index) => `$${index + 1}`).join(", ");
+        const query = `DELETE FROM checklist_k3 WHERE checklist_id IN (${placeholders})`;
+
+        // Eksekusi query dengan array ID
+        await db.query(query, ids);
+
+        res.status(200).json({ message: "Data berhasil dihapus." });
+    } catch (error) {
+        console.error("Error deleting checklist K3 data:", error);
+        res.status(500).json({ message: "Error deleting data." });
+    }
+});
+
 
 
 // ROUTE SESSION

@@ -216,11 +216,13 @@ button.edit-btn-personel,
 button.edit-btn-rekap,
 button.edit-btn-kecelakaan,
 button.edit-btn-kejadian,
+button.edit-btn-checklist,
 button.delete-btn,
 button.delete-btn-personel, 
 button.delete-btn-rekap,
 button.delete-btn-kecelakaan,
-button.delete-btn-kejadian {
+button.delete-btn-kejadian,
+button.delete-btn-checklist {
   padding: 8px 12px;
   font-size: 14px;
   border-radius: 4px;
@@ -243,7 +245,8 @@ button.delete-btn-kejadian {
 #search-bar-personel,
 #search-bar-rekap,
 #search-bar-kecelakaan,
-#search-bar-kejadian {
+#search-bar-kejadian,
+#search-bar-checklist {
   width: 300px; /* Atur lebar sesuai kebutuhan */
   height: 12px; /* Sesuaikan tinggi agar sama dengan tombol */
   padding: 10px; /* Memberikan ruang dalam */
@@ -255,7 +258,12 @@ button.delete-btn-kejadian {
   transition: all 0.3s ease; /* Animasi transisi untuk hover */
 }
 
-#search-bar-struktur:focus {
+#search-bar-struktur:focus,
+#search-bar-personel:focus,
+#search-bar-rekap:focus,
+#search-bar-kecelakaan:focus,
+#search-bar-kejadian:focus,
+#search-bar-checklist:focus {
   border-color: #0056b3; /* Ubah warna border saat fokus */
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Perbesar bayangan */
 }
@@ -271,7 +279,8 @@ button.export-csv-btn-struktur,
 button.export-csv-btn-personel,
 button.export-csv-btn-rekap,
 button.export-csv-btn-kecelakaan,
-button.export-csv-btn-kejadian {
+button.export-csv-btn-kejadian,
+button.export-csv-btn-checklist {
   background-color: #28a745; /* Warna hijau */
   color: white; /* Warna teks putih */
   border: none; /* Hilangkan border */
@@ -288,7 +297,8 @@ button.export-csv-btn-struktur:hover,
 button.export-csv-btn-personel:hover,
 button.export-csv-btn-rekap:hover,
 button.export-csv-btn-kecelakaan:hover,
-button.export-csv-btn-kejadian:hover {
+button.export-csv-btn-kejadian:hover,
+button.export-csv-btn-checklist:hover {
   background-color: #218838; /* Warna hijau lebih gelap saat hover */
   transform: scale(1.05); /* Perbesar sedikit saat hover */
 }
@@ -298,7 +308,8 @@ button.add-data-btn-struktur,
 button.add-data-btn-personel,
 button.add-data-btn-rekap,
 button.add-data-btn-kecelakaan,
-button.add-data-btn-kejadian {
+button.add-data-btn-kejadian,
+button.add-data-btn-checklist {
   background-color: #dc3545; /* Warna merah */
   color: white; /* Warna teks putih */
   border: none; /* Hilangkan border */
@@ -315,7 +326,8 @@ button.add-data-btn-struktur:hover,
 button.add-data-btn-personel:hover,
 button.add-data-btn-rekap:hover,
 button.add-data-btn-kecelakaan:hover,
-button.add-data-btn-kejadian:hover {
+button.add-data-btn-kejadian:hover,
+button.add-data-btn-checklist:hover {
   background-color: #b02a37; /* Warna merah lebih gelap saat hover */
   transform: scale(1.05); /* Perbesar sedikit saat hover */
 }
@@ -324,7 +336,9 @@ button.add-data-btn-kejadian:hover {
 button.delete-selected-btn,
 button.delete-selected-btn-personel,
 button.delete-selected-btn-rekap,
-button.delete-selected-btn-kecelakaan {
+button.delete-selected-btn-kecelakaan,
+button.delete-selected-btn-kejadian,
+button.delete-selected-btn-checklist {
   background-color: #FF5733; /* Warna merah oranye */
   color: white; /* Warna teks putih */
   border: none; /* Hilangkan border */
@@ -342,7 +356,9 @@ button.delete-selected-btn-kecelakaan {
 button.delete-selected-btn:hover,
 button.delete-selected-btn-personel:hover,
 button.delete-selected-btn-rekap:hover,
-button.delete-selected-btn-kecelakaan:hover {
+button.delete-selected-btn-kecelakaan:hover,
+button.delete-selected-btn-kejadian:hover,
+button.delete-selected-btn-checklist:hover {
   background-color: #c0392b; /* Warna merah gelap */
   transform: scale(1.05); /* Perbesar sedikit saat hover */
 }
@@ -351,7 +367,9 @@ button.delete-selected-btn-kecelakaan:hover {
 button.delete-selected-btn:focus,
 button.delete-selected-btn-personel:focus,
 button.delete-selected-btn-rekap:focus,
-button.delete-selected-btn-kecelakaan:focus {
+button.delete-selected-btn-kecelakaan:focus,
+button.delete-selected-btn-kejadian:focus,
+button.delete-selected-btn-checklist:focus {
   outline: none; /* Hilangkan outline default */
   box-shadow: 0 0 5px rgba(192, 57, 43, 0.6); /* Tambahkan efek fokus */
 }
@@ -377,7 +395,8 @@ button.edit-btn,
 button.edit-btn-personel,
 button.edit-btn-rekap,
 button.edit-btn-kecelakaan,
-button.edit-btn-kejadian {
+button.edit-btn-kejadian,
+button.edit-btn-checklist {
   background-color: #007BFF;
 }
 
@@ -385,7 +404,8 @@ button.edit-btn:hover,
 button.edit-btn-personel:hover,
 button.edit-btn-rekap:hover,
 button.edit-btn-kecelakaan:hover,
-button.edit-btn-kejadian:hover {
+button.edit-btn-kejadian:hover,
+button.edit-btn-checklist:hover {
   background-color: #0056b3;
 }
 
@@ -393,7 +413,8 @@ button.delete-btn,
 button.delete-btn-personel, 
 button.delete-btn-rekap,
 button.delete-btn-kecelakaan,
-button.delete-btn-kejadian {
+button.delete-btn-kejadian,
+button.delete-btn-checklist {
   background-color: #FF5733;
 }
 
@@ -401,7 +422,8 @@ button.delete-btn:hover,
 button.delete-btn-personel:hover, 
 button.delete-btn-rekap:hover,
 button.delete-btn-kecelakaan:hover,
-button.delete-btn-kejadian:hover {
+button.delete-btn-kejadian:hover,
+button.delete-btn-checklist:hover  {
   background-color: #c0392b;
 }
 
@@ -471,10 +493,28 @@ button.delete-btn-kejadian:hover {
   width: 50%; /* Lebar 50% dari elemen induk */
   height: auto; /* Tinggi disesuaikan agar rasio aspek tetap terjaga */
   object-fit: cover; /* Sesuaikan gambar agar tetap proporsional */
-  border: 2px solid #ccc; /* (Opsional) Tambahkan border */
-  border-radius: 5px; /* (Opsional) Tambahkan sudut melengkung */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* (Opsional) Tambahkan efek bayangan */
+  border: 2px solid #ccc; /* Tambahkan border (opsional) */
+  border-radius: 5px; /* Tambahkan sudut melengkung */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Tambahkan efek bayangan */
 }
+
+/* Gaya umum untuk semua gambar */
+.checklist-pemeriksaan,
+.apar,
+.rambu-apar,
+.kelengkapan-box-hydrant,
+.ruang-laktasi,
+.ruang-p3k,
+.organik,
+.non-organik,
+.limbah-b3,
+.smoking-area,
+.dll {
+  width: 100%; /* Lebar 50% dari elemen induk */
+  height: auto; /* Tinggi disesuaikan agar rasio aspek tetap terjaga */
+  object-fit: cover; /* Menjaga proporsi gambar */
+}
+
 
 
 .struktur-organisasi {
@@ -524,7 +564,8 @@ button.delete-btn-kejadian:hover {
 .pagination-settings-personel,
 .pagination-settings-rekap,
 .pagination-settings-kecelakaan,
-.pagination-settings-kejadian {
+.pagination-settings-kejadian,
+.pagination-settings-checklist {
   display: flex;
   justify-content: space-between; /* Menyebarkan elemen secara horizontal */
   align-items: center; /* Menyelaraskan elemen secara vertikal */
@@ -540,7 +581,8 @@ button.delete-btn-kejadian:hover {
 .pagination-container-personel,
 .pagination-container-rekap,
 .pagination-container-kecelakaan,
-.pagination-container-kejadian {
+.pagination-container-kejadian,
+.pagination-container-checklist {
   display: flex;
   justify-content: flex-end; /* Sesuaikan agar berada di sebelah kanan */
   align-items: center;
@@ -564,7 +606,8 @@ button.delete-btn-kejadian:hover {
 .rows-per-page-personel,
 .rows-per-page-rekap,
 .rows-per-page-kecelakaan,
-.rows-per-page-kejadian {
+.rows-per-page-kejadian,
+.rows-per-page-checklist {
   display: flex;
   align-items: center;
   gap: 10px; /* Jarak antara label dan dropdown */
@@ -576,7 +619,8 @@ button.delete-btn-kejadian:hover {
 #rows-per-page-personel,
 #rows-per-page-rekap,
 #rows-per-page-kecelakaan,
-#rows-per-page-kejadian {
+#rows-per-page-kejadian,
+#rows-per-page-checklist {
   padding: 5px 10px;
   font-size: 14px;
   border: 1px solid #ccc;
@@ -590,7 +634,8 @@ button.delete-btn-kejadian:hover {
 #rows-per-page-personel:hover,
 #rows-per-page-rekap:hover,
 #rows-per-page-kecelakaan:hover,
-#rows-per-page-kejadian:hover {
+#rows-per-page-kejadian:hover,
+#rows-per-page-checklist:hover  {
   border-color: #0047AB;
 }
 
@@ -598,7 +643,8 @@ button.delete-btn-kejadian:hover {
 #rows-per-page-personel:focus,
 #rows-per-page-rekap:focus,
 #rows-per-page-kecelakaan:focus,
-#rows-per-page-kejadian:focus     {
+#rows-per-page-kejadian:focus,
+#rows-per-page-checklist:focus        {
   outline: none;
   border-color: #0047AB;
   box-shadow: 0 0 5px rgba(0, 71, 171, 0.5);
@@ -609,7 +655,8 @@ button.delete-btn-kejadian:hover {
 .pagination-container-personel button,
 .pagination-container-rekap button,
 .pagination-container-kecelakaan button,
-.pagination-container-kejadian button {
+.pagination-container-kejadian button,
+.pagination-container-checklist button {
   padding: 8px 14px; /* Perbesar tombol untuk klik yang lebih nyaman */
   font-size: 14px;
   font-family: 'Poppins', sans-serif; /* Gunakan font Poppins */
@@ -627,7 +674,8 @@ button.delete-btn-kejadian:hover {
 .pagination-container-personel button:hover:not(.active),
 .pagination-container-rekap button:hover:not(.active),
 .pagination-container-kecelakaan button:hover:not(.active),
-.pagination-container-kejadian button:hover:not(.active) {
+.pagination-container-kejadian button:hover:not(.active),
+.pagination-container-checklist button:hover:not(.active) {
   background-color: #f0f8ff; /* Biru muda saat hover */
   border-color: #0047AB;
 }
@@ -637,7 +685,8 @@ button.delete-btn-kejadian:hover {
 .pagination-container-personel button.active,
 .pagination-container-rekap button.active,
 .pagination-container-kecelakaan button.active,
-.pagination-container-kejadian button.active {
+.pagination-container-kejadian button.active,
+.pagination-container-checklist button.active {
   background-color: #0047AB; /* Biru tua untuk tombol aktif */
   color: #fff; /* Warna teks putih */
   border-color: #0047AB;
@@ -648,7 +697,8 @@ button.delete-btn-kejadian:hover {
 .pagination-container-personel button:disabled,
 .pagination-container-rekap button:disabled,
 .pagination-container-kecelakaan button:disabled,
-.pagination-container-kejadian button:disabled {
+.pagination-container-kejadian button:disabled,
+.pagination-container-checklist button:disabled {
   background-color: #ddd; /* Warna abu-abu untuk tombol dinonaktifkan */
   color: #999; /* Teks lebih redup */
   cursor: not-allowed;
@@ -661,7 +711,8 @@ button.delete-btn-kejadian:hover {
   .pagination-container-personel,
   .pagination-container-rekap,
   .pagination-container-kecelakaan,
-  .pagination-container-kejadian {
+  .pagination-container-kejadian,
+  .pagination-container-checklist  {
     justify-content: center; /* Pindahkan pagination ke tengah pada layar kecil */
   }
 
@@ -669,7 +720,8 @@ button.delete-btn-kejadian:hover {
   .pagination-container-personel button,
   .pagination-container-rekap button,
   .pagination-container-kecelakaan button,
-  .pagination-container-kejadian button {
+  .pagination-container-kejadian button,
+  .pagination-container-checklist button {
     font-size: 12px; /* Perkecil ukuran font */
     padding: 6px 10px; /* Sesuaikan padding untuk layar kecil */
   }

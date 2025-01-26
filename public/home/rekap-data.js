@@ -75,6 +75,22 @@ const selectAllCheckboxKecelakaan = document.getElementById("select-all-kecelaka
 const deleteSelectedBtnKecelakaan = document.getElementById("delete-selected-btn-kecelakaan");
 
 
+// Checklist K3
+const tableBodyChecklist = document.getElementById("table-body-checklist");
+const searchBarChecklist = document.getElementById("search-bar-checklist");
+const addDataBtnChecklist = document.getElementById("add-data-btn-checklist");
+const addModalChecklist = document.getElementById("add-data-modal-checklist");
+const closeModalChecklist = document.getElementById("close-modal-checklist");
+const addDataFormChecklist = document.getElementById("add-data-form-checklist");
+const editModalChecklist = document.getElementById("edit-data-modal-checklist");
+const closeEditModalChecklist = document.getElementById("close-edit-modal-checklist");
+const editDataFormChecklist = document.getElementById("edit-data-form-checklist");
+const selectAllCheckboxChecklist = document.getElementById("select-all-checklist");
+const deleteSelectedBtnChecklist = document.getElementById("delete-selected-btn-checklist");
+
+
+let checklistData = [];
+
   // Event Listener untuk memilih semua checkbox
   selectAllCheckbox.addEventListener("change", () => {
     const checkboxes = document.querySelectorAll("#table-body-struktur input[type='checkbox']");
@@ -106,7 +122,15 @@ selectAllCheckboxKecelakaan.addEventListener("change", () => {
     checkbox.checked = selectAllCheckboxKecelakaan.checked;
   });
 });
-    
+
+// Event Listener untuk memilih semua checkbox CHECKLIST K3
+selectAllCheckboxChecklist.addEventListener("change", () => {
+  const checkboxes = document.querySelectorAll("#table-body-checklist input[type='checkbox']");
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAllCheckboxChecklist.checked;
+  });
+});
+
 
   // Event Listener untuk tombol Delete Selected
   deleteSelectedBtn.addEventListener("click", () => {
@@ -124,7 +148,7 @@ selectAllCheckboxKecelakaan.addEventListener("change", () => {
     const idsToDelete = selectedCheckboxes.map((checkbox) => checkbox.dataset.id);
 
     // Kirim permintaan DELETE ke backend
-    fetch("https://backend-web-ten.vercel.app/delete-multiple-struktur", {
+    fetch("http://localhost:3000/delete-multiple-struktur", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ids: idsToDelete }),
@@ -166,7 +190,7 @@ selectAllCheckboxKecelakaan.addEventListener("change", () => {
     const idsToDelete = selectedCheckboxes.map((checkbox) => checkbox.dataset.id);
   
     // Kirim permintaan DELETE ke backend
-    fetch("https://backend-web-ten.vercel.app/delete-multiple-personel", {
+    fetch("http://localhost:3000/delete-multiple-personel", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ids: idsToDelete }),
@@ -205,7 +229,7 @@ selectAllCheckboxKecelakaan.addEventListener("change", () => {
     const idsToDelete = selectedCheckboxes.map((checkbox) => checkbox.dataset.id);
   
     // Kirim permintaan DELETE ke backend
-    fetch("https://backend-web-ten.vercel.app/delete-multiple-rekap", {
+    fetch("http://localhost:3000/delete-multiple-rekap", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ids: idsToDelete }),
@@ -248,7 +272,7 @@ deleteSelectedBtnKecelakaan.addEventListener("click", () => {
   const idsToDelete = selectedCheckboxes.map((checkbox) => checkbox.dataset.id);
 
   // Kirim permintaan DELETE ke backend
-  fetch("https://backend-web-ten.vercel.app/delete-multiple-kecelakaan", {
+  fetch("http://localhost:3000/delete-multiple-kecelakaan", {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ ids: idsToDelete }),
@@ -273,6 +297,48 @@ deleteSelectedBtnKecelakaan.addEventListener("click", () => {
 });
 
 
+// Event Listener untuk tombol hapus data CHECKLIST K3
+deleteSelectedBtnChecklist.addEventListener("click", () => {
+  const selectedCheckboxes = Array.from(document.querySelectorAll("#table-body-checklist input[type='checkbox']:checked"));
+
+  if (selectedCheckboxes.length === 0) {
+    alert("Tidak ada data yang dipilih untuk dihapus.");
+    return;
+  }
+
+  // Konfirmasi sebelum menghapus
+  if (!confirm("Apakah Anda yakin ingin menghapus data yang dipilih?")) return;
+
+  // Ambil ID dari setiap checkbox yang dipilih
+  const idsToDelete = selectedCheckboxes.map((checkbox) => checkbox.dataset.id);
+
+  // Kirim permintaan DELETE ke backend
+  fetch("http://localhost:3000/delete-multiple-checklist", {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ids: idsToDelete }),
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Gagal menghapus data.");
+      return response.json();
+    })
+    .then(() => {
+      alert("Data berhasil dihapus.");
+      window.location.reload();
+      // Hapus baris dari tabel
+      idsToDelete.forEach((id) => {
+        const row = document.querySelector(`#table-body-checklist tr[data-id="${id}"]`);
+        if (row) row.remove();
+      });
+    })
+    .catch((error) => {
+      console.error("Error deleting data:", error);
+      alert("Gagal menghapus data.");
+    });
+});
+
+
+
   // Fungsi untuk format tanggal ke format DD-MM-YYYY
   function formatTanggal(tanggal) {
      const date = new Date(tanggal);
@@ -283,7 +349,7 @@ deleteSelectedBtnKecelakaan.addEventListener("click", () => {
   }
 
   // Fetch data Struktur Organisasi
-  fetch("https://backend-web-ten.vercel.app/getstruktur")
+  fetch("http://localhost:3000/getstruktur")
      .then((response) => response.json())
      .then((data) => {
         currentData = data.data || [];
@@ -310,7 +376,7 @@ deleteSelectedBtnKecelakaan.addEventListener("click", () => {
      });
 
   // Fetch data Personel Ahli K3
-  fetch("https://backend-web-ten.vercel.app/getpersonel")
+  fetch("http://localhost:3000/getpersonel")
      .then((response) => response.json())
      .then((data) => {
         personelData = data.data || [];
@@ -337,7 +403,7 @@ deleteSelectedBtnKecelakaan.addEventListener("click", () => {
      });
 
 // Fetch data Rekap Data K3
-fetch("https://backend-web-ten.vercel.app/getrekap")
+fetch("http://localhost:3000/getrekap")
   .then((response) => response.json())
   .then((data) => {
     rekapData = data.data || []; // Simpan data ke variabel global
@@ -365,7 +431,7 @@ searchBarRekap.addEventListener("input", () => {
 
    
 // Fetch data Kecelakaan Kerja dari backend
-fetch("https://backend-web-ten.vercel.app/getkecelakaankerja")
+fetch("http://localhost:3000/getkecelakaankerja")
   .then((response) => response.json())
   .then((data) => {
     kecelakaanData = data.data || [];
@@ -401,7 +467,7 @@ searchBarKecelakaan.addEventListener("input", () => {
 
 
 // Fetch data Kejadian Darurat dari backend
-fetch("https://backend-web-ten.vercel.app/getkejadian")
+fetch("http://localhost:3000/getkejadian")
   .then((response) => response.json())
   .then((data) => {
     kejadianData = data.data || [];
@@ -428,6 +494,33 @@ fetch("https://backend-web-ten.vercel.app/getkejadian")
   .catch((error) => console.error("Error fetching Kejadian Darurat data:", error));
 
    
+// Fetch data Checklist K3 dari backend
+fetch("http://localhost:3000/getchecklist")
+  .then((response) => response.json())
+  .then((data) => {
+    checklistData = data.data || [];
+    renderTableChecklist(checklistData);
+    renderTableChecklistWithPagination(checklistData); // Panggil fungsi paginasi
+
+    // Filter pencarian untuk tabel Checklist K3
+    searchBarChecklist.addEventListener("input", () => {
+      const searchTerm = searchBarChecklist.value.toLowerCase();
+      const keywords = searchTerm.split(" ").filter(Boolean); // Pecah input menjadi kata kunci, hapus yang kosong
+
+      const filteredItems = checklistData.filter((item) =>
+        keywords.every((keyword) =>
+          item.section.toLowerCase().includes(keyword) || // Filter berdasarkan section
+          item.indikator_k3.toLowerCase().includes(keyword) || // Filter berdasarkan indikator_k3
+          item.expired_date.toLowerCase().includes(keyword) // Filter berdasarkan expired_date
+        )
+      );
+
+      renderTableChecklist(filteredItems); // Render tabel berdasarkan hasil pencarian
+    });
+  })
+  .catch((error) => console.error("Error fetching checklist data:", error));
+
+
 
   // Fungsi render tabel Struktur Organisasi
   function renderTable(data) {
@@ -476,7 +569,7 @@ fetch("https://backend-web-ten.vercel.app/getkejadian")
 
            // Confirm Delete
            if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
-              fetch(`https://backend-web-ten.vercel.app/deletestruktur`, {
+              fetch(`http://localhost:3000/deletestruktur`, {
                     method: "DELETE",
                     headers: {
                        "Content-Type": "application/json",
@@ -625,7 +718,7 @@ fetch("https://backend-web-ten.vercel.app/getkejadian")
 
            // Konfirmasi sebelum menghapus data
            if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
-              fetch(`https://backend-web-ten.vercel.app/deletepersonel`, {
+              fetch(`http://localhost:3000/deletepersonel`, {
                     method: "DELETE",
                     headers: {
                        "Content-Type": "application/json",
@@ -808,7 +901,7 @@ function renderTableRekap(data) {
 
       // Confirm Delete
       if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
-        fetch(`https://backend-web-ten.vercel.app/deleterekap`, {
+        fetch(`http://localhost:3000/deleterekap`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -976,7 +1069,7 @@ function renderTableKecelakaan(data) {
        const id = e.target.dataset.id;
  
        if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
-         fetch(`https://backend-web-ten.vercel.app/deletekecelakaan`, {
+         fetch(`http://localhost:3000/deletekecelakaan`, {
            method: "DELETE",
            headers: { "Content-Type": "application/json" },
            body: JSON.stringify({ kecelakaankerja_id: id }),
@@ -1130,7 +1223,7 @@ function renderTableKejadian(data) {
       const id = e.target.dataset.id;
 
       if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
-        fetch(`https://backend-web-ten.vercel.app/deletekejadian`, {
+        fetch(`http://localhost:3000/deletekejadian`, {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ kejadian_id: id }),
@@ -1223,6 +1316,157 @@ document.getElementById('rows-per-page-kejadian').addEventListener('change', (e)
 });
 
 
+// Render tabel Checklist K3
+function renderTableChecklist(data) {
+  tableBodyChecklist.innerHTML = "";
+  data.forEach((item) => {
+    const formattedExpiredDate = item.expired_date ? formatTanggal(item.expired_date) : "N/A";
+
+    tableBodyChecklist.innerHTML += `
+    
+      <tr data-id="${item.checklist_id}">
+                <td><input type="checkbox" data-id="${item.checklist_id}"></td>
+                <td>${item.section || "N/A"}</td>
+                <td>${item.indikator_k3 || "N/A"}</td>
+                <td>${item.expired_date ? formatTanggal(item.expired_date) : "N/A"}</td>
+                <td>${item.checklist_pemeriksaan ? `<img src="${item.checklist_pemeriksaan}" class="checklist-pemeriksaan" alt="Checklist Pemeriksaan">` : "N/A"}</td>
+                <td>${item.apar ? `<img src="${item.apar}" class="apar" alt="APAR">` : "N/A"}</td>
+                <td>${item.rambu_apar ? `<img src="${item.rambu_apar}" class="rambu-apar" alt="Rambu APAR">` : "N/A"}</td>
+                <td>${item.kelengkapan_box_hydrant ? `<img src="${item.kelengkapan_box_hydrant}" class="kelengkapan-box-hydrant" alt="Box Hydrant">` : "N/A"}</td>
+                <td>${item.ruang_laktasi ? `<img src="${item.ruang_laktasi}" class="ruang-laktasi" alt="Ruang Laktasi">` : "N/A"}</td>
+                <td>${item.ruang_p3k ? `<img src="${item.ruang_p3k}" class="ruang-p3k" alt="Ruang P3K">` : "N/A"}</td>
+                <td>${item.organik ? `<img src="${item.organik}" class="organik" alt="Organik">` : "N/A"}</td>
+                <td>${item.non_organik ? `<img src="${item.non_organik}" class="non-organik" alt="Non-Organik">` : "N/A"}</td>
+                <td>${item.limbah_b3 ? `<img src="${item.limbah_b3}" class="limbah-b3" alt="Limbah B3">` : "N/A"}</td>
+                <td>${item.smoking_area ? `<img src="${item.smoking_area}" class="smoking-area" alt="Smoking Area">` : "N/A"}</td>
+                <td>${item.dll ? `<img src="${item.dll}" class="dll" alt="Lain-lain">` : "N/A"}</td>
+
+
+        <td>
+          <button class="edit-btn-checklist" 
+            data-id="${item.checklist_id}"
+            data-section="${item.section}"
+            data-indikator_k3="${item.indikator_k3}"
+            data-expired_date="${item.expired_date || ""}">
+            ✏️
+          </button>
+          <button class="delete-btn-checklist" data-id="${item.checklist_id}">🗑️</button>
+        </td>
+      </tr>
+    `;
+  });
+
+  // Event untuk tombol Edit
+  document.querySelectorAll(".edit-btn-checklist").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const data = e.target.dataset;
+
+      document.getElementById("edit-checklist-id").value = data.checklist_id;
+      document.getElementById("edit-section").value = data.section;
+      document.getElementById("edit-indikator-k3").value = data.indikator_k3;
+      document.getElementById("edit-expired-date").value = data.expired_date;
+
+      editModalChecklist.style.display = "block";
+    });
+  });
+
+  // Event untuk tombol Delete
+  document.querySelectorAll(".delete-btn-checklist").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const id = e.target.dataset.id;
+
+      if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
+        fetch(`http://localhost:3000/deletechecklist`, {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ checklist_id: id }),
+        })
+          .then((response) => {
+            if (!response.ok) throw new Error("Gagal menghapus data");
+            return response.json();
+          })
+          .then(() => {
+            alert("Data berhasil dihapus.");
+            checklistData = checklistData.filter((item) => item.checklist_id != id);
+            renderTableChecklist(checklistData);
+          })
+          .catch((error) => {
+            console.error("Error deleting data:", error);
+            alert("Gagal menghapus data");
+          });
+      }
+    });
+  });
+}
+
+
+let currentPageChecklist = 1; // Halaman saat ini
+let rowsPerPageChecklist = 5; // Default jumlah baris per halaman
+
+// Fungsi untuk render tabel checklist dengan pagination
+function renderTableChecklistWithPagination(data) {
+  const totalPages = Math.ceil(data.length / rowsPerPageChecklist);
+
+  // Render tabel berdasarkan halaman saat ini
+  renderTableChecklist(
+    data.slice(
+      (currentPageChecklist - 1) * rowsPerPageChecklist,
+      currentPageChecklist * rowsPerPageChecklist
+    )
+  );
+
+  // Render navigasi pagination
+  renderPaginationChecklist(totalPages, data);
+}
+
+// Fungsi untuk render navigasi pagination checklist
+function renderPaginationChecklist(totalPages, data) {
+  const paginationContainer = document.getElementById('pagination-container-checklist');
+  paginationContainer.innerHTML = '';
+
+  // Tombol "Previous"
+  const prevButton = document.createElement('button');
+  prevButton.textContent = 'Previous';
+  prevButton.disabled = currentPageChecklist === 1;
+  prevButton.addEventListener('click', () => {
+    currentPageChecklist--;
+    renderTableChecklistWithPagination(data);
+  });
+  paginationContainer.appendChild(prevButton);
+
+  // Tombol halaman
+  for (let i = 1; i <= totalPages; i++) {
+    const pageButton = document.createElement('button');
+    pageButton.textContent = i;
+    pageButton.className = currentPageChecklist === i ? 'active' : '';
+    pageButton.addEventListener('click', () => {
+      currentPageChecklist = i;
+      renderTableChecklistWithPagination(data);
+    });
+    const pageItem = document.createElement('div');
+    pageItem.className = 'page-item';
+    pageItem.appendChild(pageButton);
+    paginationContainer.appendChild(pageItem);
+  }
+
+  // Tombol "Next"
+  const nextButton = document.createElement('button');
+  nextButton.textContent = 'Next';
+  nextButton.disabled = currentPageChecklist === totalPages;
+  nextButton.addEventListener('click', () => {
+    currentPageChecklist++;
+    renderTableChecklistWithPagination(data);
+  });
+  paginationContainer.appendChild(nextButton);
+}
+
+// Event listener untuk mengubah jumlah baris per halaman
+document.getElementById('rows-per-page-checklist').addEventListener('change', (e) => {
+  rowsPerPageChecklist = parseInt(e.target.value, 10); // Perbarui jumlah baris per halaman
+  currentPageChecklist = 1; // Reset ke halaman pertama
+  renderTableChecklistWithPagination(checklistData); // Render ulang tabel dengan data terbaru
+});
+
 
 
   // Show Modal untuk tambah data STRUKTUR
@@ -1249,6 +1493,13 @@ addDataBtnKecelakaan.addEventListener("click", () => {
 addDataBtnKejadian.addEventListener("click", () => {
   addModalKejadian.style.display = "block";
 });
+
+ // Show Modal untuk tambah data CHECKLIST
+ addDataBtnChecklist.addEventListener("click", () => {
+  addModalChecklist.style.display = "block";
+});
+
+
  
 
   // menutup modal tambah data STRUKTUR
@@ -1276,6 +1527,11 @@ closeModalKejadian.addEventListener("click", () => {
   addModalKejadian.style.display = "none";
 });
 
+ // menutup modal tambah data KEJADIAN
+ closeModalChecklist.addEventListener("click", () => {
+  addModalChecklist.style.display = "none";
+});
+
 
   // Submit Form Data STRUKTUR
   addDataForm.addEventListener("submit", (e) => {
@@ -1287,7 +1543,7 @@ closeModalKejadian.addEventListener("click", () => {
         posisi: document.getElementById("posisi").value,
      };
 
-     fetch("https://backend-web-ten.vercel.app/addstruktur", {
+     fetch("http://localhost:3000/addstruktur", {
            method: "POST",
            headers: {
               "Content-Type": "application/json",
@@ -1323,7 +1579,7 @@ closeModalKejadian.addEventListener("click", () => {
         batas_masa_berlaku: document.getElementById("batas-masa-berlaku-personel").value,
      };
 
-     fetch("https://backend-web-ten.vercel.app/addpersonel", {
+     fetch("http://localhost:3000/addpersonel", {
            method: "POST",
            headers: {
               "Content-Type": "application/json",
@@ -1367,7 +1623,7 @@ closeModalKejadian.addEventListener("click", () => {
           jumlah_hari_hilang: document.getElementById("jumlah-hari-hilang").value,
       };
   
-      fetch("https://backend-web-ten.vercel.app/addrekap", {
+      fetch("http://localhost:3000/addrekap", {
           method: "POST",
           headers: {
               "Content-Type": "application/json",
@@ -1412,7 +1668,7 @@ addDataFormKecelakaan.addEventListener("submit", (e) => {
  
    console.log("Form Data:", formData); // Debugging log
  
-   fetch("https://backend-web-ten.vercel.app/addkecelakaankerja", {
+   fetch("http://localhost:3000/addkecelakaankerja", {
      method: "POST",
      headers: {
        "Content-Type": "application/json",
@@ -1473,7 +1729,7 @@ addDataFormKecelakaan.addEventListener("submit", (e) => {
   }
 
   // Kirim data ke backend menggunakan fetch
-  fetch("https://backend-web-ten.vercel.app/addkejadian", {
+  fetch("http://localhost:3000/addkejadian", {
     method: "POST",
     body: formData,
   })
@@ -1494,6 +1750,98 @@ addDataFormKecelakaan.addEventListener("submit", (e) => {
       alert("Terjadi kesalahan saat menambahkan data.");
     });
 });
+
+
+// Submit Form Data Checklist K3
+addDataFormChecklist.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // Ambil data dari form
+  const section = document.getElementById("section").value.trim();
+  const indikatorK3 = document.getElementById("indikator-k3").value.trim();
+  const expiredDate = document.getElementById("expired-date").value.trim();
+
+  // Ambil file dari input
+  const checklistPemeriksaanFile = document.getElementById("checklist-pemeriksaan").files[0];
+  const aparFile = document.getElementById("apar").files[0];
+  const rambuAparFile = document.getElementById("rambu-apar").files[0];
+  const kelengkapanBoxHydrantFile = document.getElementById("kelengkapan-box-hydrant").files[0];
+  const ruangLaktasiFile = document.getElementById("ruang-laktasi").files[0];
+  const ruangP3kFile = document.getElementById("ruang-p3k").files[0];
+  const organikFile = document.getElementById("organik").files[0];
+  const nonOrganikFile = document.getElementById("non-organik").files[0];
+  const limbahB3File = document.getElementById("limbah-b3").files[0];
+  const smokingAreaFile = document.getElementById("smoking-area").files[0];
+  const dllFile = document.getElementById("dll").files[0];
+
+  // Validasi field wajib
+  if (!section || !indikatorK3 || !expiredDate) {
+    alert("Field Section, Indikator K3, dan Expired Date wajib diisi.");
+    return;
+  }
+
+  // Validasi file jika diunggah
+  const allowedExtensions = ["image/jpeg", "image/png", "application/pdf"];
+  const filesToValidate = [
+    checklistPemeriksaanFile,
+    aparFile,
+    rambuAparFile,
+    kelengkapanBoxHydrantFile,
+    ruangLaktasiFile,
+    ruangP3kFile,
+    organikFile,
+    nonOrganikFile,
+    limbahB3File,
+    smokingAreaFile,
+    dllFile,
+  ];
+
+  for (const file of filesToValidate) {
+    if (file && !allowedExtensions.includes(file.type)) {
+      alert("Semua file harus berupa JPG, PNG, atau PDF.");
+      return;
+    }
+  }
+
+  // Buat form data untuk dikirim ke server
+  const formData = new FormData();
+  formData.append("section", section);
+  formData.append("indikator_k3", indikatorK3);
+  formData.append("expired_date", expiredDate);
+  if (checklistPemeriksaanFile) formData.append("checklist_pemeriksaan", checklistPemeriksaanFile);
+  if (aparFile) formData.append("apar", aparFile);
+  if (rambuAparFile) formData.append("rambu_apar", rambuAparFile);
+  if (kelengkapanBoxHydrantFile) formData.append("kelengkapan_box_hydrant", kelengkapanBoxHydrantFile);
+  if (ruangLaktasiFile) formData.append("ruang_laktasi", ruangLaktasiFile);
+  if (ruangP3kFile) formData.append("ruang_p3k", ruangP3kFile);
+  if (organikFile) formData.append("organik", organikFile);
+  if (nonOrganikFile) formData.append("non_organik", nonOrganikFile);
+  if (limbahB3File) formData.append("limbah_b3", limbahB3File);
+  if (smokingAreaFile) formData.append("smoking_area", smokingAreaFile);
+  if (dllFile) formData.append("dll", dllFile);
+
+  // Kirim data ke backend menggunakan fetch
+  fetch("http://localhost:3000/addchecklist", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Gagal menambahkan data.");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      alert("Data Checklist K3 berhasil ditambahkan.");
+      document.getElementById("add-data-modal-checklist").style.display = "none";
+      window.location.reload();
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Terjadi kesalahan saat menambahkan data.");
+    });
+});
+
 
 
   // Close Edit Modal STRUKTUR
@@ -1520,6 +1868,11 @@ closeEditModalKecelakaan.addEventListener("click", () => {
 closeEditModalKejadian.addEventListener("click", () => {
   editModalKejadian.style.display = "none";
 });
+
+   // Close Edit Modal KEJADIAN
+   closeEditModalChecklist.addEventListener("click", () => {
+    editModalChecklist.style.display = "none";
+  });
  
 
   // Submit Edit Data
@@ -1533,7 +1886,7 @@ closeEditModalKejadian.addEventListener("click", () => {
         posisi: document.getElementById("edit-posisi").value,
       };
   
-      fetch("https://backend-web-ten.vercel.app/updatestruktur", {
+      fetch("http://localhost:3000/updatestruktur", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -1568,7 +1921,7 @@ closeEditModalKejadian.addEventListener("click", () => {
         batas_masa_berlaku: document.getElementById("edit-batas-masa-berlaku-personel").value,
      };
 
-     fetch("https://backend-web-ten.vercel.app/updatepersonel", {
+     fetch("http://localhost:3000/updatepersonel", {
            method: "PUT",
            headers: {
               "Content-Type": "application/json",
@@ -1612,7 +1965,7 @@ closeEditModalKejadian.addEventListener("click", () => {
     jumlah_hari_hilang: document.getElementById("edit-jumlah-hari-hilang").value,
   };
 
-  fetch("https://backend-web-ten.vercel.app/updaterekap", {
+  fetch("http://localhost:3000/updaterekap", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -1656,7 +2009,7 @@ editDataFormKecelakaan.addEventListener("submit", (e) => {
      keterangan: document.getElementById("edit-keterangan").value,
    };
  
-   fetch("https://backend-web-ten.vercel.app/updatekecelakaan", {
+   fetch("http://localhost:3000/updatekecelakaan", {
      method: "PUT",
      headers: {
        "Content-Type": "application/json",
@@ -1697,7 +2050,7 @@ editDataFormKecelakaan.addEventListener("submit", (e) => {
     formData.append("evidence", evidenceFile);
   }
 
-  fetch("https://backend-web-ten.vercel.app/updatekejadian", {
+  fetch("http://localhost:3000/updatekejadian", {
     method: "PUT",
     body: formData,
   })
@@ -1717,6 +2070,54 @@ editDataFormKecelakaan.addEventListener("submit", (e) => {
       alert("Error updating data");
     });
 });
+
+
+
+
+// Submit form edit data Checklist K3
+// Event listener untuk submit form update checklist K3
+editDataFormChecklist.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const formData = new FormData();
+  formData.append("checklist_id", document.getElementById("edit-checklist-id").value);
+  formData.append("section", document.getElementById("edit-section").value);
+  formData.append("indikator_k3", document.getElementById("edit-indikator-k3").value);
+  formData.append("expired_date", document.getElementById("edit-expired-date").value);
+
+  const fileInputs = [
+      "edit-checklist-pemeriksaan", "edit-apar", "edit-rambu-apar",
+      "edit-kelengkapan-box-hydrant", "edit-ruang-laktasi", "edit-ruang-p3k",
+      "edit-organik", "edit-non-organik", "edit-limbah-b3", "edit-smoking-area", "edit-dll"
+  ];
+
+  fileInputs.forEach((id) => {
+      const fileInput = document.getElementById(id);
+      if (!fileInput) {
+          console.warn(`File input dengan ID "${id}" tidak ditemukan.`);
+      } else if (fileInput.files[0]) {
+          formData.append(id.replace("edit-", ""), fileInput.files[0]);
+      }
+  });
+
+  fetch("http://localhost:3000/updatechecklist", {
+      method: "PUT",
+      body: formData
+  })
+      .then((response) => {
+          if (!response.ok) throw new Error("Failed to update data");
+          return response.json();
+      })
+      .then(() => {
+          alert("Data berhasil diperbarui.");
+          window.location.reload();
+      })
+      .catch((error) => {
+          console.error("Error updating data:", error);
+          alert("Gagal memperbarui data.");
+      });
+});
+
 
 
 

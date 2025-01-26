@@ -5,6 +5,10 @@ function populateDropdown(selectElementId, options) {
         return;
     }
 
+    // Clear existing options (if needed)
+    selectElement.innerHTML = '<option value="" disabled selected>Pilih Jabatan</option>';
+
+    // Populate new options
     options.forEach(option => {
         const optionElement = document.createElement("option");
         optionElement.value = option;
@@ -15,5 +19,6 @@ function populateDropdown(selectElementId, options) {
 
 // Panggil fungsi dengan data dari file dropdown-data.js
 document.addEventListener("DOMContentLoaded", () => {
-    populateDropdown("jabatan", jabatanOptions);
+    populateDropdown("jabatan", jabatanOptions); // Untuk modal Tambah
+    populateDropdown("edit-jabatan", jabatanOptions); // Untuk modal Edit
 });
