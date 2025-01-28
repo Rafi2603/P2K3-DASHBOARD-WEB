@@ -75,8 +75,8 @@ const { Client } = require('pg');
 const db = new Client({
     user: 'jasmar-p2k3_owner',             // Username database
     host: 'ep-damp-credit-a1i2s10u.ap-southeast-1.aws.neon.tech', // Host database
-    database: 'jasmar-p2k3',              // Nama database
-    password: '7waulqRQZ2yG',             // Password untuk database
+    database: '',              		  // Nama database
+    password: '',            		  // Password untuk database
     port: 5432,                           // Port default PostgreSQL
     ssl: {
         rejectUnauthorized: false,        // Pengaturan SSL untuk koneksi aman
