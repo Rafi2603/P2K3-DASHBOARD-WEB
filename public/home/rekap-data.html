@@ -409,6 +409,8 @@
             <button class="export-csv-btn-kejadian" onclick="exportTableWithImages('kejadian-darurat-table', 'KejadianDarurat.xlsx', [0,1,2,3,4])">
             Export Excel
             </button>
+            <button id="delete-selected-btn-kejadian" class="delete-selected-btn-kejadian">Delete Selected</button>
+
          </div>
          <div class="pagination-settings-kejadian">
             <div class="rows-per-page-kejadian">
@@ -426,6 +428,7 @@
             <table id="kejadian-darurat-table">
                <thead>
                   <tr>
+                     <th><input type="checkbox" id="select-all-kejadian"></th>
                      <th>Kejadian Darurat</th>
                      <th>Lokasi</th>
                      <th>Kronologi Kejadian</th>

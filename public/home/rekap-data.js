@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const editModal = document.getElementById("edit-data-modal-struktur");
   const closeEditModal = document.getElementById("close-edit-modal-struktur");
   const editDataForm = document.getElementById("edit-data-form-struktur");
+  const selectAllCheckbox = document.getElementById("select-all");
+  const deleteSelectedBtn = document.getElementById("delete-selected-btn");
 
   let currentData = [];
 
@@ -22,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const editModalPersonel = document.getElementById("edit-data-modal-personel");
   const closeEditModalPersonel = document.getElementById("close-edit-modal-personel");
   const editDataFormPersonel = document.getElementById("edit-data-form-personel");
+  const selectAllCheckboxPersonel = document.getElementById("select-all-personel");
+  const deleteSelectedBtnPersonel = document.getElementById("delete-selected-btn-personel");
 
   let personelData = [];
 
@@ -35,6 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const editModalRekap = document.getElementById("edit-data-modal-rekap");
   const closeEditModalRekap = document.getElementById("close-edit-modal-rekap");
   const editDataFormRekap = document.getElementById("edit-data-form-rekap");
+  const selectAllCheckboxRekap = document.getElementById("select-all-rekap");
+  const deleteSelectedBtnRekap = document.getElementById("delete-selected-btn-rekap");
 
   let rekapData = [];
 
@@ -48,6 +54,8 @@ const addDataFormKecelakaan = document.getElementById("add-data-form-kecelakaan"
 const editModalKecelakaan = document.getElementById("edit-data-modal-kecelakaan");
 const closeEditModalKecelakaan = document.getElementById("close-edit-modal-kecelakaan");
 const editDataFormKecelakaan = document.getElementById("edit-data-form-kecelakaan");
+const selectAllCheckboxKecelakaan = document.getElementById("select-all-kecelakaan");
+const deleteSelectedBtnKecelakaan = document.getElementById("delete-selected-btn-kecelakaan");
 
 let kecelakaanData = [];
 
@@ -61,19 +69,10 @@ const addDataFormKejadian = document.getElementById("add-data-form-kejadian");
 const editModalKejadian = document.getElementById("edit-data-modal-kejadian");
 const closeEditModalKejadian = document.getElementById("close-edit-modal-kejadian");
 const editDataFormKejadian = document.getElementById("edit-data-form-kejadian");
+const selectAllCheckboxKejadian = document.getElementById("select-all-kejadian");
+const deleteSelectedBtnKejadian = document.getElementById("delete-selected-btn-kejadian");
 
 let kejadianData = [];
-
-
-const selectAllCheckbox = document.getElementById("select-all");
-const deleteSelectedBtn = document.getElementById("delete-selected-btn");
-const selectAllCheckboxPersonel = document.getElementById("select-all-personel");
-const deleteSelectedBtnPersonel = document.getElementById("delete-selected-btn-personel");
-const selectAllCheckboxRekap = document.getElementById("select-all-rekap");
-const deleteSelectedBtnRekap = document.getElementById("delete-selected-btn-rekap");
-const selectAllCheckboxKecelakaan = document.getElementById("select-all-kecelakaan");
-const deleteSelectedBtnKecelakaan = document.getElementById("delete-selected-btn-kecelakaan");
-
 
 // Checklist K3
 const tableBodyChecklist = document.getElementById("table-body-checklist");
@@ -122,6 +121,15 @@ selectAllCheckboxKecelakaan.addEventListener("change", () => {
     checkbox.checked = selectAllCheckboxKecelakaan.checked;
   });
 });
+
+// Event Listener untuk memilih semua checkbox KECELAKAAN KERJA
+selectAllCheckboxKejadian.addEventListener("change", () => {
+  const checkboxes = document.querySelectorAll("#table-body-kejadian input[type='checkbox']");
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAllCheckboxKecelakaan.checked;
+  });
+});
+
 
 // Event Listener untuk memilih semua checkbox CHECKLIST K3
 selectAllCheckboxChecklist.addEventListener("change", () => {
@@ -287,6 +295,48 @@ deleteSelectedBtnKecelakaan.addEventListener("click", () => {
       // Hapus baris dari tabel
       idsToDelete.forEach((id) => {
         const row = document.querySelector(`#table-body-kecelakaan tr[data-id="${id}"]`);
+        if (row) row.remove();
+      });
+    })
+    .catch((error) => {
+      console.error("Error deleting data:", error);
+      alert("Gagal menghapus data.");
+    });
+});
+
+
+// Event Listener untuk tombol hapus data KEJADIAN DARURAT
+deleteSelectedBtnKejadian.addEventListener("click", () => {
+  const selectedCheckboxes = Array.from(document.querySelectorAll("#table-body-kejadian input[type='checkbox']:checked"));
+
+  if (selectedCheckboxes.length === 0) {
+    alert("Tidak ada data yang dipilih untuk dihapus.");
+    return;
+  }
+
+  // Konfirmasi sebelum menghapus
+  if (!confirm("Apakah Anda yakin ingin menghapus data yang dipilih?")) return;
+
+  // Ambil ID dari setiap checkbox yang dipilih
+  const idsToDelete = selectedCheckboxes.map((checkbox) => checkbox.dataset.id);
+
+  // Kirim permintaan DELETE ke backend
+  fetch("http://localhost:3000/delete-multiple-kejadian", {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ids: idsToDelete }),
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Gagal menghapus data.");
+      return response.json();
+    })
+    .then(() => {
+      alert("Data berhasil dihapus.");
+      window.location.reload(); // Reload halaman untuk memperbarui tabel
+
+      // Hapus baris dari tabel tanpa perlu reload (opsional)
+      idsToDelete.forEach((id) => {
+        const row = document.querySelector(`#table-body-kejadian tr[data-id="${id}"]`);
         if (row) row.remove();
       });
     })
@@ -1176,7 +1226,8 @@ function renderTableKejadian(data) {
         : "Tidak Ada";
       
     tableBodyKejadian.innerHTML += `
-      <tr>
+       <tr data-id="${item.kejadian_id}">
+        <td><input type="checkbox" data-id="${item.kejadian_id}"></td>
         <td>${item.kejadian_darurat}</td>
         <td>${item.lokasi}</td>
         <td>${item.kronologi_kejadian}</td>
