@@ -32,6 +32,7 @@
       <div class="tabs-container">
          <ul class="tabs">
             <li class="tab active" data-tab="struktur-tab">Struktur Organisasi</li>
+            <li class="tab" data-tab="struktur-tanggap-tab">Struktur Organisasi Tanggap</li>
             <li class="tab" data-tab="personel-tab">Personel Ahli K3</li>
             <li class="tab" data-tab="rekap-tab">Rekap Data K3</li>
             <li class="tab" data-tab="kecelakaan-tab">Kecelakaan Kerja</li>
@@ -216,6 +217,51 @@
             <p><strong>Tanggung Jawab:</strong>Terlaksananya program-program P2K3 di lingkungan kantor pusat dan di unit kerja sesuai penempatan masing-masing anggota</p>
          </div>
       </div>
+
+<!-- Konten Struktur Organisasi Tanggap -->
+<div class="tab-content" id="struktur-tanggap-tab" style="display: none;">
+   <h1>Struktur Organisasi Tanggap</h1>
+   
+   <!-- Pencarian & Action Buttons -->
+   <div class="search-container">
+       <input type="text" id="search-bar-struktur-tanggap" placeholder="Search Bar">
+       <button class="add-data-btn-struktur-tanggap" id="add-data-btn-struktur-tanggap">Tambah Data</button>
+       <button class="export-csv-btn-struktur-tanggap" onclick="exportTableToXLSX('struktur-tanggap-table', 'StrukturOrganisasiTanggap.xlsx', [1, 2, 3, 4])">Export Excel</button>
+       <button id="delete-selected-btn-struktur-tanggap" class="delete-selected-btn-struktur-tanggap">Delete Selected</button>
+   </div>
+
+   <!-- Pagination Settings -->
+   <div class="pagination-settings-struktur-tanggap">
+       <div class="rows-per-page-struktur-tanggap">
+           <label for="rows-per-page-struktur-tanggap">Rows per page:</label>
+           <select id="rows-per-page-struktur-tanggap">
+               <option value="5">5</option>
+               <option value="10">10</option>
+               <option value="15">15</option>
+               <option value="20">20</option>
+           </select>
+       </div>
+       <div id="pagination-container-struktur-tanggap" class="pagination-container"></div>
+   </div>
+
+   <!-- Tabel Struktur Organisasi Tanggap -->
+   <table id="struktur-tanggap-table">
+       <thead>
+           <tr>
+               <th><input type="checkbox" id="select-all-struktur-tanggap"></th>
+               <th>Nama</th>
+               <th>Jabatan</th>
+               <th>Posisi</th>
+               <th>Tanggal Input</th>
+               <th>Action Menu</th>
+           </tr>
+       </thead>
+       <tbody id="table-body-struktur-tanggap">
+           <!-- Data akan dimasukkan melalui JavaScript -->
+       </tbody>
+   </table>
+</div>
+
       <div class="tab-content" id="personel-tab" style="display: none;">
          <h1>Personel Ahli K3 & P3K</h1>
          <div class="search-container">
@@ -252,6 +298,7 @@
             </tbody>
          </table>
       </div>
+
       <div class="tab-content" id="rekap-tab" style="display: none;">
          <h1>Rekap Data K3</h1>
          <div class="search-container">
@@ -505,10 +552,12 @@
             <form id="add-data-form-struktur">
                <label for="nama">Nama:</label>
                <input type="text" id="nama" name="nama" required>
+
                <label for="jabatan">Jabatan:</label>
                <select id="jabatan" name="jabatan" required>
                   <option value="" disabled selected>Pilih Jabatan</option>
                </select>
+
                <label for="posisi">Posisi:</label>
                <select id="posisi" name="posisi" class="dropdown" required>
                   <option value="" disabled selected>-- Pilih Posisi --</option>
@@ -554,6 +603,52 @@
          
          <button type="submit">Perbarui</button>
       </form>
+   </div>
+</div>
+
+<!-- Modal Tambah Data STRUKTUR TANGGAP -->
+<div id="add-data-modal-struktur-tanggap" class="modal">
+   <div class="modal-content">
+       <span class="close" id="close-modal-struktur-tanggap">&times;</span>
+       <h3>Tambah Struktur Organisasi Tanggap</h3>
+       <form id="add-data-form-struktur-tanggap">
+           <label>Nama:</label>
+           <input type="text" id="nama-tanggap" required>
+           
+               <label for="jabatan-tanggap">Jabatan:</label>
+               <select id="jabatan-tanggap" name="jabatan" required>
+                  <option value="" disabled selected>Pilih Jabatan</option>
+               </select>
+           
+           <label>Posisi:</label>
+           <input type="text" id="posisi-tanggap" required>
+           
+           <button type="submit">Tambah</button>
+       </form>
+   </div>
+</div>
+
+<!-- Modal Edit Data STRUKTUR TANGGAP -->
+<div id="edit-data-modal-struktur-tanggap" class="modal">
+   <div class="modal-content">
+       <span class="close" id="close-edit-modal-struktur-tanggap">&times;</span>
+       <h3>Edit Struktur Organisasi Tanggap</h3>
+       <form id="edit-data-form-struktur-tanggap">
+           <input type="hidden" id="edit-id-struktur-tanggap">
+           
+           <label>Nama:</label>
+           <input type="text" id="edit-nama-tanggap" required>
+           
+           <label for="edit-jabatan-tanggap">Jabatan:</label>
+           <select id="edit-jabatan-tanggap" name="jabatan" required>
+              <option value="" disabled selected>Pilih Jabatan</option>
+           </select>
+           
+           <label>Posisi:</label>
+           <input type="text" id="edit-posisi-tanggap" required>
+           
+           <button type="submit">Simpan Perubahan</button>
+       </form>
    </div>
 </div>
 
@@ -695,8 +790,12 @@
                <input type="text" id="nik" name="nik" required>
                <label for="nama">Nama:</label>
                <input type="text" id="nama-kecelakaan" name="nama" required>
+
                <label for="jabatan">Jabatan:</label>
-               <input type="text" id="jabatan-kecelakaan" name="jabatan" required>
+               <select id="jabatan-kecelakaan" name="jabatan" required>
+                  <option value="" disabled selected>Pilih Jabatan</option>
+               </select>
+
                <label for="unit">Unit:</label>
                <input type="text" id="unit" name="unit">
                <label for="tempat_kejadian">Tempat Kejadian:</label>
@@ -729,10 +828,15 @@
                <input type="date" id="edit-tanggal" name="tanggal" required>
                <label for="edit-nik">NIK:</label>
                <input type="text" id="edit-nik" name="nik" required>
+
                <label for="edit-nama">Nama:</label>
                <input type="text" id="edit-nama-kecelakaan" name="nama" required>
-               <label for="edit-jabatan">Jabatan:</label>
-               <input type="text" id="edit-jabatan-kecelakaan" name="jabatan" required>
+               
+               <label for="jabatan">Jabatan:</label>
+               <select id="edit-jabatan-kecelakaan" name="jabatan" required>
+                  <option value="" disabled selected>Pilih Jabatan</option>
+               </select>
+
                <label for="edit-unit">Unit:</label>
                <input type="text" id="edit-unit" name="unit">
                <label for="edit-tempat_kejadian">Tempat Kejadian:</label>

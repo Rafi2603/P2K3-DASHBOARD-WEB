@@ -14,6 +14,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentData = [];
 
+// Struktur Organisasi Tanggap
+const tableBodyTanggap = document.getElementById("table-body-struktur-tanggap");
+const searchBarTanggap = document.getElementById("search-bar-struktur-tanggap");
+const addDataBtnTanggap = document.getElementById("add-data-btn-struktur-tanggap");
+const addModalTanggap = document.getElementById("add-data-modal-struktur-tanggap");
+const closeModalTanggap = document.getElementById("close-modal-struktur-tanggap");
+const addDataFormTanggap = document.getElementById("add-data-form-struktur-tanggap");
+const editModalTanggap = document.getElementById("edit-data-modal-struktur-tanggap");
+const closeEditModalTanggap = document.getElementById("close-edit-modal-struktur-tanggap");
+const editDataFormTanggap = document.getElementById("edit-data-form-struktur-tanggap");
+const selectAllCheckboxTanggap = document.getElementById("select-all-struktur-tanggap");
+const deleteSelectedBtnTanggap = document.getElementById("delete-selected-btn-struktur-tanggap");
+
+let strukturTanggapData = [];
+
   // Personel Ahli K3
   const tableBodyPersonel = document.getElementById("table-body-personel");
   const searchBarPersonel = document.getElementById("search-bar-personel");
@@ -97,6 +112,14 @@ let checklistData = [];
       checkbox.checked = selectAllCheckbox.checked;
     });
   });
+
+    // Event Listener untuk memilih semua checkbox PERSONEL
+    selectAllCheckboxTanggap.addEventListener("change", () => {
+      const checkboxes = document.querySelectorAll("#table-body-struktur-tanggap input[type='checkbox']");
+      checkboxes.forEach((checkbox) => {
+        checkbox.checked = selectAllCheckboxTanggap.checked;
+      });
+    });
 
     // Event Listener untuk memilih semua checkbox PERSONEL
     selectAllCheckboxPersonel.addEventListener("change", () => {
@@ -425,6 +448,35 @@ deleteSelectedBtnChecklist.addEventListener("click", () => {
 
      });
 
+
+// Fetch Data Struktur Organisasi Tanggap
+fetch("http://localhost:3000/getstruktur_tanggap")
+    .then((response) => response.json())
+    .then((data) => {
+        strukturTanggapData = data.data || [];
+        renderTableTanggap(strukturTanggapData);
+        renderTableTanggapWithPagination(strukturTanggapData);
+    })
+    .catch(error => console.error("Error fetching Struktur Tanggap data:", error));
+
+    // Pencarian Data Struktur Tanggap
+searchBarTanggap.addEventListener("input", () => {
+  const searchTerm = searchBarTanggap.value.toLowerCase();
+  const keywords = searchTerm.split(" ").filter(Boolean);
+
+  const filteredItems = strukturTanggapData.filter((item) =>
+      keywords.every((keyword) =>
+          item.nama_tanggap.toLowerCase().includes(keyword) ||
+          item.jabatan_tanggap.toLowerCase().includes(keyword) ||
+          item.posisi_tanggap.toLowerCase().includes(keyword)
+      )
+  );
+
+  renderTableTanggap(filteredItems);
+});
+
+
+
   // Fetch data Personel Ahli K3
   fetch("http://localhost:3000/getpersonel")
      .then((response) => response.json())
@@ -710,7 +762,127 @@ fetch("http://localhost:3000/getchecklist")
     renderTableStrukturWithPagination(currentData); // Render ulang tabel dengan data terbaru
   });
   
-  
+
+// Render Tabel Struktur Organisasi Tanggap
+function renderTableTanggap(data) {
+  tableBodyTanggap.innerHTML = "";
+  data.forEach(item => {
+      const formattedDate = item.tanggal_input_tanggap ? formatTanggal(item.tanggal_input_tanggap) : "";
+      tableBodyTanggap.innerHTML += `
+          <tr data-id="${item.struktur_tanggap_id}">
+              <td><input type="checkbox" data-id="${item.struktur_tanggap_id}"></td>
+              <td>${item.nama_tanggap}</td>
+              <td>${item.jabatan_tanggap}</td>
+              <td>${item.posisi_tanggap}</td>
+              <td>${formattedDate}</td>
+              <td>
+                  <button class="edit-btn-tanggap" data-id="${item.struktur_tanggap_id}" data-nama="${item.nama_tanggap}" data-jabatan="${item.jabatan_tanggap}" data-posisi="${item.posisi_tanggap}">✏️</button>
+                  <button class="delete-btn-tanggap" data-id="${item.struktur_tanggap_id}">🗑️</button>
+              </td>
+          </tr>
+      `;
+  });
+
+  // Event untuk tombol edit
+  document.querySelectorAll(".edit-btn-tanggap").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+          const id = e.target.dataset.id;
+          const nama = e.target.dataset.nama;
+          const jabatan = e.target.dataset.jabatan;
+          const posisi = e.target.dataset.posisi;
+
+          document.getElementById("edit-id-struktur-tanggap").value = id;
+          document.getElementById("edit-nama-tanggap").value = nama;
+          document.getElementById("edit-jabatan-tanggap").value = jabatan;
+          document.getElementById("edit-posisi-tanggap").value = posisi;
+
+          editModalTanggap.style.display = "block";
+      });
+  });
+
+  // Event untuk tombol hapus
+  document.querySelectorAll(".delete-btn-tanggap").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+          const id = e.target.dataset.id;
+          if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
+              fetch(`http://localhost:3000/deletestruktur_tanggap`, {
+                  method: "DELETE",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ struktur_tanggap_id: id }),
+              })
+              .then(() => {
+                  alert("Data berhasil dihapus.");
+                  window.location.reload();
+              })
+              .catch(error => console.error("Error deleting data:", error));
+          }
+      });
+  });
+}
+
+
+let currentPageTanggap = 1;
+let rowsPerPageTanggap = 5; // Default jumlah baris per halaman
+
+// Render Tabel Struktur Organisasi Tanggap dengan Pagination
+function renderTableTanggapWithPagination(data) {
+  const totalPages = Math.ceil(data.length / rowsPerPageTanggap);
+
+  renderTableTanggap(
+      data.slice(
+          (currentPageTanggap - 1) * rowsPerPageTanggap,
+          currentPageTanggap * rowsPerPageTanggap
+      )
+  );
+
+  renderPaginationTanggap(totalPages, data);
+}
+
+// Render Navigasi Pagination Struktur Tanggap
+function renderPaginationTanggap(totalPages, data) {
+  const paginationContainer = document.getElementById('pagination-container-struktur-tanggap');
+  paginationContainer.innerHTML = '';
+
+  // Tombol "Previous"
+  const prevButton = document.createElement('button');
+  prevButton.textContent = 'Previous';
+  prevButton.disabled = currentPageTanggap === 1;
+  prevButton.addEventListener('click', () => {
+      currentPageTanggap--;
+      renderTableTanggapWithPagination(data);
+  });
+  paginationContainer.appendChild(prevButton);
+
+  // Tombol halaman
+  for (let i = 1; i <= totalPages; i++) {
+      const pageButton = document.createElement('button');
+      pageButton.textContent = i;
+      pageButton.className = currentPageTanggap === i ? 'active' : '';
+      pageButton.addEventListener('click', () => {
+          currentPageTanggap = i;
+          renderTableTanggapWithPagination(data);
+      });
+      paginationContainer.appendChild(pageButton);
+  }
+
+  // Tombol "Next"
+  const nextButton = document.createElement('button');
+  nextButton.textContent = 'Next';
+  nextButton.disabled = currentPageTanggap === totalPages;
+  nextButton.addEventListener('click', () => {
+      currentPageTanggap++;
+      renderTableTanggapWithPagination(data);
+  });
+  paginationContainer.appendChild(nextButton);
+}
+
+// Event listener untuk mengubah jumlah baris per halaman
+document.getElementById('rows-per-page-struktur-tanggap').addEventListener('change', (e) => {
+  rowsPerPageTanggap = parseInt(e.target.value, 10);
+  currentPageTanggap = 1;
+  renderTableTanggapWithPagination(strukturTanggapData);
+});
+
 
 
   // Fungsi render tabel Personel Ahli K3
@@ -1525,6 +1697,11 @@ document.getElementById('rows-per-page-checklist').addEventListener('change', (e
      modal.style.display = "block";
   });
 
+  // Show Modal untuk tambah data STRUKTUR
+  addDataBtnTanggap.addEventListener("click", () => {
+    addModalTanggap.style.display = "block";
+ });
+
   // Show Modal untuk tambah data PERSONEL
   addDataBtnPersonel.addEventListener("click", () => {
      addModalPersonel.style.display = "block"; // Gunakan modal personel yang benar
@@ -1557,6 +1734,11 @@ addDataBtnKejadian.addEventListener("click", () => {
   closeModal.addEventListener("click", () => {
      modal.style.display = "none";
   });
+
+  // menutup modal tambah data STRUKTUR
+  closeModalTanggap.addEventListener("click", () => {
+    addModalTanggap.style.display = "none";
+ });
 
   // menutup modal tambah data PERSONEL
   closeModalPersonel.addEventListener("click", () => {
@@ -1619,6 +1801,28 @@ closeModalKejadian.addEventListener("click", () => {
         });
 
   });
+
+// Submit Form Tambah Data
+addDataFormTanggap.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const formData = {
+      nama_tanggap: document.getElementById("nama-tanggap").value,
+      jabatan_tanggap: document.getElementById("jabatan-tanggap").value,
+      posisi_tanggap: document.getElementById("posisi-tanggap").value,
+  };
+
+  fetch("http://localhost:3000/addstruktur_tanggap", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+  })
+  .then(() => {
+      alert("Data berhasil ditambahkan.");
+      window.location.reload();
+  })
+  .catch(error => console.error("Error adding data:", error));
+});
 
   // Submit Form Data PERSONEL
   addDataFormPersonel.addEventListener("submit", (e) => {
@@ -1900,6 +2104,12 @@ addDataFormChecklist.addEventListener("submit", (e) => {
      editModal.style.display = "none";
   });
 
+    // Close Edit Modal STRUKTUR
+    closeEditModalTanggap.addEventListener("click", () => {
+      editModalTanggap.style.display = "none";
+   });
+ 
+
   // Close Edit Modal PERSONEL
   closeEditModalPersonel.addEventListener("click", () => {
      editModalPersonel.style.display = "none";
@@ -1960,6 +2170,29 @@ closeEditModalKejadian.addEventListener("click", () => {
           alert("Error updating data");
         });
     });
+
+    // Submit Form Edit Data
+    editDataFormTanggap.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const formData = {
+          struktur_tanggap_id: document.getElementById("edit-id-struktur-tanggap").value,
+          nama_tanggap: document.getElementById("edit-nama-tanggap").value,
+          jabatan_tanggap: document.getElementById("edit-jabatan-tanggap").value,
+          posisi_tanggap: document.getElementById("edit-posisi-tanggap").value,
+      };
+
+      fetch("http://localhost:3000/updatestruktur_tanggap", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+      })
+      .then(() => {
+          alert("Data berhasil diperbarui.");
+          window.location.reload();
+      })
+      .catch(error => console.error("Error updating data:", error));
+  });
 
   // Submit Edit Data Personel
   editDataFormPersonel.addEventListener("submit", (e) => {

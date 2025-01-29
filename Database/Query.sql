@@ -3,7 +3,18 @@ CREATE TABLE struktur_organisasi (
     struktur_id SERIAL PRIMARY KEY,
     nama VARCHAR(50) ,
     jabatan VARCHAR(50),
-    posisi VARCHAR(50)
+    posisi VARCHAR(50),
+    tanggal_input DATE DEFAULT CURRENT_DATE
+
+);
+
+-- Tabel Struktur Organisasi
+CREATE TABLE struktur_organisasi_tanggap (
+    struktur_tanggap_id SERIAL PRIMARY KEY,
+    nama_tanggap VARCHAR(50) ,
+    jabatan_tanggap VARCHAR(50),
+    posisi_tanggap VARCHAR(50),
+    tanggal_input_tanggap DATE DEFAULT CURRENT_DATE
 );
 
 -- Tabel Personel Ahli K3 & P3K
@@ -11,7 +22,7 @@ CREATE TABLE personel_k3 (
     personel_k3_id SERIAL PRIMARY KEY,           
     nama VARCHAR(50),   
     keahlian VARCHAR(100),     
-    batas_masa_berlaku DATE 
+    batas_masa_berlaku DATE
 );
 
 -- Tabel Rekap Data Kehilangan Jam Kerja & Kecelakaan

@@ -20,5 +20,13 @@ function populateDropdown(selectElementId, options) {
 // Panggil fungsi dengan data dari file dropdown-data.js
 document.addEventListener("DOMContentLoaded", () => {
     populateDropdown("jabatan", jabatanOptions); // Untuk modal Tambah
+    populateDropdown("jabatan-tanggap", jabatanOptions); // Untuk modal Tambah
+    populateDropdown("jabatan-kecelakaan", jabatanOptions); // Untuk modal Tambah
+
+
     populateDropdown("edit-jabatan", jabatanOptions); // Untuk modal Edit
+    populateDropdown("edit-jabatan-tanggap", jabatanOptions); // Untuk modal Edit
+    populateDropdown("edit-jabatan-kecelakaan", jabatanOptions); // Untuk modal Edit
+
+
 });

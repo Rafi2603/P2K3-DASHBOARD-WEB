@@ -212,12 +212,14 @@ table tr:hover td {
 
 /* Gaya Tombol Tindakan */
 button.edit-btn,
+button.edit-btn-tanggap,
 button.edit-btn-personel,
 button.edit-btn-rekap,
 button.edit-btn-kecelakaan,
 button.edit-btn-kejadian,
 button.edit-btn-checklist,
 button.delete-btn,
+button.delete-btn-tanggap,
 button.delete-btn-personel, 
 button.delete-btn-rekap,
 button.delete-btn-kecelakaan,
@@ -235,13 +237,24 @@ button.delete-btn-checklist {
 /* Atur lebar kolom pertama (Selection) */
 #struktur-table th:first-child,
 #struktur-table td:first-child,
+#struktur-tanggap-table th:first-child,
+#struktur-tanggap-table td:first-child,
 #personel-table th:first-child,
-#personel-tabl td:first-child {
+#personel-table td:first-child,
+#rekap-table th:first-child,
+#rekap-table td:first-child
+#kecelakaan-table th:first-child,
+#kecelakaan-table td:first-child
+#kejadian-table th:first-child,
+#kejadian-table td:first-child,
+#checklist-table th:first-child,
+#checklist-table td:first-child {
   width: 5px; /* Ubah sesuai kebutuhan, misalnya 50px */
   text-align: center; /* Pastikan checkbox berada di tengah */
 }
 
 #search-bar-struktur,
+#search-bar-struktur-tanggap,
 #search-bar-personel,
 #search-bar-rekap,
 #search-bar-kecelakaan,
@@ -259,6 +272,7 @@ button.delete-btn-checklist {
 }
 
 #search-bar-struktur:focus,
+#search-bar-struktur-tanggapLfocus,
 #search-bar-personel:focus,
 #search-bar-rekap:focus,
 #search-bar-kecelakaan:focus,
@@ -276,6 +290,7 @@ button.delete-btn-checklist {
 
 /* Gaya untuk tombol Export Excel */
 button.export-csv-btn-struktur,
+button.export-csv-btn-struktur-tanggap,
 button.export-csv-btn-personel,
 button.export-csv-btn-rekap,
 button.export-csv-btn-kecelakaan,
@@ -294,6 +309,7 @@ button.export-csv-btn-checklist {
 
 /* Hover untuk tombol Export Excel */
 button.export-csv-btn-struktur:hover,
+button.export-csv-btn-struktur-tanggap:hover,
 button.export-csv-btn-personel:hover,
 button.export-csv-btn-rekap:hover,
 button.export-csv-btn-kecelakaan:hover,
@@ -305,6 +321,7 @@ button.export-csv-btn-checklist:hover {
 
 /* Gaya untuk tombol Tambah Data */
 button.add-data-btn-struktur,
+button.add-data-btn-struktur-tanggap,
 button.add-data-btn-personel,
 button.add-data-btn-rekap,
 button.add-data-btn-kecelakaan,
@@ -323,6 +340,7 @@ button.add-data-btn-checklist {
 
 /* Hover untuk tombol Tambah Data */
 button.add-data-btn-struktur:hover,
+button.add-data-btn-struktur-tanggap:hover,
 button.add-data-btn-personel:hover,
 button.add-data-btn-rekap:hover,
 button.add-data-btn-kecelakaan:hover,
@@ -334,6 +352,7 @@ button.add-data-btn-checklist:hover {
 
 /* Gaya untuk tombol Delete Selected */
 button.delete-selected-btn,
+button.delete-selected-btn-struktur-tanggap,
 button.delete-selected-btn-personel,
 button.delete-selected-btn-rekap,
 button.delete-selected-btn-kecelakaan,
@@ -354,6 +373,7 @@ button.delete-selected-btn-checklist {
 
 /* Hover untuk tombol Delete Selected */
 button.delete-selected-btn:hover,
+button.delete-selected-btn-struktur-tanggap:hover,
 button.delete-selected-btn-personel:hover,
 button.delete-selected-btn-rekap:hover,
 button.delete-selected-btn-kecelakaan:hover,
@@ -365,6 +385,7 @@ button.delete-selected-btn-checklist:hover {
 
 /* Fokus untuk tombol Delete Selected */
 button.delete-selected-btn:focus,
+button.delete-selected-btn-struktur-tanggap:focus,
 button.delete-selected-btn-personel:focus,
 button.delete-selected-btn-rekap:focus,
 button.delete-selected-btn-kecelakaan:focus,
@@ -392,6 +413,7 @@ button:focus {
 
 
 button.edit-btn,
+button.edit-btn-tanggap,
 button.edit-btn-personel,
 button.edit-btn-rekap,
 button.edit-btn-kecelakaan,
@@ -401,6 +423,7 @@ button.edit-btn-checklist {
 }
 
 button.edit-btn:hover,
+button.edit-btn-tanggap:hover,
 button.edit-btn-personel:hover,
 button.edit-btn-rekap:hover,
 button.edit-btn-kecelakaan:hover,
@@ -410,6 +433,7 @@ button.edit-btn-checklist:hover {
 }
 
 button.delete-btn,
+button.delete-btn-tanggap,
 button.delete-btn-personel, 
 button.delete-btn-rekap,
 button.delete-btn-kecelakaan,
@@ -418,7 +442,8 @@ button.delete-btn-checklist {
   background-color: #FF5733;
 }
 
-button.delete-btn:hover,  
+button.delete-btn:hover,
+button.delete-btn-tanggap:hover,
 button.delete-btn-personel:hover, 
 button.delete-btn-rekap:hover,
 button.delete-btn-kecelakaan:hover,
@@ -561,6 +586,7 @@ button.delete-btn-checklist:hover  {
   
 
 .pagination-settings,
+.pagination-settings-struktur-tanggap,
 .pagination-settings-personel,
 .pagination-settings-rekap,
 .pagination-settings-kecelakaan,
@@ -578,6 +604,7 @@ button.delete-btn-checklist:hover  {
 
 /* General Pagination Container */
 .pagination-container,
+.pagination-container-struktur-tanggap,
 .pagination-container-personel,
 .pagination-container-rekap,
 .pagination-container-kecelakaan,
@@ -603,6 +630,7 @@ button.delete-btn-checklist:hover  {
 
 
 .rows-per-page,
+.rows-per-page-struktur-tanggap,
 .rows-per-page-personel,
 .rows-per-page-rekap,
 .rows-per-page-kecelakaan,
@@ -616,6 +644,7 @@ button.delete-btn-checklist:hover  {
 }
 
 #rows-per-page,
+#rows-per-page-struktur-tanggap,
 #rows-per-page-personel,
 #rows-per-page-rekap,
 #rows-per-page-kecelakaan,
@@ -631,6 +660,7 @@ button.delete-btn-checklist:hover  {
 }
 
 #rows-per-page:hover,
+#rows-per-page-struktur-tanggap:hover,
 #rows-per-page-personel:hover,
 #rows-per-page-rekap:hover,
 #rows-per-page-kecelakaan:hover,
@@ -640,6 +670,7 @@ button.delete-btn-checklist:hover  {
 }
 
 #rows-per-page:focus,
+#rows-per-page-struktur-tanggap:focus,
 #rows-per-page-personel:focus,
 #rows-per-page-rekap:focus,
 #rows-per-page-kecelakaan:focus,
@@ -652,6 +683,7 @@ button.delete-btn-checklist:hover  {
 
 /* Pagination Buttons */
 .pagination-container button,
+.pagination-container-struktur-tanggap button,
 .pagination-container-personel button,
 .pagination-container-rekap button,
 .pagination-container-kecelakaan button,
@@ -671,6 +703,7 @@ button.delete-btn-checklist:hover  {
 
 /* Hover Effect for Buttons */
 .pagination-container button:hover:not(.active),
+.pagination-container-struktur-tanggap button:hover:not(.active),
 .pagination-container-personel button:hover:not(.active),
 .pagination-container-rekap button:hover:not(.active),
 .pagination-container-kecelakaan button:hover:not(.active),
@@ -682,6 +715,7 @@ button.delete-btn-checklist:hover  {
 
 /* Active Button */
 .pagination-container button.active,
+.pagination-container-struktur-tanggap button.active,
 .pagination-container-personel button.active,
 .pagination-container-rekap button.active,
 .pagination-container-kecelakaan button.active,
@@ -694,6 +728,7 @@ button.delete-btn-checklist:hover  {
 
 /* Disabled Buttons */
 .pagination-container button:disabled,
+.pagination-container-struktur-tanggap button:disabled,
 .pagination-container-personel button:disabled,
 .pagination-container-rekap button:disabled,
 .pagination-container-kecelakaan button:disabled,
@@ -708,6 +743,7 @@ button.delete-btn-checklist:hover  {
 /* Tambahkan efek responsif */
 @media screen and (max-width: 768px) {
   .pagination-container,
+  .pagination-container-struktur-tanggap,
   .pagination-container-personel,
   .pagination-container-rekap,
   .pagination-container-kecelakaan,
@@ -717,6 +753,7 @@ button.delete-btn-checklist:hover  {
   }
 
   .pagination-container button,
+  .pagination-container-struktur-tanggap button,
   .pagination-container-personel button,
   .pagination-container-rekap button,
   .pagination-container-kecelakaan button,

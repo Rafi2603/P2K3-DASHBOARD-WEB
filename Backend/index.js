@@ -240,6 +240,108 @@ router.delete('/delete-multiple-struktur', async (req, res) => {
 });
 
 
+// ROUTING TABEL STRUKTUR ORGANISASI TIM TANGGAP DARURAT
+// GET Struktur Organisasi Tanggap
+router.get("/getstruktur_tanggap", async (req, res) => {
+    try {
+        const result = await db.query("SELECT * FROM struktur_organisasi_tanggap ORDER BY struktur_tanggap_id");
+        res.status(200).json({ message: "Data Found", data: result.rows });
+    } catch (error) {
+        console.error("Error fetching Struktur Tanggap data:", error);
+        res.status(500).json({ message: "Error fetching data" });
+    }
+});
+
+// ADD Struktur Organisasi Tanggap
+router.post("/addstruktur_tanggap", async (req, res) => {
+    const { nama_tanggap, jabatan_tanggap, posisi_tanggap } = req.body;
+
+    if (!nama_tanggap || !jabatan_tanggap || !posisi_tanggap) {
+        return res.status(400).json({ message: "Semua field wajib diisi" });
+    }
+
+    try {
+        await db.query(
+            "INSERT INTO struktur_organisasi_tanggap (nama_tanggap, jabatan_tanggap, posisi_tanggap) VALUES ($1, $2, $3)",
+            [nama_tanggap, jabatan_tanggap, posisi_tanggap]
+        );
+        res.status(201).json({ message: "Data berhasil ditambahkan" });
+    } catch (error) {
+        console.error("Error adding Struktur Tanggap data:", error);
+        res.status(500).json({ message: "Error adding data" });
+    }
+});
+
+// UPDATE Struktur Organisasi Tanggap
+router.put("/updatestruktur_tanggap", async (req, res) => {
+    const { struktur_tanggap_id, nama_tanggap, jabatan_tanggap, posisi_tanggap } = req.body;
+
+    if (!struktur_tanggap_id || !nama_tanggap || !jabatan_tanggap || !posisi_tanggap) {
+        return res.status(400).json({ message: "Semua field wajib diisi" });
+    }
+
+    try {
+        const query = `
+            UPDATE struktur_organisasi_tanggap
+            SET nama_tanggap = $1, jabatan_tanggap = $2, posisi_tanggap = $3
+            WHERE struktur_tanggap_id = $4
+        `;
+        const values = [nama_tanggap, jabatan_tanggap, posisi_tanggap, struktur_tanggap_id];
+
+        await db.query(query, values);
+        res.status(200).json({ message: "Data berhasil diperbarui" });
+    } catch (error) {
+        console.error("Error updating Struktur Tanggap data:", error);
+        res.status(500).json({ message: "Error updating data" });
+    }
+});
+
+// DELETE Struktur Organisasi Tanggap
+router.delete("/deletestruktur_tanggap", async (req, res) => {
+    const { struktur_tanggap_id } = req.body;
+
+    if (!struktur_tanggap_id) {
+        return res.status(400).json({ message: "ID wajib diisi" });
+    }
+
+    try {
+        const result = await db.query(
+            "DELETE FROM struktur_organisasi_tanggap WHERE struktur_tanggap_id = $1",
+            [struktur_tanggap_id]
+        );
+
+        if (result.rowCount === 0) {
+            return res.status(404).json({ message: "Data tidak ditemukan" });
+        }
+
+        res.status(200).json({ message: "Data berhasil dihapus" });
+    } catch (error) {
+        console.error("Error deleting Struktur Tanggap data:", error);
+        res.status(500).json({ message: "Error deleting data" });
+    }
+});
+
+// DELETE MULTIPLE Struktur Organisasi Tanggap
+router.delete("/delete-multiple-struktur_tanggap", async (req, res) => {
+    const { ids } = req.body;
+
+    if (!Array.isArray(ids) || ids.length === 0) {
+        return res.status(400).json({ message: "Tidak ada ID yang diterima untuk dihapus." });
+    }
+
+    try {
+        const placeholders = ids.map((_, index) => `$${index + 1}`).join(", ");
+        const query = `DELETE FROM struktur_organisasi_tanggap WHERE struktur_tanggap_id IN (${placeholders})`;
+
+        await db.query(query, ids);
+        res.status(200).json({ message: "Data berhasil dihapus." });
+    } catch (error) {
+        console.error("Error deleting Struktur Tanggap data:", error);
+        res.status(500).json({ message: "Error deleting data." });
+    }
+});
+
+
 // ROUTING TABEL PERSONEL K3
 // GET PERSONEL
 router.get('/getpersonel', async (req, res) => {
