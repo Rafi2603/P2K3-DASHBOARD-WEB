@@ -206,6 +206,46 @@ selectAllCheckboxChecklist.addEventListener("change", () => {
       });
   });
 
+  deleteSelectedBtnTanggap.addEventListener("click", () => {
+    const selectedCheckboxes = Array.from(document.querySelectorAll("#table-body-struktur-tanggap input[type='checkbox']:checked"));
+
+    if (selectedCheckboxes.length === 0) {
+        alert("Tidak ada data yang dipilih untuk dihapus.");
+        return;
+    }
+
+    // Konfirmasi sebelum menghapus
+    if (!confirm("Apakah Anda yakin ingin menghapus data yang dipilih?")) return;
+
+    // Ambil ID dari setiap checkbox yang dipilih
+    const idsToDelete = selectedCheckboxes.map((checkbox) => checkbox.dataset.id);
+
+    // Kirim permintaan DELETE ke backend
+    fetch("http://localhost:3000/delete-multiple-struktur_tanggap", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ids: idsToDelete }),
+    })
+    .then((response) => {
+        if (!response.ok) throw new Error("Gagal menghapus data.");
+        return response.json();
+    })
+    .then(() => {
+        alert("Data berhasil dihapus.");
+
+        // Hapus baris dari tabel setelah berhasil dihapus
+        idsToDelete.forEach((id) => {
+            const row = document.querySelector(`#table-body-struktur-tanggap tr[data-id="${id}"]`);
+            if (row) row.remove();
+        });
+    })
+    .catch((error) => {
+        console.error("Error deleting data:", error);
+        alert("Gagal menghapus data.");
+    });
+});
+
+
   deleteSelectedBtnPersonel.addEventListener("click", () => {
     const selectedCheckboxes = Array.from(document.querySelectorAll("#table-body-personel input[type='checkbox']:checked"));
   
@@ -703,7 +743,7 @@ fetch("http://localhost:3000/getchecklist")
   }
 
   let currentPageStruktur = 1;
-  let rowsPerPageStruktur = 5; // Default jumlah baris per halaman
+  let rowsPerPageStruktur = 10; // Default jumlah baris per halaman
   
   function renderTableStrukturWithPagination(data) {
     const totalPages = Math.ceil(data.length / rowsPerPageStruktur);
@@ -822,7 +862,7 @@ function renderTableTanggap(data) {
 
 
 let currentPageTanggap = 1;
-let rowsPerPageTanggap = 5; // Default jumlah baris per halaman
+let rowsPerPageTanggap = 10; // Default jumlah baris per halaman
 
 // Render Tabel Struktur Organisasi Tanggap dengan Pagination
 function renderTableTanggapWithPagination(data) {

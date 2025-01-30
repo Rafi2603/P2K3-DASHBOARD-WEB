@@ -11,9 +11,9 @@ CREATE TABLE struktur_organisasi (
 -- Tabel Struktur Organisasi
 CREATE TABLE struktur_organisasi_tanggap (
     struktur_tanggap_id SERIAL PRIMARY KEY,
-    nama_tanggap VARCHAR(50) ,
-    jabatan_tanggap VARCHAR(50),
-    posisi_tanggap VARCHAR(50),
+    nama_tanggap VARCHAR(100) ,
+    jabatan_tanggap VARCHAR(100),
+    posisi_tanggap VARCHAR(100),
     tanggal_input_tanggap DATE DEFAULT CURRENT_DATE
 );
 

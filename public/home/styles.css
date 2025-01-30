@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-  max-width: 1200px; /* Ubah ukuran maksimal sesuai kebutuhan */
+  max-width: 1500px; /* Ubah ukuran maksimal sesuai kebutuhan */
   margin: 30px auto; /* Atur margin agar tetap di tengah */
   padding: 30px; /* Perbesar padding untuk menambahkan ruang di dalam container */
   background: #ffffff;
@@ -554,6 +554,7 @@ button.delete-btn-checklist:hover  {
 }
 
 .jabatan {
+  margin-bottom: 1000px;
   margin-bottom: 30px;
   padding: 20px;
   border: 1px solid #ccc;
@@ -763,3 +764,5 @@ button.delete-btn-checklist:hover  {
     padding: 6px 10px; /* Sesuaikan padding untuk layar kecil */
   }
 }
+
+
