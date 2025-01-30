@@ -5,6 +5,10 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>DASHBOARD P2K3 JASAMARGA</title>
       <link rel="stylesheet" href="styles.css">
+
+      <link rel="icon" type="image/png" href="jasmarLogo.png">
+
+
       <!-- Tambahkan jQuery -->
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <!-- Tambahkan Select2 -->
@@ -14,6 +18,7 @@
       <!-- SweetAlert2 -->
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
    </head>
    <body>
       <!-- Navigation Bar -->
@@ -31,8 +36,8 @@
       <!-- Tab Navigation -->
       <div class="tabs-container">
          <ul class="tabs">
-            <li class="tab active" data-tab="struktur-tab">Struktur Organisasi</li>
-            <li class="tab" data-tab="struktur-tanggap-tab">Struktur Organisasi Tanggap</li>
+            <li class="tab active" data-tab="struktur-tab">Struktur Organisasi P2K3</li>
+            <li class="tab" data-tab="struktur-tanggap-tab">Struktur Tim Tanggap Darurat</li>
             <li class="tab" data-tab="personel-tab">Personel Ahli K3</li>
             <li class="tab" data-tab="rekap-tab">Rekap Data K3</li>
             <li class="tab" data-tab="kecelakaan-tab">Kecelakaan Kerja</li>
@@ -42,7 +47,8 @@
       </div>
       <!-- Tab Content -->
       <div class="tab-content" id="struktur-tab">
-         <h1>Struktur Organisasi</h1>
+         <h1>Struktur Organisasi P2K3</h1>
+
          <div class="search-container">
             <input type="text" id="search-bar-struktur" placeholder="Search Bar">
             <button class="add-data-btn-struktur" id="add-data-btn-struktur">Tambah Data</button>
@@ -220,7 +226,7 @@
 
 <!-- Konten Struktur Organisasi Tanggap -->
 <div class="tab-content" id="struktur-tanggap-tab" style="display: none;">
-   <h1>Struktur Organisasi Tanggap</h1>
+   <h1>Struktur Tim Tanggap Darurat</h1>
    
    <!-- Pencarian & Action Buttons -->
    <div class="search-container">
@@ -390,10 +396,10 @@
             <div class="rows-per-page-personel">
                <label for="rows-per-page-personel">Rows per page:</label>
                <select id="rows-per-page-personel">
-                  <option value="5">5</option>
                   <option value="10">10</option>
                   <option value="15">15</option>
                   <option value="20">20</option>
+                  <option value="100">100</option>
                </select>
             </div>
             <div id="pagination-container-personel" class="pagination-container"></div>
@@ -427,10 +433,10 @@
             <div class="rows-per-page-rekap">
                <label for="rows-per-page-rekap">Rows per page:</label>
                <select id="rows-per-page-rekap">
-                  <option value="5">5</option>
-                  <option value="10">10</option>
-                  <option value="15">15</option>
-                  <option value="20">20</option>
+                  <option value="12">12</option>
+                  <option value="24">24</option>
+                  <option value="36">36</option>
+                  <option value="48">48</option>
                </select>
             </div>
             <div id="pagination-container-rekap" class="pagination-container"></div>
@@ -709,7 +715,7 @@
 <div id="add-data-modal-struktur-tanggap" class="modal">
    <div class="modal-content">
        <span class="close" id="close-modal-struktur-tanggap">&times;</span>
-       <h3>Tambah Struktur Organisasi Tanggap</h3>
+       <h3>Tambah Struktur Tim Tanggapp Darurat</h3>
        <form id="add-data-form-struktur-tanggap">
            <label>Nama:</label>
            <input type="text" id="nama-tanggap" required>
@@ -733,7 +739,7 @@
 <div id="edit-data-modal-struktur-tanggap" class="modal">
    <div class="modal-content">
        <span class="close" id="close-edit-modal-struktur-tanggap">&times;</span>
-       <h3>Edit Struktur Organisasi Tanggap</h3>
+       <h3>Edit Struktur Tim Tanggp Darurat</h3>
        <form id="edit-data-form-struktur-tanggap">
            <input type="hidden" id="edit-id-struktur-tanggap">
            

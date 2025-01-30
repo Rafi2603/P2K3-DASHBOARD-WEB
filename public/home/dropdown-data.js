@@ -70,6 +70,7 @@ const jabatanOptions = [
     "Concession Business Planning Group Head",
     "Corporate Banking Department Head",
     "Corporate Banking Senior Officer",
+    "Corporate Cash Management Department Head", // Tambahan
     "Corporate Communication & Community Development Group Head",
     "Corporate Finance & Investor Relation Senior Group Head",
     "Corporate Legal Department Head",
@@ -135,7 +136,7 @@ const jabatanOptions = [
     "Operation Bussines Management Assistant",
     "Operation Bussines Management Department Head",
     "Other Business Management Department Head",
-    "Pathnership Program Section Head",
+    "Partnership Program Section Head",
     "Payable Section Head",
     "PMO Land & Construction Department Head",
     "PMO Land & Construction Specialist",
@@ -182,5 +183,6 @@ const jabatanOptions = [
     "Toll Road Investment Planning Department Head",
     "Traffic System Department Head",
     "Traffic System Development Section Head",
-    "Traffic System Evaluation Section Head"
+    "Traffic System Evaluation Section Head",
+    "Transport Planning Department Head" // Tambahan
 ];

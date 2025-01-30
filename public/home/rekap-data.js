@@ -1011,7 +1011,7 @@ document.getElementById('rows-per-page-struktur-tanggap').addEventListener('chan
   }
 
   let currentPagePersonel = 1;
-  let rowsPerPagePersonel = 5; // Default jumlah baris per halaman
+  let rowsPerPagePersonel = 10; // Default jumlah baris per halaman
   
   function renderTablePersonelWithPagination(data) {
     const totalPages = Math.ceil(data.length / rowsPerPagePersonel);
@@ -1192,7 +1192,7 @@ function renderTableRekap(data) {
 
 
 let currentPageRekap = 1;
-let rowsPerPageRekap = 5; // Default jumlah baris per halaman
+let rowsPerPageRekap = 12; // Default jumlah baris per halaman
 
 function renderTableRekapWithPagination(data) {
   const totalPages = Math.ceil(data.length / rowsPerPageRekap);
