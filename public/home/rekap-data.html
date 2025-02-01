@@ -1063,11 +1063,16 @@
            });
          });
          
-         // Fungsi Logout
          function handleLogout() {
-           alert("Logout berhasil");
-           window.location.href = "/public/index.html";
+            alert("Logout berhasil");
+
+            // Dapatkan path dasar dari halaman saat ini
+            const basePath = window.location.origin;
+
+            // Redirect ke halaman login secara dinamis
+            window.location.href = `${basePath}/index.html`;
          }
+
       </script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
       <script>
