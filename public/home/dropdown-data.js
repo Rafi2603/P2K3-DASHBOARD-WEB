@@ -70,7 +70,7 @@ const jabatanOptions = [
     "Concession Business Planning Group Head",
     "Corporate Banking Department Head",
     "Corporate Banking Senior Officer",
-    "Corporate Cash Management Department Head", // Tambahan
+    "Corporate Cash Management Department Head", 
     "Corporate Communication & Community Development Group Head",
     "Corporate Finance & Investor Relation Senior Group Head",
     "Corporate Legal Department Head",
@@ -184,5 +184,5 @@ const jabatanOptions = [
     "Traffic System Department Head",
     "Traffic System Development Section Head",
     "Traffic System Evaluation Section Head",
-    "Transport Planning Department Head" // Tambahan
+    "Transport Planning Department Head"
 ];

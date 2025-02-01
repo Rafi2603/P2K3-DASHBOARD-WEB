@@ -5,10 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>DASHBOARD P2K3 JASAMARGA</title>
       <link rel="stylesheet" href="styles.css">
-
       <link rel="icon" type="image/png" href="jasmarLogo.png">
-
-
       <!-- Tambahkan jQuery -->
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <!-- Tambahkan Select2 -->
@@ -18,7 +15,6 @@
       <!-- SweetAlert2 -->
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-
    </head>
    <body>
       <!-- Navigation Bar -->
@@ -48,11 +44,10 @@
       <!-- Tab Content -->
       <div class="tab-content" id="struktur-tab">
          <h1>Struktur Organisasi P2K3</h1>
-
          <div class="search-container">
             <input type="text" id="search-bar-struktur" placeholder="Search Bar">
             <button class="add-data-btn-struktur" id="add-data-btn-struktur">Tambah Data</button>
-            <button class="export-csv-btn-struktur" onclick="exportTableToXLSX('struktur-table', 'StrukturOrganisasi.xlsx', [1, 2, 3])">Export Excel</button>
+            <button class="export-csv-btn-struktur" onclick="exportTableStrukturToXLSX('struktur-table', 'StrukturOrganisasi.xlsx', [1, 2, 3])">Export Excel</button>
             <button id="delete-selected-btn" class="delete-selected-btn">Delete Selected</button>
          </div>
          <div class="pagination-settings">
@@ -74,7 +69,7 @@
                   <!-- Checkbox untuk memilih semua -->
                   <th>Nama</th>
                   <th>Jabatan</th>
-                  <th>Posisi</th>
+                  <th>KEDUDUKAN DALAM PANITIA</th>
                   <th>Tanggal Input</th>
                   <th>Action Menu</th>
                </tr>
@@ -223,167 +218,166 @@
             <p><strong>Tanggung Jawab:</strong>Terlaksananya program-program P2K3 di lingkungan kantor pusat dan di unit kerja sesuai penempatan masing-masing anggota</p>
          </div>
       </div>
-
-<!-- Konten Struktur Organisasi Tanggap -->
-<div class="tab-content" id="struktur-tanggap-tab" style="display: none;">
-   <h1>Struktur Tim Tanggap Darurat</h1>
-   
-   <!-- Pencarian & Action Buttons -->
-   <div class="search-container">
-       <input type="text" id="search-bar-struktur-tanggap" placeholder="Search Bar">
-       <button class="add-data-btn-struktur-tanggap" id="add-data-btn-struktur-tanggap">Tambah Data</button>
-       <button class="export-csv-btn-struktur-tanggap" onclick="exportTableToXLSX('struktur-tanggap-table', 'StrukturOrganisasiTanggap.xlsx', [1, 2, 3, 4])">Export Excel</button>
-       <button id="delete-selected-btn-struktur-tanggap" class="delete-selected-btn-struktur-tanggap">Delete Selected</button>
-   </div>
-
-   <!-- Pagination Settings -->
-   <div class="pagination-settings-struktur-tanggap">
-       <div class="rows-per-page-struktur-tanggap">
-           <label for="rows-per-page-struktur-tanggap">Rows per page:</label>
-           <select id="rows-per-page-struktur-tanggap">
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
-            <option value="100">100</option>
-           </select>
-       </div>
-       <div id="pagination-container-struktur-tanggap" class="pagination-container"></div>
-   </div>
-
-   <!-- Tabel Struktur Organisasi Tanggap -->
-   <table id="struktur-tanggap-table">
-       <thead>
-           <tr>
-               <th><input type="checkbox" id="select-all-struktur-tanggap"></th>
-               <th>Nama</th>
-               <th>Jabatan</th>
-               <th>Posisi</th>
-               <th>Tanggal Input</th>
-               <th>Action Menu</th>
-           </tr>
-       </thead>
-       <tbody id="table-body-struktur-tanggap">
-           <!-- Data akan dimasukkan melalui JavaScript -->
-       </tbody>
-   </table>
-
-   <div class="jabatan">
-      <h2>1. Koordinator Tim Tanggap Darurat</h2>
-      <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-      <ul>
-          <li>1. Mengkoordinasikan Tim Tanggap Darurat sesuai dengan tugas dan tanggung jawabnya.</li>
-          <li>2. Memantau perkembangan penanganan kondisi darurat dan menjembatani komunikasi antar regu.</li>
-          <li>3. Memastikan alur komunikasi antar regu Tanggap Darurat dapat dilangsungkan secara baik dan lancar.</li>
-          <li>4. Menjadwalkan pertemuan rutin maupun non-rutin tim
-            Tanggap Darurat.</li>
-          <li>5. Bersama Ketua/Sekretaris P2K3 menyusun rencana
-            pemulihan keadaan darurat gedung.</li>
-         <li>6. Melaporkan kepada Ketua/Sekretaris P2K3 terkait
-            perkembangan penanggulangan keadaan Darurat.</li>
-      </ul>
-  </div>
-  
-  <div class="jabatan">
-      <h2>2. Regu Pengendali Api</h2>
-      <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-      <ul>
-          <li> 1. Melangsungkan
-            pemadaman
-            menggunakan semua sarana pemadam api di
-            lingkungan Perusahaan secara aman, selamat dan
-            efektif.</li>
-          <li> 2. Melaporkan segala kekurangan/kerusakan sarana dan
-            prasarana pemadam api di lingkungan Perusahaan
-            kepada Koordinator Tim Tanggap Darurat.</li>
-      </ul>
-  </div>
-  
-  <div class="jabatan">
-      <h2>3. Regu Pengendali Banjir</h2>
-      <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-      <ul>
-          <li>1. Memastikan ketersediaan sistem pengendali banjir.</li>
-          <li>2. Melakukan pengkajian untuk mencegah dan
-            memperbaiki sistem pengamanan dari bencana banjir.</li>
-          <li> 3. Melaporkan dan melakukan koordinasi dengan
-            Koordinator Tim Tanggap Darurat untuk mengatasi
-            bencana banjir yang terulang.</li>
-      </ul>
-  </div>
-  
-  <div class="jabatan">
-      <h2>4. Regu Evakuasi</h2>
-      <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-      <ul>
-          <li>1. Memimpin prosedur evakuasi secara aman, selamat
-            dan cepat.</li>
-          <li>2. Melaporkan segala kekurangan/kerusakan sarana dan
-            prasarana evakuasi di lingkungan Perusahaan.</li>
-          <li>3. Melakukan evakuasi terhadap korban tertinggal,
-            terjebak ataupun terluka dan melaporkan kepada
-            Koordinator Tim Tanggap Darurat.</li>
-      </ul>
-  </div>
-  
-  <div class="jabatan">
-      <h2>5. Regu Pengamanan Aset</h2>
-      <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-      <ul>
-          <li>1. Memimpin prosedur evakuasi secara aman, selamat
-            dan cepat.</li>
-          <li>2. Melaporkan segala kekurangan/kerusakan sarana dan
-            prasarana evakuasi di lingkungan Perusahaan kepada
-            Koordinator Tim Tanggap Darurat.</li>
-      </ul>
-
-  </div>
-  
-  <div class="jabatan">
-      <h2>6. Regu Medis/P3K</h2>
-      <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-      <ul>
-          <li>1. Melaksanakan tindakan P3K.</li>
-          <li>2. Melaporkan segala kekurangan/kerusakan sarana dan
-            prasarana P3K di lingkungan Perusahaan kepada
-            Koordinator Tim Tanggap Darurat.</li>
-          <li>3. Melaporkan kepada Koordinator Tim Tanggap Darurat
-            bilamana terdapat korban yang memerlukan tindakan
-            medis dan dilanjutkan kepada pihak ke tiga di luar
-            Perusahaan.</li>
-      </ul>
-
-  </div>
-  
-  <div class="jabatan">
-      <h2>7. Regu Teknik/Keberfungsian Alat</h2>
-      <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-      <ul>
-          <li>1. Regu Teknik melakukan kontrol sistem instalasi
-            kelistrikan/lift dan peralatan lain untuk mencegah
-            terjadinya bencana/peningkatan bencana;</li>
-          <li>2. Melaporkan ke Koordinator Tim Tanggap Darurat
-            apabila ada hal-hal yang perlu diambil tindakan dalam
-            rangka keselamatan dalam kondisi darurat</li>
-      </ul>
-
-  </div>
-  
-  <div class="jabatan">
-      <h2>8. Tim Pengarah Tanggap Darurat</h2>
-      <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-      <ul>
-          <li>1. Membantu proses penanganan kondisi darurat di
-            masing-masing unit kerja penugasan.</li>
-         <li>2. Melaporkan adanya korban tertinggal, terjebak
-            ataupun terluka kepada Regu Evakuasi di titik kumpul.</li>
-      </ul>
-
-  </div>
-  
-
-</div>
-
-
+      <!-- Konten Struktur Organisasi Tanggap -->
+      <div class="tab-content" id="struktur-tanggap-tab" style="display: none;">
+         <h1>Struktur Tim Tanggap Darurat</h1>
+         <!-- Pencarian & Action Buttons -->
+         <div class="search-container">
+            <input type="text" id="search-bar-struktur-tanggap" placeholder="Search Bar">
+            <button class="add-data-btn-struktur-tanggap" id="add-data-btn-struktur-tanggap">Tambah Data</button>
+            <button class="export-csv-btn-struktur-tanggap" onclick="exportTableTanggapToXLSX('struktur-tanggap-table', 'StrukturOrganisasiTanggap.xlsx', [2, 3, 4])">Export Excel</button>
+            <button id="delete-selected-btn-struktur-tanggap" class="delete-selected-btn-struktur-tanggap">Delete Selected</button>
+         </div>
+         <!-- Pagination Settings -->
+         <div class="pagination-settings-struktur-tanggap">
+            <div class="rows-per-page-struktur-tanggap">
+               <label for="rows-per-page-struktur-tanggap">Rows per page:</label>
+               <select id="rows-per-page-struktur-tanggap">
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="100">100</option>
+               </select>
+            </div>
+            <div id="pagination-container-struktur-tanggap" class="pagination-container"></div>
+         </div>
+         <!-- Tabel Struktur Organisasi Tanggap -->
+         <table id="struktur-tanggap-table">
+            <thead>
+               <tr>
+                  <th><input type="checkbox" id="select-all-struktur-tanggap"></th>
+                  <th>Tahun</th>
+                  <th>Nama</th>
+                  <th>Jabatan</th>
+                  <th>KEDUDUKAN DALAM TIM</th>
+                  <th>Tanggal Input</th>
+                  <th>Action Menu</th>
+               </tr>
+            </thead>
+            <tbody id="table-body-struktur-tanggap">
+               <!-- Data akan dimasukkan melalui JavaScript -->
+            </tbody>
+         </table>
+         <div class="jabatan">
+            <h2>1. Koordinator Tim Tanggap Darurat</h2>
+            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+            <ul>
+               <li>1. Mengkoordinasikan Tim Tanggap Darurat sesuai dengan tugas dan tanggung jawabnya.</li>
+               <li>2. Memantau perkembangan penanganan kondisi darurat dan menjembatani komunikasi antar regu.</li>
+               <li>3. Memastikan alur komunikasi antar regu Tanggap Darurat dapat dilangsungkan secara baik dan lancar.</li>
+               <li>4. Menjadwalkan pertemuan rutin maupun non-rutin tim
+                  Tanggap Darurat.
+               </li>
+               <li>5. Bersama Ketua/Sekretaris P2K3 menyusun rencana
+                  pemulihan keadaan darurat gedung.
+               </li>
+               <li>6. Melaporkan kepada Ketua/Sekretaris P2K3 terkait
+                  perkembangan penanggulangan keadaan Darurat.
+               </li>
+            </ul>
+         </div>
+         <div class="jabatan">
+            <h2>2. Regu Pengendali Api</h2>
+            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+            <ul>
+               <li> 1. Melangsungkan
+                  pemadaman
+                  menggunakan semua sarana pemadam api di
+                  lingkungan Perusahaan secara aman, selamat dan
+                  efektif.
+               </li>
+               <li> 2. Melaporkan segala kekurangan/kerusakan sarana dan
+                  prasarana pemadam api di lingkungan Perusahaan
+                  kepada Koordinator Tim Tanggap Darurat.
+               </li>
+            </ul>
+         </div>
+         <div class="jabatan">
+            <h2>3. Regu Pengendali Banjir</h2>
+            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+            <ul>
+               <li>1. Memastikan ketersediaan sistem pengendali banjir.</li>
+               <li>2. Melakukan pengkajian untuk mencegah dan
+                  memperbaiki sistem pengamanan dari bencana banjir.
+               </li>
+               <li> 3. Melaporkan dan melakukan koordinasi dengan
+                  Koordinator Tim Tanggap Darurat untuk mengatasi
+                  bencana banjir yang terulang.
+               </li>
+            </ul>
+         </div>
+         <div class="jabatan">
+            <h2>4. Regu Evakuasi</h2>
+            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+            <ul>
+               <li>1. Memimpin prosedur evakuasi secara aman, selamat
+                  dan cepat.
+               </li>
+               <li>2. Melaporkan segala kekurangan/kerusakan sarana dan
+                  prasarana evakuasi di lingkungan Perusahaan.
+               </li>
+               <li>3. Melakukan evakuasi terhadap korban tertinggal,
+                  terjebak ataupun terluka dan melaporkan kepada
+                  Koordinator Tim Tanggap Darurat.
+               </li>
+            </ul>
+         </div>
+         <div class="jabatan">
+            <h2>5. Regu Pengamanan Aset</h2>
+            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+            <ul>
+               <li>1. Memimpin prosedur evakuasi secara aman, selamat
+                  dan cepat.
+               </li>
+               <li>2. Melaporkan segala kekurangan/kerusakan sarana dan
+                  prasarana evakuasi di lingkungan Perusahaan kepada
+                  Koordinator Tim Tanggap Darurat.
+               </li>
+            </ul>
+         </div>
+         <div class="jabatan">
+            <h2>6. Regu Medis/P3K</h2>
+            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+            <ul>
+               <li>1. Melaksanakan tindakan P3K.</li>
+               <li>2. Melaporkan segala kekurangan/kerusakan sarana dan
+                  prasarana P3K di lingkungan Perusahaan kepada
+                  Koordinator Tim Tanggap Darurat.
+               </li>
+               <li>3. Melaporkan kepada Koordinator Tim Tanggap Darurat
+                  bilamana terdapat korban yang memerlukan tindakan
+                  medis dan dilanjutkan kepada pihak ke tiga di luar
+                  Perusahaan.
+               </li>
+            </ul>
+         </div>
+         <div class="jabatan">
+            <h2>7. Regu Teknik/Keberfungsian Alat</h2>
+            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+            <ul>
+               <li>1. Regu Teknik melakukan kontrol sistem instalasi
+                  kelistrikan/lift dan peralatan lain untuk mencegah
+                  terjadinya bencana/peningkatan bencana;
+               </li>
+               <li>2. Melaporkan ke Koordinator Tim Tanggap Darurat
+                  apabila ada hal-hal yang perlu diambil tindakan dalam
+                  rangka keselamatan dalam kondisi darurat
+               </li>
+            </ul>
+         </div>
+         <div class="jabatan">
+            <h2>8. Tim Pengarah Tanggap Darurat</h2>
+            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+            <ul>
+               <li>1. Membantu proses penanganan kondisi darurat di
+                  masing-masing unit kerja penugasan.
+               </li>
+               <li>2. Melaporkan adanya korban tertinggal, terjebak
+                  ataupun terluka kepada Regu Evakuasi di titik kumpul.
+               </li>
+            </ul>
+         </div>
+      </div>
       <div class="tab-content" id="personel-tab" style="display: none;">
          <h1>Personel Ahli K3 & P3K</h1>
          <div class="search-container">
@@ -420,7 +414,6 @@
             </tbody>
          </table>
       </div>
-
       <div class="tab-content" id="rekap-tab" style="display: none;">
          <h1>Rekap Data K3</h1>
          <div class="search-container">
@@ -579,7 +572,6 @@
             Export Excel
             </button>
             <button id="delete-selected-btn-kejadian" class="delete-selected-btn-kejadian">Delete Selected</button>
-
          </div>
          <div class="pagination-settings-kejadian">
             <div class="rows-per-page-kejadian">
@@ -612,60 +604,56 @@
             </table>
          </div>
       </div>
-
-
       <div class="tab-content" id="checklist-k3-tab" style="display: none;">
          <h1>Checklist K3</h1>
          <div class="search-container">
-             <input type="text" id="search-bar-checklist" placeholder="Search Bar">
-             <button class="add-data-btn-checklist" id="add-data-btn-checklist">Tambah Data</button>
-             <button class="export-csv-btn-checklist" onclick="exportTableWithImages('checklist-k3-table', 'ChecklistK3.xlsx', [1,2,3,4,5,6,7,8,9,10,11,12,13,14])">
-                 Export Excel
-             </button>
-             <button id="delete-selected-btn-checklist" class="delete-selected-btn-checklist">Delete Selected</button>
+            <input type="text" id="search-bar-checklist" placeholder="Search Bar">
+            <button class="add-data-btn-checklist" id="add-data-btn-checklist">Tambah Data</button>
+            <button class="export-csv-btn-checklist" onclick="exportTableWithImages('checklist-k3-table', 'ChecklistK3.xlsx', [1,2,3,4,5,6,7,8,9,10,11,12,13,14])">
+            Export Excel
+            </button>
+            <button id="delete-selected-btn-checklist" class="delete-selected-btn-checklist">Delete Selected</button>
          </div>
          <div class="pagination-settings-checklist">
-             <div class="rows-per-page-checklist">
-                 <label for="rows-per-page-checklist">Rows per page:</label>
-                 <select id="rows-per-page-checklist">
-                     <option value="5">5</option>
-                     <option value="10">10</option>
-                     <option value="15">15</option>
-                     <option value="20">20</option>
-                 </select>
-             </div>
-             <div id="pagination-container-checklist" class="pagination-container"></div>
+            <div class="rows-per-page-checklist">
+               <label for="rows-per-page-checklist">Rows per page:</label>
+               <select id="rows-per-page-checklist">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+               </select>
+            </div>
+            <div id="pagination-container-checklist" class="pagination-container"></div>
          </div>
          <div style="overflow-x: auto;">
-             <table id="checklist-k3-table">
-                 <thead>
-                     <tr>
-                        <th><input type="checkbox" id="select-all-checklist"></th>
-                         <th>Section</th>
-                         <th>Indikator K3</th>
-                         <th>Expired Date</th>
-                         <th>Checklist Pemeriksaan</th>
-                         <th>APAR</th>
-                         <th>Rambu APAR</th>
-                         <th>Kelengkapan Box Hydrant</th>
-                         <th>Ruang Laktasi</th>
-                         <th>Ruang P3K</th>
-                         <th>Organik</th>
-                         <th>Non-Organik</th>
-                         <th>Limbah B3</th>
-                         <th>Smoking Area</th>
-                         <th>DLL</th>
-                         <th>Action</th>
-                     </tr>
-                 </thead>
-                 <tbody id="table-body-checklist">
-                     <!-- Data akan dimasukkan di sini -->
-                 </tbody>
-             </table>
+            <table id="checklist-k3-table">
+               <thead>
+                  <tr>
+                     <th><input type="checkbox" id="select-all-checklist"></th>
+                     <th>Section</th>
+                     <th>Indikator K3</th>
+                     <th>Expired Date</th>
+                     <th>Checklist Pemeriksaan</th>
+                     <th>APAR</th>
+                     <th>Rambu APAR</th>
+                     <th>Kelengkapan Box Hydrant</th>
+                     <th>Ruang Laktasi</th>
+                     <th>Ruang P3K</th>
+                     <th>Organik</th>
+                     <th>Non-Organik</th>
+                     <th>Limbah B3</th>
+                     <th>Smoking Area</th>
+                     <th>DLL</th>
+                     <th>Action</th>
+                  </tr>
+               </thead>
+               <tbody id="table-body-checklist">
+                  <!-- Data akan dimasukkan di sini -->
+               </tbody>
+            </table>
          </div>
-     </div>
-     
-
+      </div>
       <!-- Modal Tambah Data STRUKTUR -->
       <div id="add-data-modal-struktur" class="modal">
          <div class="modal-content">
@@ -674,93 +662,76 @@
             <form id="add-data-form-struktur">
                <label for="nama">Nama:</label>
                <input type="text" id="nama" name="nama" required>
-
                <label for="jabatan">Jabatan:</label>
                <select id="jabatan" name="jabatan" required>
                   <option value="" disabled selected>Pilih Jabatan</option>
                </select>
-
                <label for="posisi">Posisi:</label>
                <select id="posisi" name="posisi" class="dropdown" required></select>
-
                <button type="submit">Tambah</button>
             </form>
          </div>
       </div>
       <!-- Modal Edit Data STRUKTUR -->
-<div id="edit-data-modal-struktur" class="modal">
-   <div class="modal-content">
-      <span class="close" id="close-edit-modal-struktur">&times;</span>
-      <h2>Edit Data</h2>
-      <form id="edit-data-form-struktur">
-         <input type="hidden" id="edit-id" name="struktur_id" />
-         
-         <label for="edit-nama">Nama:</label>
-         <input type="text" id="edit-nama" name="nama" required>
-         
-         <label for="edit-jabatan">Jabatan:</label>
-         <select id="edit-jabatan" name="jabatan" required>
-            <option value="" disabled selected>Pilih Jabatan</option>
-         </select>
-         
-         <label for="edit-posisi">Posisi:</label>
-         <select id="edit-posisi" name="posisi" class="dropdown" required></select>
-         
-         <button type="submit">Perbarui</button>
-      </form>
-   </div>
-</div>
-
-<!-- Modal Tambah Data STRUKTUR TANGGAP -->
-<div id="add-data-modal-struktur-tanggap" class="modal">
-   <div class="modal-content">
-       <span class="close" id="close-modal-struktur-tanggap">&times;</span>
-       <h3>Tambah Struktur Tim Tanggapp Darurat</h3>
-       <form id="add-data-form-struktur-tanggap">
-           <label>Nama:</label>
-           <input type="text" id="nama-tanggap" required>
-           
-           <label for="jabatan-tanggap">Jabatan:</label>
-           <select id="jabatan-tanggap" name="jabatan" required>
-               <option value="" disabled selected>Pilih Jabatan</option>
-           </select>
-           
-           <label for="posisi-tanggap">Posisi:</label>
-           <select id="posisi-tanggap" name="posisi" required>
-               <option value="" disabled selected>Pilih Posisi</option>
-           </select>
-           
-           <button type="submit">Tambah</button>
-       </form>
-   </div>
-</div>
-
-<!-- Modal Edit Data STRUKTUR TANGGAP -->
-<div id="edit-data-modal-struktur-tanggap" class="modal">
-   <div class="modal-content">
-       <span class="close" id="close-edit-modal-struktur-tanggap">&times;</span>
-       <h3>Edit Struktur Tim Tanggp Darurat</h3>
-       <form id="edit-data-form-struktur-tanggap">
-           <input type="hidden" id="edit-id-struktur-tanggap">
-           
-           <label>Nama:</label>
-           <input type="text" id="edit-nama-tanggap" required>
-           
-           <label for="edit-jabatan-tanggap">Jabatan:</label>
-           <select id="edit-jabatan-tanggap" name="jabatan" required>
-               <option value="" disabled selected>Pilih Jabatan</option>
-           </select>
-           
-           <label for="edit-posisi-tanggap">Posisi:</label>
-           <select id="edit-posisi-tanggap" name="posisi" required>
-               <option value="" disabled selected>Pilih Posisi</option>
-           </select>
-           
-           <button type="submit">Simpan Perubahan</button>
-       </form>
-   </div>
-</div>
-
+      <div id="edit-data-modal-struktur" class="modal">
+         <div class="modal-content">
+            <span class="close" id="close-edit-modal-struktur">&times;</span>
+            <h2>Edit Data</h2>
+            <form id="edit-data-form-struktur">
+               <input type="hidden" id="edit-id" name="struktur_id" />
+               <label for="edit-nama">Nama:</label>
+               <input type="text" id="edit-nama" name="nama" required>
+               <label for="edit-jabatan">Jabatan:</label>
+               <select id="edit-jabatan" name="jabatan" required>
+                  <option value="" disabled selected>Pilih Jabatan</option>
+               </select>
+               <label for="edit-posisi">Posisi:</label>
+               <select id="edit-posisi" name="posisi" class="dropdown" required></select>
+               <button type="submit">Perbarui</button>
+            </form>
+         </div>
+      </div>
+      <!-- Modal Tambah Data STRUKTUR TANGGAP -->
+      <div id="add-data-modal-struktur-tanggap" class="modal">
+         <div class="modal-content">
+            <span class="close" id="close-modal-struktur-tanggap">&times;</span>
+            <h3>Tambah Struktur Tim Tanggapp Darurat</h3>
+            <form id="add-data-form-struktur-tanggap">
+               <label>Nama:</label>
+               <input type="text" id="nama-tanggap" required>
+               <label for="jabatan-tanggap">Jabatan:</label>
+               <select id="jabatan-tanggap" name="jabatan" required>
+                  <option value="" disabled selected>Pilih Jabatan</option>
+               </select>
+               <label for="posisi-tanggap">Posisi:</label>
+               <select id="posisi-tanggap" name="posisi" required>
+                  <option value="" disabled selected>Pilih Posisi</option>
+               </select>
+               <button type="submit">Tambah</button>
+            </form>
+         </div>
+      </div>
+      <!-- Modal Edit Data STRUKTUR TANGGAP -->
+      <div id="edit-data-modal-struktur-tanggap" class="modal">
+         <div class="modal-content">
+            <span class="close" id="close-edit-modal-struktur-tanggap">&times;</span>
+            <h3>Edit Struktur Tim Tanggp Darurat</h3>
+            <form id="edit-data-form-struktur-tanggap">
+               <input type="hidden" id="edit-id-struktur-tanggap">
+               <label>Nama:</label>
+               <input type="text" id="edit-nama-tanggap" required>
+               <label for="edit-jabatan-tanggap">Jabatan:</label>
+               <select id="edit-jabatan-tanggap" name="jabatan" required>
+                  <option value="" disabled selected>Pilih Jabatan</option>
+               </select>
+               <label for="edit-posisi-tanggap">Posisi:</label>
+               <select id="edit-posisi-tanggap" name="posisi" required>
+                  <option value="" disabled selected>Pilih Posisi</option>
+               </select>
+               <button type="submit">Simpan Perubahan</button>
+            </form>
+         </div>
+      </div>
       <!-- Modal Tambah Data PERSONEL -->
       <div id="add-data-modal-personel" class="modal">
          <div class="modal-content">
@@ -899,12 +870,10 @@
                <input type="text" id="nik" name="nik" required>
                <label for="nama">Nama:</label>
                <input type="text" id="nama-kecelakaan" name="nama" required>
-
                <label for="jabatan">Jabatan:</label>
                <select id="jabatan-kecelakaan" name="jabatan" required>
                   <option value="" disabled selected>Pilih Jabatan</option>
                </select>
-
                <label for="unit">Unit:</label>
                <input type="text" id="unit" name="unit">
                <label for="tempat_kejadian">Tempat Kejadian:</label>
@@ -937,15 +906,12 @@
                <input type="date" id="edit-tanggal" name="tanggal" required>
                <label for="edit-nik">NIK:</label>
                <input type="text" id="edit-nik" name="nik" required>
-
                <label for="edit-nama">Nama:</label>
                <input type="text" id="edit-nama-kecelakaan" name="nama" required>
-               
                <label for="jabatan">Jabatan:</label>
                <select id="edit-jabatan-kecelakaan" name="jabatan" required>
                   <option value="" disabled selected>Pilih Jabatan</option>
                </select>
-
                <label for="edit-unit">Unit:</label>
                <input type="text" id="edit-unit" name="unit">
                <label for="edit-tempat_kejadian">Tempat Kejadian:</label>
@@ -1003,87 +969,83 @@
             </form>
          </div>
       </div>
-
-<!-- Modal Tambah Data Checklist K3 -->
-<div id="add-data-modal-checklist" class="modal">
-   <div class="modal-content">
-      <span class="close" id="close-modal-checklist">&times;</span>
-      <h2>Tambah Data Checklist K3</h2>
-      <form id="add-data-form-checklist">
-         <label for="section">Section:</label>
-         <input type="text" id="section" name="section">
-         <label for="indikator_k3">Indikator K3:</label>
-         <input type="text" id="indikator-k3" name="indikator_k3">
-         <label for="expired_date">Expired Date:</label>
-         <input type="date" id="expired-date" name="expired_date">
-         <label for="checklist_pemeriksaan">Checklist Pemeriksaan:</label>
-         <input type="file" id="checklist-pemeriksaan" name="checklist_pemeriksaan" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="apar">APAR:</label>
-         <input type="file" id="apar" name="apar" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="rambu_apar">Rambu APAR:</label>
-         <input type="file" id="rambu-apar" name="rambu_apar" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="kelengkapan_box_hydrant">Kelengkapan Box Hydrant:</label>
-         <input type="file" id="kelengkapan-box-hydrant" name="kelengkapan_box_hydrant" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="ruang_laktasi">Ruang Laktasi:</label>
-         <input type="file" id="ruang-laktasi" name="ruang_laktasi" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="ruang_p3k">Ruang P3K:</label>
-         <input type="file" id="ruang-p3k" name="ruang_p3k" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="organik">Organik:</label>
-         <input type="file" id="organik" name="organik" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="non_organik">Non-Organik:</label>
-         <input type="file" id="non-organik" name="non_organik" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="limbah_b3">Limbah B3:</label>
-         <input type="file" id="limbah-b3" name="limbah_b3" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="smoking_area">Smoking Area:</label>
-         <input type="file" id="smoking-area" name="smoking_area" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="dll">Lain-lain:</label>
-         <input type="file" id="dll" name="dll" accept=".jpg, .jpeg, .png, .pdf">
-         <button type="submit">Tambah</button>
-      </form>
-   </div>
-</div>
-
-<!-- Modal Update Data Checklist K3 -->
-<div id="edit-data-modal-checklist" class="modal">
-   <div class="modal-content">
-      <span class="close" id="close-edit-modal-checklist">&times;</span>
-      <h2>Update Data Checklist K3</h2>
-      <form id="edit-data-form-checklist">
-         <input type="hidden" id="edit-checklist-id" name="checklist_id">
-         <label for="edit-section">Section:</label>
-         <input type="text" id="edit-section" name="section">
-         <label for="edit-indikator-k3">Indikator K3:</label>
-         <input type="text" id="edit-indikator-k3" name="indikator_k3">
-         <label for="edit-expired-date">Expired Date:</label>
-         <input type="date" id="edit-expired-date" name="expired_date">
-         <label for="edit-checklist-pemeriksaan">Checklist Pemeriksaan:</label>
-         <input type="file" id="edit-checklist-pemeriksaan" name="checklist_pemeriksaan" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="edit-apar">APAR:</label>
-         <input type="file" id="edit-apar" name="apar" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="edit-rambu-apar">Rambu APAR:</label>
-         <input type="file" id="edit-rambu-apar" name="rambu_apar" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="edit-kelengkapan-box-hydrant">Kelengkapan Box Hydrant:</label>
-         <input type="file" id="edit-kelengkapan-box-hydrant" name="kelengkapan_box_hydrant" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="edit-ruang-laktasi">Ruang Laktasi:</label>
-         <input type="file" id="edit-ruang-laktasi" name="ruang_laktasi" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="edit-ruang-p3k">Ruang P3K:</label>
-         <input type="file" id="edit-ruang-p3k" name="ruang_p3k" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="edit-organik">Organik:</label>
-         <input type="file" id="edit-organik" name="organik" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="edit-non-organik">Non-Organik:</label>
-         <input type="file" id="edit-non-organik" name="non_organik" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="edit-limbah-b3">Limbah B3:</label>
-         <input type="file" id="edit-limbah-b3" name="limbah_b3" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="edit-smoking-area">Smoking Area:</label>
-         <input type="file" id="edit-smoking-area" name="smoking_area" accept=".jpg, .jpeg, .png, .pdf">
-         <label for="edit-dll">Lain-lain:</label>
-         <input type="file" id="edit-dll" name="dll" accept=".jpg, .jpeg, .png, .pdf">
-         <button type="submit">Update</button>
-      </form>
-   </div>
-</div>
-
-
+      <!-- Modal Tambah Data Checklist K3 -->
+      <div id="add-data-modal-checklist" class="modal">
+         <div class="modal-content">
+            <span class="close" id="close-modal-checklist">&times;</span>
+            <h2>Tambah Data Checklist K3</h2>
+            <form id="add-data-form-checklist">
+               <label for="section">Section:</label>
+               <input type="text" id="section" name="section">
+               <label for="indikator_k3">Indikator K3:</label>
+               <input type="text" id="indikator-k3" name="indikator_k3">
+               <label for="expired_date">Expired Date:</label>
+               <input type="date" id="expired-date" name="expired_date">
+               <label for="checklist_pemeriksaan">Checklist Pemeriksaan:</label>
+               <input type="file" id="checklist-pemeriksaan" name="checklist_pemeriksaan" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="apar">APAR:</label>
+               <input type="file" id="apar" name="apar" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="rambu_apar">Rambu APAR:</label>
+               <input type="file" id="rambu-apar" name="rambu_apar" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="kelengkapan_box_hydrant">Kelengkapan Box Hydrant:</label>
+               <input type="file" id="kelengkapan-box-hydrant" name="kelengkapan_box_hydrant" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="ruang_laktasi">Ruang Laktasi:</label>
+               <input type="file" id="ruang-laktasi" name="ruang_laktasi" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="ruang_p3k">Ruang P3K:</label>
+               <input type="file" id="ruang-p3k" name="ruang_p3k" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="organik">Organik:</label>
+               <input type="file" id="organik" name="organik" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="non_organik">Non-Organik:</label>
+               <input type="file" id="non-organik" name="non_organik" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="limbah_b3">Limbah B3:</label>
+               <input type="file" id="limbah-b3" name="limbah_b3" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="smoking_area">Smoking Area:</label>
+               <input type="file" id="smoking-area" name="smoking_area" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="dll">Lain-lain:</label>
+               <input type="file" id="dll" name="dll" accept=".jpg, .jpeg, .png, .pdf">
+               <button type="submit">Tambah</button>
+            </form>
+         </div>
+      </div>
+      <!-- Modal Update Data Checklist K3 -->
+      <div id="edit-data-modal-checklist" class="modal">
+         <div class="modal-content">
+            <span class="close" id="close-edit-modal-checklist">&times;</span>
+            <h2>Update Data Checklist K3</h2>
+            <form id="edit-data-form-checklist">
+               <input type="hidden" id="edit-checklist-id" name="checklist_id">
+               <label for="edit-section">Section:</label>
+               <input type="text" id="edit-section" name="section">
+               <label for="edit-indikator-k3">Indikator K3:</label>
+               <input type="text" id="edit-indikator-k3" name="indikator_k3">
+               <label for="edit-expired-date">Expired Date:</label>
+               <input type="date" id="edit-expired-date" name="expired_date">
+               <label for="edit-checklist-pemeriksaan">Checklist Pemeriksaan:</label>
+               <input type="file" id="edit-checklist-pemeriksaan" name="checklist_pemeriksaan" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="edit-apar">APAR:</label>
+               <input type="file" id="edit-apar" name="apar" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="edit-rambu-apar">Rambu APAR:</label>
+               <input type="file" id="edit-rambu-apar" name="rambu_apar" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="edit-kelengkapan-box-hydrant">Kelengkapan Box Hydrant:</label>
+               <input type="file" id="edit-kelengkapan-box-hydrant" name="kelengkapan_box_hydrant" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="edit-ruang-laktasi">Ruang Laktasi:</label>
+               <input type="file" id="edit-ruang-laktasi" name="ruang_laktasi" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="edit-ruang-p3k">Ruang P3K:</label>
+               <input type="file" id="edit-ruang-p3k" name="ruang_p3k" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="edit-organik">Organik:</label>
+               <input type="file" id="edit-organik" name="organik" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="edit-non-organik">Non-Organik:</label>
+               <input type="file" id="edit-non-organik" name="non_organik" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="edit-limbah-b3">Limbah B3:</label>
+               <input type="file" id="edit-limbah-b3" name="limbah_b3" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="edit-smoking-area">Smoking Area:</label>
+               <input type="file" id="edit-smoking-area" name="smoking_area" accept=".jpg, .jpeg, .png, .pdf">
+               <label for="edit-dll">Lain-lain:</label>
+               <input type="file" id="edit-dll" name="dll" accept=".jpg, .jpeg, .png, .pdf">
+               <button type="submit">Update</button>
+            </form>
+         </div>
+      </div>
       <script>
          // Fungsi Tab Navigation
          document.addEventListener("DOMContentLoaded", () => {
@@ -1141,6 +1103,246 @@
            XLSX.writeFile(wb, filename); // Simpan file dengan nama tertentu
          }
          
+      </script>
+      <script>
+         async function exportTableStrukturToXLSX(tableId, filename, selectedColumns) {
+             const table = document.getElementById(tableId);
+             const rows = table.rows;
+             const data = [];
+         
+             // Tambahkan nomor secara otomatis ke dalam data
+             for (let i = 1; i < rows.length; i++) { // Mulai dari 1 agar tidak ada header ganda
+                 const row = rows[i];
+                 const rowData = [i]; // Menambahkan nomor urut otomatis
+                 rowData.push(...selectedColumns.map(colIndex => row.cells[colIndex].innerText));
+                 data.push(rowData);
+             }
+         
+             // Buat workbook & worksheet baru
+             const workbook = new ExcelJS.Workbook();
+             const worksheet = workbook.addWorksheet("Data P2K3");
+         
+             // --- Tambahkan Bagian Judul ---
+             worksheet.mergeCells("A1:D1");
+             worksheet.getCell("A1").value = "SUSUNAN ANGGOTA";
+             worksheet.getCell("A1").alignment = { horizontal: "center" };
+             worksheet.getCell("A1").font = { bold: true, size: 14 };
+         
+             worksheet.mergeCells("A2:D2");
+             worksheet.getCell("A2").value = "PANITIA PEMBINA KESELAMATAN DAN KESEHATAN KERJA (P2K3)";
+             worksheet.getCell("A2").alignment = { horizontal: "center" };
+             worksheet.getCell("A2").font = { bold: true, size: 12 };
+         
+             worksheet.mergeCells("A3:D3");
+             worksheet.getCell("A3").value = "KANTOR PUSAT PT JASA MARGA (PERSERO) TBK";
+             worksheet.getCell("A3").alignment = { horizontal: "center" };
+             worksheet.getCell("A3").font = { bold: true, size: 12 };
+         
+             worksheet.addRow([]); // Baris kosong sebelum tabel
+         
+             // --- Tambahkan Header Tabel ---
+             const headerRow = worksheet.addRow(["No.", "NAMA", "JABATAN", "KEDUDUKAN DALAM PANITIA"]);
+             headerRow.font = { bold: true, color: { argb: "FFFFFF" } }; // Warna teks putih
+             headerRow.alignment = { horizontal: "center" };
+         
+             // Tambahkan warna latar belakang pada header
+             headerRow.eachCell(cell => {
+                 cell.fill = {
+                     type: "pattern",
+                     pattern: "solid",
+                     fgColor: { argb: "0070C0" } // Warna biru seperti standar tabel korporat
+                 };
+                 cell.border = {
+                     top: { style: "thin" },
+                     bottom: { style: "thin" },
+                     left: { style: "thin" },
+                     right: { style: "thin" }
+                 };
+             });
+         
+             // --- Tambahkan Data Tabel ---
+             data.forEach(rowData => {
+                 const row = worksheet.addRow(rowData);
+                 row.eachCell(cell => {
+                     cell.border = {
+                         bottom: { style: "thin" }, // Border hanya sampai batas data
+                         left: { style: "thin" },
+                         right: { style: "thin" }
+                     };
+                 });
+             });
+         
+             // --- Tambahkan Logo ---
+             const base64Image = await getBase64Image("jasmarLogo.png"); // Konversi gambar ke base64
+             const imageId = workbook.addImage({
+                 base64: base64Image,
+                 extension: "png",
+             });
+         
+             worksheet.addImage(imageId, {
+                 tl: { col: 0, row: 0 }, // Posisi gambar (pojok kiri atas)
+                 ext: { width: 61, height: 61 }, // Ukuran logo lebih kecil agar tidak mengganggu teks
+             });
+         
+             // --- Atur Lebar Kolom ---
+             worksheet.getColumn(1).width = 6;  // Kolom "No."
+             worksheet.getColumn(2).width = 25; // Kolom "Nama"
+             worksheet.getColumn(3).width = 40; // Kolom "Jabatan"
+             worksheet.getColumn(4).width = 55; // Kolom "Posisi"
+         
+             // Simpan file
+             const buffer = await workbook.xlsx.writeBuffer();
+             const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+         
+             // Buat link download
+             const link = document.createElement("a");
+             link.href = URL.createObjectURL(blob);
+             link.download = filename;
+             document.body.appendChild(link);
+             link.click();
+             document.body.removeChild(link);
+         }
+         
+         // --- Konversi gambar ke Base64 ---
+         function getBase64Image(imageUrl) {
+             return new Promise((resolve, reject) => {
+                 const img = new Image();
+                 img.crossOrigin = "Anonymous"; // Pastikan gambar bisa diakses
+                 img.src = imageUrl;
+                 img.onload = () => {
+                     const canvas = document.createElement("canvas");
+                     canvas.width = img.width;
+                     canvas.height = img.height;
+                     const ctx = canvas.getContext("2d");
+                     ctx.drawImage(img, 0, 0);
+                     resolve(canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, ""));
+                 };
+                 img.onerror = (error) => reject(error);
+             });
+         }
+         
+         
+         
+      </script>
+      <script>
+         async function exportTableTanggapToXLSX(tableId, filename, selectedColumns) {
+             const table = document.getElementById(tableId);
+             const rows = table.rows;
+             const data = [];
+         
+             // Tambahkan nomor secara otomatis ke dalam data
+             for (let i = 1; i < rows.length; i++) { // Mulai dari 1 agar tidak ada header ganda
+                 const row = rows[i];
+                 const rowData = [i]; // Menambahkan nomor urut otomatis
+                 rowData.push(...selectedColumns.map(colIndex => row.cells[colIndex].innerText));
+                 data.push(rowData);
+             }
+         
+             // Buat workbook & worksheet baru
+             const workbook = new ExcelJS.Workbook();
+             const worksheet = workbook.addWorksheet("Data TIM TANGGAP DARURAT");
+         
+             // --- Tambahkan Bagian Judul ---
+             worksheet.mergeCells("A1:D1");
+             worksheet.getCell("A1").value = "SUSUNAN ORGANISASI";
+             worksheet.getCell("A1").alignment = { horizontal: "center" };
+             worksheet.getCell("A1").font = { bold: true, size: 14 };
+         
+             worksheet.mergeCells("A2:D2");
+             worksheet.getCell("A2").value = "TIM TANGGAP DARURAT";
+             worksheet.getCell("A2").alignment = { horizontal: "center" };
+             worksheet.getCell("A2").font = { bold: true, size: 12 };
+         
+             worksheet.mergeCells("A3:D3");
+             worksheet.getCell("A3").value = "GEDUNG KANTOR PUSAT PT JASA MARGA (PERSERO) TBK";
+             worksheet.getCell("A3").alignment = { horizontal: "center" };
+             worksheet.getCell("A3").font = { bold: true, size: 12 };
+         
+             worksheet.addRow([]); // Baris kosong sebelum tabel
+         
+             // --- Tambahkan Header Tabel ---
+             const headerRow = worksheet.addRow(["No.", "NAMA", "JABATAN", "KEDUDUKAN DALAM TIM"]);
+             headerRow.font = { bold: true, color: { argb: "FFFFFF" } }; // Warna teks putih
+             headerRow.alignment = { horizontal: "center" };
+         
+             // Tambahkan warna latar belakang pada header
+             headerRow.eachCell(cell => {
+                 cell.fill = {
+                     type: "pattern",
+                     pattern: "solid",
+                     fgColor: { argb: "0070C0" } // Warna biru seperti standar tabel korporat
+                 };
+                 cell.border = {
+                     top: { style: "thin" },
+                     bottom: { style: "thin" },
+                     left: { style: "thin" },
+                     right: { style: "thin" }
+                 };
+             });
+         
+             // --- Tambahkan Data Tabel ---
+             data.forEach(rowData => {
+                 const row = worksheet.addRow(rowData);
+                 row.eachCell(cell => {
+                     cell.border = {
+                         bottom: { style: "thin" }, // Border hanya sampai batas data
+                         left: { style: "thin" },
+                         right: { style: "thin" }
+                     };
+                 });
+             });
+         
+             // --- Tambahkan Logo ---
+             const base64Image = await getBase64Image("jasmarLogo.png"); // Konversi gambar ke base64
+             const imageId = workbook.addImage({
+                 base64: base64Image,
+                 extension: "png",
+             });
+         
+             worksheet.addImage(imageId, {
+                 tl: { col: 0, row: 0 }, // Posisi gambar (pojok kiri atas)
+                 ext: { width: 61, height: 61 }, // Ukuran logo lebih kecil agar tidak mengganggu teks
+             });
+         
+             // --- Atur Lebar Kolom ---
+             worksheet.getColumn(1).width = 6;  // Kolom "No."
+             worksheet.getColumn(2).width = 25; // Kolom "Nama"
+             worksheet.getColumn(3).width = 40; // Kolom "Jabatan"
+             worksheet.getColumn(4).width = 55; // Kolom "Posisi"
+         
+             // Simpan file
+             const buffer = await workbook.xlsx.writeBuffer();
+             const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+         
+             // Buat link download
+             const link = document.createElement("a");
+             link.href = URL.createObjectURL(blob);
+             link.download = filename;
+             document.body.appendChild(link);
+             link.click();
+             document.body.removeChild(link);
+         }
+         
+         // --- Konversi gambar ke Base64 ---
+         function getBase64Image(imageUrl) {
+             return new Promise((resolve, reject) => {
+                 const img = new Image();
+                 img.crossOrigin = "Anonymous"; // Pastikan gambar bisa diakses
+                 img.src = imageUrl;
+                 img.onload = () => {
+                     const canvas = document.createElement("canvas");
+                     canvas.width = img.width;
+                     canvas.height = img.height;
+                     const ctx = canvas.getContext("2d");
+                     ctx.drawImage(img, 0, 0);
+                     resolve(canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, ""));
+                 };
+                 img.onerror = (error) => reject(error);
+             });
+         }
+         
+         
+            
       </script>
       <script>
          async function exportTableWithImages(tableId, filename, selectedColumns) {

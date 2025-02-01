@@ -508,7 +508,9 @@ searchBarTanggap.addEventListener("input", () => {
       keywords.every((keyword) =>
           item.nama_tanggap.toLowerCase().includes(keyword) ||
           item.jabatan_tanggap.toLowerCase().includes(keyword) ||
-          item.posisi_tanggap.toLowerCase().includes(keyword)
+          item.posisi_tanggap.toLowerCase().includes(keyword) ||
+          item.tahun_tanggap && item.tahun_tanggap.toString().includes(keyword) // Tambahkan pencarian berdasarkan tahun
+
       )
   );
 
@@ -811,6 +813,7 @@ function renderTableTanggap(data) {
       tableBodyTanggap.innerHTML += `
           <tr data-id="${item.struktur_tanggap_id}">
               <td><input type="checkbox" data-id="${item.struktur_tanggap_id}"></td>
+              <td>${item.tahun_tanggap}</td>\
               <td>${item.nama_tanggap}</td>
               <td>${item.jabatan_tanggap}</td>
               <td>${item.posisi_tanggap}</td>
