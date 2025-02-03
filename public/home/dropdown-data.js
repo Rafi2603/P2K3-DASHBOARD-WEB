@@ -1,3 +1,14 @@
+const KeahlianOptions = [
+    "",
+    "Ahli K3 Konstruksi",
+    "Ahli K3 Umum",
+    "Supervisor K3 Konstruksi Utama",
+    "Ahli Muda Keselamatan Konstruksi",
+    "Pemadam Kebakaran Kelas D",
+    "P3K Kemnaker",
+    "Ahli Muda K3 Konstruksi"
+];
+
 const jabatanTanggapOptions = [
     "Asset Security Assistant",
     "Asset Administration Assistant",

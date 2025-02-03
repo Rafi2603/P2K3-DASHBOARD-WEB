@@ -21,22 +21,29 @@ function populateDropdown(selectElementId, options) {
 document.addEventListener("DOMContentLoaded", () => {
     populateDropdown("jabatan", jabatanOptions); // Untuk modal Tambah
     populateDropdown("posisi", posisiOptions); // Dropdown untuk tambah data
-
-
-    populateDropdown("jabatan-tanggap", jabatanTanggapOptions, "Pilih Jabatan");
-    populateDropdown("posisi-tanggap", posisiTanggapOptions, "Pilih Posisi");
-
-    populateDropdown("jabatan-kecelakaan", jabatanOptions); // Untuk modal Tambah
-
-
     populateDropdown("edit-jabatan", jabatanOptions); // Untuk modal Edit
     populateDropdown("edit-posisi", posisiOptions); // Dropdown untuk edit data
 
 
+    populateDropdown("jabatan-tanggap", jabatanTanggapOptions, "Pilih Jabatan");
+    populateDropdown("posisi-tanggap", posisiTanggapOptions, "Pilih Posisi");
     populateDropdown("edit-jabatan-tanggap", jabatanTanggapOptions, "Pilih Jabatan");
     populateDropdown("edit-posisi-tanggap", posisiTanggapOptions, "Pilih Posisi");
 
+    populateDropdown("keahlian-personel", KeahlianOptions); // Untuk tambah data
+    populateDropdown("keahlian-tambahan-personel", KeahlianOptions); // Untuk tambah data
+    populateDropdown("edit-keahlian-personel", KeahlianOptions); // Untuk edit data
+    populateDropdown("edit-keahlian-tambahan-personel", KeahlianOptions); // Untuk edit data
+
+    populateDropdown("jabatan-kecelakaan", jabatanOptions); // Untuk modal Tambah
     populateDropdown("edit-jabatan-kecelakaan", jabatanOptions); // Untuk modal Edit
+
+
+
+
+
+
+
 
 
 });

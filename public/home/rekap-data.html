@@ -46,9 +46,13 @@
          <h1>Struktur Organisasi P2K3</h1>
          <div class="search-container">
             <input type="text" id="search-bar-struktur" placeholder="Search Bar">
-            <button class="add-data-btn-struktur" id="add-data-btn-struktur">Tambah Data</button>
-            <button class="export-csv-btn-struktur" onclick="exportTableStrukturToXLSX('struktur-table', 'StrukturOrganisasi.xlsx', [1, 2, 3])">Export Excel</button>
-            <button id="delete-selected-btn" class="delete-selected-btn">Delete Selected</button>
+            <button class="add-data-btn-struktur" id="add-data-btn-struktur">
+            ✏️Tambah Data
+            </button>
+            <button class="export-csv-btn-struktur" onclick="exportTableStrukturToXLSX('struktur-table', 'StrukturOrganisasi.xlsx', [2, 3, 4])">
+            📊Export Excel</button>
+            <button id="delete-selected-btn" class="delete-selected-btn">
+            🗑️Delete Selected</button>
          </div>
          <div class="pagination-settings">
             <div class="rows-per-page">
@@ -67,6 +71,7 @@
                <tr>
                   <th><input type="checkbox" id="select-all"></th>
                   <!-- Checkbox untuk memilih semua -->
+                  <th>Tahun</th>
                   <th>Nama</th>
                   <th>Jabatan</th>
                   <th>KEDUDUKAN DALAM PANITIA</th>
@@ -224,9 +229,12 @@
          <!-- Pencarian & Action Buttons -->
          <div class="search-container">
             <input type="text" id="search-bar-struktur-tanggap" placeholder="Search Bar">
-            <button class="add-data-btn-struktur-tanggap" id="add-data-btn-struktur-tanggap">Tambah Data</button>
-            <button class="export-csv-btn-struktur-tanggap" onclick="exportTableTanggapToXLSX('struktur-tanggap-table', 'StrukturOrganisasiTanggap.xlsx', [2, 3, 4])">Export Excel</button>
-            <button id="delete-selected-btn-struktur-tanggap" class="delete-selected-btn-struktur-tanggap">Delete Selected</button>
+            <button class="add-data-btn-struktur-tanggap" id="add-data-btn-struktur-tanggap">
+            ✏️Tambah Data</button>
+            <button class="export-csv-btn-struktur-tanggap" onclick="exportTableTanggapToXLSX('struktur-tanggap-table', 'StrukturOrganisasiTanggap.xlsx', [2, 3, 4])">
+            📊Export Excel</button>
+            <button id="delete-selected-btn-struktur-tanggap" class="delete-selected-btn-struktur-tanggap">
+            🗑️Delete Selected</button>
          </div>
          <!-- Pagination Settings -->
          <div class="pagination-settings-struktur-tanggap">
@@ -382,9 +390,12 @@
          <h1>Personel Ahli K3 & P3K</h1>
          <div class="search-container">
             <input type="text" id="search-bar-personel" placeholder="Search Bar">
-            <button class="add-data-btn-personel" id="add-data-btn-personel">Tambah Data</button>
-            <button class="export-csv-btn-personel" onclick="exportTableToXLSX('personel-table', 'PersonelAhliK3.xlsx', [1, 2, 3])">Export Excel</button>
-            <button id="delete-selected-btn-personel" class="delete-selected-btn-personel">Delete Selected</button>
+            <button class="add-data-btn-personel" id="add-data-btn-personel">
+            ✏️Tambah Data</button>
+            <button class="export-csv-btn-personel" onclick="exportTablePersonelToXLSX('personel-table', 'PersonelAhliK3.xlsx', [1, 2, 3, 4])">
+            📊Export Excel</button>
+            <button id="delete-selected-btn-personel" class="delete-selected-btn-personel">
+            🗑️Delete Selected</button>
          </div>
          <div class="pagination-settings-personel">
             <div class="rows-per-page-personel">
@@ -405,6 +416,7 @@
                   <!-- Checkbox untuk memilih semua -->
                   <th>Nama</th>
                   <th>Keahlian</th>
+                  <th>Keahlian (Tambahan)</th>
                   <th>Batas Masa Berlaku</th>
                   <th>Action Menu</th>
                </tr>
@@ -418,9 +430,14 @@
          <h1>Rekap Data K3</h1>
          <div class="search-container">
             <input type="text" id="search-bar-rekap" placeholder="Search Bar">
-            <button class="add-data-btn-rekap" id="add-data-btn-rekap">Tambah Data</button>
-            <button class="export-csv-btn-rekap" onclick="exportTableToXLSX('rekap-table', 'RekapDataP2K3.xlsx', [0,1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18])">Export Excel</button>
-            <button id="delete-selected-btn-rekap" class="delete-selected-btn-rekap">Delete Selected</button>
+            <button class="add-data-btn-rekap" id="add-data-btn-rekap">
+            ✏️Tambah Data
+            </button>
+            <button class="export-csv-btn-rekap" onclick="exportTableRekapToXLSX('rekap-table', 'RekapDataP2K3.xlsx', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19])">
+            📊Export ke Excel
+            </button>
+            <button id="delete-selected-btn-rekap" class="delete-selected-btn-rekap">
+            🗑️Delete Selected</button>
          </div>
          <div class="pagination-settings-rekap">
             <div class="rows-per-page-rekap">
@@ -522,9 +539,12 @@
          <h1>Kecelakaan Kerja</h1>
          <div class="search-container">
             <input type="text" id="search-bar-kecelakaan" placeholder="Search Bar">
-            <button class="add-data-btn-kecelakaan" id="add-data-btn-kecelakaan">Tambah Data</button>
-            <button class="export-csv-btn-kecelakaan" onclick="exportTableToXLSX('kecelakaan-table', 'KecelakaanKerja.xlsx', [0,1,2,3,4,5,6,7,8,9])">Export Excel</button>
-            <button id="delete-selected-btn-kecelakaan" class="delete-selected-btn-kecelakaan">Delete Selected</button>
+            <button class="add-data-btn-kecelakaan" id="add-data-btn-kecelakaan">
+            ✏️Tambah Data</button>
+            <button class="export-csv-btn-kecelakaan" onclick="exportTableToXLSX('kecelakaan-table', 'KecelakaanKerja.xlsx', [0,1,2,3,4,5,6,7,8,9])">
+            📊Export Excel</button>
+            <button id="delete-selected-btn-kecelakaan" class="delete-selected-btn-kecelakaan">
+            🗑️Delete Selected</button>
          </div>
          <div class="pagination-settings-kecelakaan">
             <div class="rows-per-page-kecelakaan">
@@ -567,11 +587,12 @@
          <h1>Kejadian Darurat</h1>
          <div class="search-container">
             <input type="text" id="search-bar-kejadian" placeholder="Search Bar">
-            <button class="add-data-btn-kejadian" id="add-data-btn-kejadian">Tambah Data</button>
+            <button class="add-data-btn-kejadian" id="add-data-btn-kejadian">
+            ✏️Tambah Data</button>
             <button class="export-csv-btn-kejadian" onclick="exportTableWithImages('kejadian-darurat-table', 'KejadianDarurat.xlsx', [1,2,3,4,5])">
-            Export Excel
-            </button>
-            <button id="delete-selected-btn-kejadian" class="delete-selected-btn-kejadian">Delete Selected</button>
+            📊Export Excel</button>
+            <button id="delete-selected-btn-kejadian" class="delete-selected-btn-kejadian">
+            🗑️Delete Selected</button>
          </div>
          <div class="pagination-settings-kejadian">
             <div class="rows-per-page-kejadian">
@@ -608,11 +629,12 @@
          <h1>Checklist K3</h1>
          <div class="search-container">
             <input type="text" id="search-bar-checklist" placeholder="Search Bar">
-            <button class="add-data-btn-checklist" id="add-data-btn-checklist">Tambah Data</button>
+            <button class="add-data-btn-checklist" id="add-data-btn-checklist">
+            ✏️Tambah Data</button>
             <button class="export-csv-btn-checklist" onclick="exportTableWithImages('checklist-k3-table', 'ChecklistK3.xlsx', [1,2,3,4,5,6,7,8,9,10,11,12,13,14])">
-            Export Excel
-            </button>
-            <button id="delete-selected-btn-checklist" class="delete-selected-btn-checklist">Delete Selected</button>
+            📊Export Excel</button>
+            <button id="delete-selected-btn-checklist" class="delete-selected-btn-checklist">
+            🗑️Delete Selected</button>
          </div>
          <div class="pagination-settings-checklist">
             <div class="rows-per-page-checklist">
@@ -741,7 +763,13 @@
                <label for="nama-personel">Nama:</label>
                <input type="text" id="nama-personel" name="nama" required>
                <label for="keahlian-personel">Keahlian:</label>
-               <input type="text" id="keahlian-personel" name="keahlian" required>
+               <select id="keahlian-personel" name="keahlian" required>
+                  <option value="" disabled selected>Pilih Keahlian</option>
+               </select>
+               <label for="keahlian-tambahan-personel">Keahlian (Tambahan):</label>
+               <select id="keahlian-tambahan-personel" name="keahlian_tambahan">
+                  <option value="" disabled selected>Pilih Keahlian</option>
+               </select>
                <label for="batas-masa-berlaku-personel">Batas Masa Berlaku:</label>
                <input type="date" id="batas-masa-berlaku-personel" name="batas_masa_berlaku" required>
                <button type="submit">Tambah</button>
@@ -758,8 +786,14 @@
                <label for="edit-nama-personel">Nama:</label>
                <input type="text" id="edit-nama-personel" name="nama" required>
                <label for="edit-keahlian-personel">Keahlian:</label>
-               <input type="text" id="edit-keahlian-personel" name="keahlian" required>
-               <label for="edit-batas-masa-berlaku">Batas Masa Berlaku:</label>
+               <select id="edit-keahlian-personel" name="keahlian" required>
+                  <option value="" disabled selected>Pilih Keahlian</option>
+               </select>
+               <label for="edit-keahlian-tambahan-personel">Keahlian (Tambahan):</label>
+               <select id="edit-keahlian-tambahan-personel" name="keahlian_tambahan" >
+                  <option value="" disabled selected>Pilih Keahlian</option>
+               </select>
+               <label for="edit-batas-masa-berlaku-personel">Batas Masa Berlaku:</label>
                <input type="date" id="edit-batas-masa-berlaku-personel" name="batas_masa_berlaku" required>
                <button type="submit">Perbarui</button>
             </form>
@@ -1065,14 +1099,15 @@
          
          function handleLogout() {
             alert("Logout berhasil");
-
+         
             // Dapatkan path dasar dari halaman saat ini
             const basePath = window.location.origin;
-
+         
             // Redirect ke halaman login secara dinamis
-            window.location.href = `${basePath}/index.html`;
+            //window.location.href = `${basePath}/index.html`;
+            window.location.href = `/public/index.html`;
          }
-
+         
       </script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
       <script>
@@ -1348,6 +1383,265 @@
          
          
             
+      </script>
+      <script>
+         async function exportTablePersonelToXLSX(tableId, filename, selectedColumns) {
+             const table = document.getElementById(tableId);
+             const rows = table.rows;
+             const data = [];
+         
+             // Tambahkan nomor secara otomatis ke dalam data
+             for (let i = 1; i < rows.length; i++) { // Mulai dari 1 agar tidak ada header ganda
+                 const row = rows[i];
+                 const rowData = [i]; // Menambahkan nomor urut otomatis
+                 rowData.push(...selectedColumns.map(colIndex => row.cells[colIndex].innerText));
+                 data.push(rowData);
+             }
+         
+             // Buat workbook & worksheet baru
+             const workbook = new ExcelJS.Workbook();
+             const worksheet = workbook.addWorksheet("Data PERSONEL AHLI K3 & P3K");
+         
+             // --- Tambahkan Bagian Judul ---
+             worksheet.mergeCells("A1:E1");
+             worksheet.getCell("A1").value = "PERSONEL AHLI K3 & P2K3";
+             worksheet.getCell("A1").alignment = { horizontal: "center" };
+             worksheet.getCell("A1").font = { bold: true, size: 14 };
+         
+             worksheet.mergeCells("A2:E2");
+             worksheet.getCell("A2").value = "PANITIA PEMBINA KESELAMATAN DAN KESEHATAN KERJA (P2K3)";
+             worksheet.getCell("A2").alignment = { horizontal: "center" };
+             worksheet.getCell("A2").font = { bold: true, size: 12 };
+         
+             worksheet.mergeCells("A3:E3");
+             worksheet.getCell("A3").value = "GEDUNG KANTOR PUSAT PT JASA MARGA (PERSERO) TBK";
+             worksheet.getCell("A3").alignment = { horizontal: "center" };
+             worksheet.getCell("A3").font = { bold: true, size: 12 };
+         
+             worksheet.addRow([]); // Baris kosong sebelum tabel
+         
+             // --- Tambahkan Header Tabel ---
+             const headerRow = worksheet.addRow(["No.", "NAMA", "KEAHLIAN", "KEAHLIAN (TAMBAHAN)", "BATAS MASA BERLAKU"]);
+             headerRow.font = { bold: true, color: { argb: "FFFFFF" } }; // Warna teks putih
+             headerRow.alignment = { horizontal: "center" };
+         
+             // Tambahkan warna latar belakang pada header
+             headerRow.eachCell(cell => {
+                 cell.fill = {
+                     type: "pattern",
+                     pattern: "solid",
+                     fgColor: { argb: "0070C0" } // Warna biru seperti standar tabel korporat
+                 };
+                 cell.border = {
+                     top: { style: "thin" },
+                     bottom: { style: "thin" },
+                     left: { style: "thin" },
+                     right: { style: "thin" }
+                 };
+             });
+         
+             // --- Tambahkan Data Tabel ---
+             data.forEach(rowData => {
+                 const row = worksheet.addRow(rowData);
+                 row.eachCell(cell => {
+                     cell.border = {
+                         bottom: { style: "thin" }, // Border hanya sampai batas data
+                         left: { style: "thin" },
+                         right: { style: "thin" }
+                     };
+                 });
+             });
+         
+             // --- Tambahkan Logo ---
+             const base64Image = await getBase64Image("jasmarLogo.png"); // Konversi gambar ke base64
+             const imageId = workbook.addImage({
+                 base64: base64Image,
+                 extension: "png",
+             });
+         
+             worksheet.addImage(imageId, {
+                 tl: { col: 0, row: 0 }, // Posisi gambar (pojok kiri atas)
+                 ext: { width: 61, height: 61 }, // Ukuran logo lebih kecil agar tidak mengganggu teks
+             });
+         
+             // --- Atur Lebar Kolom ---
+             worksheet.getColumn(1).width = 5;  // Kolom "No."
+             worksheet.getColumn(2).width = 30; // Kolom "Nama"
+             worksheet.getColumn(3).width = 40; // Kolom "KEAHLIAN"
+             worksheet.getColumn(4).width = 40; // Kolom "KEAHLIAN (TAMBAHAN)"
+             worksheet.getColumn(5).width = 22; // Kolom "BATAS MASA BERLAKU"
+         
+         
+             // Simpan file
+             const buffer = await workbook.xlsx.writeBuffer();
+             const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+         
+             // Buat link download
+             const link = document.createElement("a");
+             link.href = URL.createObjectURL(blob);
+             link.download = filename;
+             document.body.appendChild(link);
+             link.click();
+             document.body.removeChild(link);
+         }
+         
+         // --- Konversi gambar ke Base64 ---
+         function getBase64Image(imageUrl) {
+             return new Promise((resolve, reject) => {
+                 const img = new Image();
+                 img.crossOrigin = "Anonymous"; // Pastikan gambar bisa diakses
+                 img.src = imageUrl;
+                 img.onload = () => {
+                     const canvas = document.createElement("canvas");
+                     canvas.width = img.width;
+                     canvas.height = img.height;
+                     const ctx = canvas.getContext("2d");
+                     ctx.drawImage(img, 0, 0);
+                     resolve(canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, ""));
+                 };
+                 img.onerror = (error) => reject(error);
+             });
+         }
+         
+         
+            
+      </script>
+      <script>
+         async function exportTableRekapToXLSX(tableId, filename, selectedColumns) {
+             const table = document.getElementById(tableId);
+             const rows = table.rows;
+             const data = [];
+         
+             // Tambahkan nomor secara otomatis ke dalam data
+             for (let i = 1; i < rows.length; i++) { // Mulai dari 1 agar tidak ada header ganda
+                 const row = rows[i];
+                 const rowData = [i]; // Menambahkan nomor urut otomatis
+                 rowData.push(...selectedColumns.map(colIndex => row.cells[colIndex].innerText));
+                 data.push(rowData);
+             }
+         
+             // Buat workbook & worksheet baru
+             const workbook = new ExcelJS.Workbook();
+             const worksheet = workbook.addWorksheet("REKAP FORM DATA P2K3");
+         
+             // --- Tambahkan Bagian Judul ---
+             worksheet.mergeCells("A1:T1");
+             worksheet.getCell("A1").value = "REKAP FORM DATA P2K3";
+             worksheet.getCell("A1").alignment = { horizontal: "center" };
+             worksheet.getCell("A1").font = { bold: true, size: 14 };
+         
+             worksheet.mergeCells("A2:T2");
+             worksheet.getCell("A2").value = "PANITIA PEMBINA KESELAMATAN DAN KESEHATAN KERJA (P2K3)";
+             worksheet.getCell("A2").alignment = { horizontal: "center" };
+             worksheet.getCell("A2").font = { bold: true, size: 12 };
+         
+             worksheet.mergeCells("A3:T3");
+             worksheet.getCell("A3").value = "GEDUNG KANTOR PUSAT PT JASA MARGA (PERSERO) TBK";
+             worksheet.getCell("A3").alignment = { horizontal: "center" };
+             worksheet.getCell("A3").font = { bold: true, size: 12 };
+         
+             worksheet.addRow([]); // Baris kosong sebelum tabel
+         
+             // --- Tambahkan Header Tabel ---
+             const headerRow = worksheet.addRow(["No.", "TAHUN", "BULAN", "JUMLAH KARYAWAN", "JUMLAH HARI KERJA", "JUMLAH JAM KERJA",
+               "KECELAKAAN BERAT", "KECELAKAAN RINGAN", "MENINGGAL DUNIA (AKIBAT KERJA)", "NEAR MISS", "FIRE ACCIDENT", "DAMAGED PROPERTY",
+               "JUMLAH HARI HILANG", "JUMLAH HARI TANPA HILANG", "LTI", "MAN HOUR", "FREQUENCY RATE (FR)", "SEVERITY RATE (SR)", "INCIDENT RATE (IR)",
+               "ATLR" 
+             ]);
+             headerRow.font = { bold: true, color: { argb: "FFFFFF" } }; // Warna teks putih
+             headerRow.alignment = { horizontal: "center" };
+         
+             // Tambahkan warna latar belakang pada header
+             headerRow.eachCell(cell => {
+                 cell.fill = {
+                     type: "pattern",
+                     pattern: "solid",
+                     fgColor: { argb: "0047AB" } // Warna biru tua
+                 };
+                 cell.border = {
+                     top: { style: "thin" },
+                     bottom: { style: "thin" },
+                     left: { style: "thin" },
+                     right: { style: "thin" }
+                 };
+             });
+         
+             // --- Tambahkan Data Tabel ---
+             data.forEach(rowData => {
+                 const row = worksheet.addRow(rowData);
+                 row.eachCell(cell => {
+                     cell.border = {
+                         bottom: { style: "thin" },
+                         left: { style: "thin" },
+                         right: { style: "thin" }
+                     };
+                 });
+             });
+         
+             // --- Tambahkan Logo ---
+             const base64Image = await getBase64Image("jasmarLogo.png"); // Konversi gambar ke base64
+             const imageId = workbook.addImage({
+                 base64: base64Image,
+                 extension: "png",
+             });
+         
+             worksheet.addImage(imageId, {
+                 tl: { col: 0, row: 0 }, // Posisi gambar (pojok kiri atas)
+                 ext: { width: 61, height: 61 }, // Ukuran logo lebih kecil agar tidak mengganggu teks
+             });
+         
+         // --- Atur Lebar Kolom ---
+         worksheet.getColumn(1).width = 5;   // Kolom "No."
+         worksheet.getColumn(2).width = 10;  // Kolom "TAHUN"
+         worksheet.getColumn(3).width = 12;  // Kolom "BULAN"
+         worksheet.getColumn(4).width = 20;  // Kolom "JUMLAH KARYAWAN"
+         worksheet.getColumn(5).width = 20;  // Kolom "JUMLAH HARI KERJA"
+         worksheet.getColumn(6).width = 20;  // Kolom "JUMLAH JAM KERJA"
+         worksheet.getColumn(7).width = 20;  // Kolom "KECELAKAAN BERAT"
+         worksheet.getColumn(8).width = 20;  // Kolom "KECELAKAAN RINGAN"
+         worksheet.getColumn(9).width = 30;  // Kolom "MENINGGAL DUNIA (AKIBAT KERJA)"
+         worksheet.getColumn(10).width = 15; // Kolom "NEAR MISS"
+         worksheet.getColumn(11).width = 15; // Kolom "FIRE ACCIDENT"
+         worksheet.getColumn(12).width = 21; // Kolom "DAMAGED PROPERTY"
+         worksheet.getColumn(13).width = 25; // Kolom "JUMLAH HARI HILANG"
+         worksheet.getColumn(14).width = 25; // Kolom "JUMLAH HARI TANPA HILANG"
+         worksheet.getColumn(15).width = 10; // Kolom "LTI"
+         worksheet.getColumn(16).width = 15; // Kolom "MAN HOUR"
+         worksheet.getColumn(17).width = 20; // Kolom "FREQUENCY RATE (FR)"
+         worksheet.getColumn(18).width = 20; // Kolom "SEVERITY RATE (SR)"
+         worksheet.getColumn(19).width = 18; // Kolom "INCIDENT RATE (IR)"
+         worksheet.getColumn(20).width = 22; // Kolom "ATLR"
+         
+             // Simpan file
+             const buffer = await workbook.xlsx.writeBuffer();
+             const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+         
+             // Buat link download
+             const link = document.createElement("a");
+             link.href = URL.createObjectURL(blob);
+             link.download = filename;
+             document.body.appendChild(link);
+             link.click();
+             document.body.removeChild(link);
+         }
+         
+         // --- Konversi gambar ke Base64 ---
+         function getBase64Image(imageUrl) {
+             return new Promise((resolve, reject) => {
+                 const img = new Image();
+                 img.crossOrigin = "Anonymous"; // Pastikan gambar bisa diakses
+                 img.src = imageUrl;
+                 img.onload = () => {
+                     const canvas = document.createElement("canvas");
+                     canvas.width = img.width;
+                     canvas.height = img.height;
+                     const ctx = canvas.getContext("2d");
+                     ctx.drawImage(img, 0, 0);
+                     resolve(canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, ""));
+                 };
+                 img.onerror = (error) => reject(error);
+             });
+         }
       </script>
       <script>
          async function exportTableWithImages(tableId, filename, selectedColumns) {

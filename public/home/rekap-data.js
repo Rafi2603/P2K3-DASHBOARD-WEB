@@ -479,7 +479,9 @@ deleteSelectedBtnChecklist.addEventListener("click", () => {
               return keywords.every((keyword) =>
                   item.nama.toLowerCase().includes(keyword) ||
                   item.jabatan.toLowerCase().includes(keyword) ||
-                  item.posisi.toLowerCase().includes(keyword)
+                  item.posisi.toLowerCase().includes(keyword) ||
+                  item.tahun_struktur && item.tahun_struktur.toString().includes(keyword) // Tambahkan pencarian berdasarkan tahun
+
               );
           });
       
@@ -674,6 +676,7 @@ fetch("http://localhost:3000/getchecklist")
         tableBody.innerHTML += `
        <tr data-id="${item.struktur_id}">
          <td><input type="checkbox" data-id="${item.struktur_id}"></td>
+         <td>${item.tahun_struktur}</td>
          <td>${item.nama}</td>
          <td>${item.jabatan}</td>
          <td>${item.posisi}</td>
@@ -938,12 +941,14 @@ document.getElementById('rows-per-page-struktur-tanggap').addEventListener('chan
        <td><input type="checkbox" data-id="${item.personel_k3_id}"></td>
        <td>${item.nama}</td>
        <td>${item.keahlian}</td>
+       <td>${item.keahlian_tambahan}</td>
        <td>${formattedDate}</td> 
        <td>
          <button class="edit-btn-personel" 
                  data-id="${item.personel_k3_id}" 
                  data-nama="${item.nama}" 
                  data-keahlian="${item.keahlian}" 
+                 data-keahlian_tambahan="${item.keahlian_tambahan}" 
                  data-batas="${item.batas_masa_berlaku}">
            ✏️
          </button>
@@ -962,12 +967,14 @@ document.getElementById('rows-per-page-struktur-tanggap').addEventListener('chan
            const id = e.target.dataset.id;
            const nama = e.target.dataset.nama;
            const keahlian = e.target.dataset.keahlian;
+           const keahlian_tambahan = e.target.dataset.keahlian_tambahan;
            const batas = e.target.dataset.batas;
 
            // Isi modal dengan data yang dipilih
            document.getElementById("edit-id-personel").value = id;
            document.getElementById("edit-nama-personel").value = nama;
            document.getElementById("edit-keahlian-personel").value = keahlian;
+           document.getElementById("edit-keahlian-tambahan-personel").value = keahlian_tambahan;
            document.getElementById("edit-batas-masa-berlaku-personel").value = batas;
 
            // Tampilkan modal edit
@@ -1874,6 +1881,7 @@ addDataFormTanggap.addEventListener("submit", (e) => {
      const formData = {
         nama: document.getElementById("nama-personel").value,
         keahlian: document.getElementById("keahlian-personel").value,
+        keahlian_tambahan: document.getElementById("keahlian-tambahan-personel").value,
         batas_masa_berlaku: document.getElementById("batas-masa-berlaku-personel").value,
      };
 
@@ -2242,9 +2250,10 @@ closeEditModalKejadian.addEventListener("click", () => {
      e.preventDefault();
 
      const formData = {
-      personel_k3_id: document.getElementById("edit-id-personel").value,
+        personel_k3_id: document.getElementById("edit-id-personel").value,
         nama: document.getElementById("edit-nama-personel").value,
         keahlian: document.getElementById("edit-keahlian-personel").value,
+        keahlian_tambahan: document.getElementById("edit-keahlian-tambahan-personel").value,
         batas_masa_berlaku: document.getElementById("edit-batas-masa-berlaku-personel").value,
      };
 

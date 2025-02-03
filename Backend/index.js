@@ -357,16 +357,16 @@ router.get('/getpersonel', async (req, res) => {
 
 // ADD PERSONEL
 router.post("/addpersonel", async (req, res) => {
-    const { nama, keahlian, batas_masa_berlaku } = req.body;
+    const { nama, keahlian, keahlian_tambahan, batas_masa_berlaku } = req.body;
   
     if (!nama || !keahlian || !batas_masa_berlaku) {
       return res.status(400).json({ message: "Semua field wajib diisi" });
     }
-  
+
     try {
       await db.query(
-        "INSERT INTO personel_k3 (nama, keahlian, batas_masa_berlaku) VALUES ($1, $2, $3)",
-        [nama, keahlian, batas_masa_berlaku]
+        "INSERT INTO personel_k3 (nama, keahlian, keahlian_tambahan, batas_masa_berlaku) VALUES ($1, $2, $3, $4)",
+        [nama, keahlian, keahlian_tambahan, batas_masa_berlaku]
       );
       res.status(201).json({ message: "Data berhasil ditambahkan" });
     } catch (error) {
@@ -375,9 +375,10 @@ router.post("/addpersonel", async (req, res) => {
     }
 });
 
+
 // UPDATE PERSONEL
 router.put("/updatepersonel", async (req, res) => {
-    const { personel_k3_id, nama, keahlian, batas_masa_berlaku } = req.body;
+    const { personel_k3_id, nama, keahlian, keahlian_tambahan, batas_masa_berlaku } = req.body;
 
     //console.log("Received data:", req.body); // Log data yang diterima
 
@@ -388,10 +389,10 @@ router.put("/updatepersonel", async (req, res) => {
     try {
         const query = `
             UPDATE personel_k3
-            SET nama = $1, keahlian = $2, batas_masa_berlaku = $3
-            WHERE personel_k3_id = $4
+            SET nama = $1, keahlian = $2, keahlian_tambahan= $3, batas_masa_berlaku = $4
+            WHERE personel_k3_id = $5
         `;
-        const values = [nama, keahlian, batas_masa_berlaku, personel_k3_id];
+        const values = [nama, keahlian, keahlian_tambahan, batas_masa_berlaku,  personel_k3_id];
 
         await db.query(query, values);
         res.status(200).json({ message: "Data berhasil diperbarui" });
