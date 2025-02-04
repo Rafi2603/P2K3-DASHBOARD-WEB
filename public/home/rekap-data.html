@@ -23,13 +23,21 @@
             <li>
                <img src="Logo Jasa Marga.png" alt="Logo Perusahaan" class="navbar-logo">
             </li>
-            <li>
-               <h1 class="navbar-title">DASHBOARD DATA P2K3</h1>
-            </li>
+            <ul class="navbar-titles-container">
+               <li>
+                   <h1 class="navbar-title">DASHBOARD DATA P2K3</h1>
+               </li>
+               <li>
+                   <h2 class="navbar-title-2">PANITIA PEMBINA KESELAMATAN DAN KESEHATAN KERJA (P2K3)</h2>
+               </li>
+
+           </ul>
+           
          </ul>
          <button class="logout-btn" onclick="handleLogout()">Logout</button>
       </div>
       <!-- Tab Navigation -->
+      <div class="tabs-wrapper">
       <div class="tabs-container">
          <ul class="tabs">
             <li class="tab active" data-tab="struktur-tab">Struktur Organisasi P2K3</li>
@@ -41,9 +49,10 @@
             <li class="tab" data-tab="checklist-k3-tab">Checklist K3</li>
          </ul>
       </div>
+
       <!-- Tab Content -->
       <div class="tab-content" id="struktur-tab">
-         <h1>Struktur Organisasi P2K3</h1>
+         <h1>Tabel Struktur Organisasi P2K3</h1>
          <div class="search-container">
             <input type="text" id="search-bar-struktur" placeholder="Search Bar">
             <button class="add-data-btn-struktur" id="add-data-btn-struktur">
@@ -225,7 +234,7 @@
       </div>
       <!-- Konten Struktur Organisasi Tanggap -->
       <div class="tab-content" id="struktur-tanggap-tab" style="display: none;">
-         <h1>Struktur Tim Tanggap Darurat</h1>
+         <h1>Tabel Struktur Tim Tanggap Darurat</h1>
          <!-- Pencarian & Action Buttons -->
          <div class="search-container">
             <input type="text" id="search-bar-struktur-tanggap" placeholder="Search Bar">
@@ -387,7 +396,7 @@
          </div>
       </div>
       <div class="tab-content" id="personel-tab" style="display: none;">
-         <h1>Personel Ahli K3 & P3K</h1>
+         <h1>Tabel Personel Ahli K3 & P3K</h1>
          <div class="search-container">
             <input type="text" id="search-bar-personel" placeholder="Search Bar">
             <button class="add-data-btn-personel" id="add-data-btn-personel">
@@ -427,7 +436,7 @@
          </table>
       </div>
       <div class="tab-content" id="rekap-tab" style="display: none;">
-         <h1>Rekap Data K3</h1>
+         <h1>Tabel Rekap Data K3</h1>
          <div class="search-container">
             <input type="text" id="search-bar-rekap" placeholder="Search Bar">
             <button class="add-data-btn-rekap" id="add-data-btn-rekap">
@@ -536,12 +545,12 @@
          </div>
       </div>
       <div class="tab-content" id="kecelakaan-tab" style="display: none;">
-         <h1>Kecelakaan Kerja</h1>
+         <h1>Tabel Rekap Kecelakaan Kerja</h1>
          <div class="search-container">
             <input type="text" id="search-bar-kecelakaan" placeholder="Search Bar">
             <button class="add-data-btn-kecelakaan" id="add-data-btn-kecelakaan">
             ✏️Tambah Data</button>
-            <button class="export-csv-btn-kecelakaan" onclick="exportTableToXLSX('kecelakaan-table', 'KecelakaanKerja.xlsx', [0,1,2,3,4,5,6,7,8,9])">
+            <button class="export-csv-btn-kecelakaan" onclick="exportTableKecelakaanToXLSX('kecelakaan-table', 'KecelakaanKerja.xlsx', [1,2,3,4,5,6,7,8,9,10])">
             📊Export Excel</button>
             <button id="delete-selected-btn-kecelakaan" class="delete-selected-btn-kecelakaan">
             🗑️Delete Selected</button>
@@ -584,7 +593,7 @@
          </div>
       </div>
       <div class="tab-content" id="kejadian-darurat-tab" style="display: none;">
-         <h1>Kejadian Darurat</h1>
+         <h1>Tabel Rekap Kejadian Darurat</h1>
          <div class="search-container">
             <input type="text" id="search-bar-kejadian" placeholder="Search Bar">
             <button class="add-data-btn-kejadian" id="add-data-btn-kejadian">
@@ -675,6 +684,7 @@
                </tbody>
             </table>
          </div>
+      </div>
       </div>
       <!-- Modal Tambah Data STRUKTUR -->
       <div id="add-data-modal-struktur" class="modal">
@@ -900,8 +910,10 @@
             <form id="add-data-form-kecelakaan">
                <label for="tanggal">Tanggal:</label>
                <input type="date" id="tanggal" name="tanggal" required>
+
                <label for="nik">NIK:</label>
-               <input type="text" id="nik" name="nik" required>
+               <input type="text" id="nik" name="nik" pattern="^\d{4,}$" title="Minimal 4 digit angka" required>
+
                <label for="nama">Nama:</label>
                <input type="text" id="nama-kecelakaan" name="nama" required>
                <label for="jabatan">Jabatan:</label>
@@ -938,8 +950,11 @@
                <input type="hidden" id="edit-id-kecelakaan" name="kecelakaankerja_id">
                <label for="edit-tanggal">Tanggal:</label>
                <input type="date" id="edit-tanggal" name="tanggal" required>
+
                <label for="edit-nik">NIK:</label>
-               <input type="text" id="edit-nik" name="nik" required>
+               <input type="text" id="edit-nik" name="nik" pattern="^\d{4,}$" title="Minimal 4 digit angka" required>
+               
+
                <label for="edit-nama">Nama:</label>
                <input type="text" id="edit-nama-kecelakaan" name="nama" required>
                <label for="jabatan">Jabatan:</label>
@@ -1080,6 +1095,32 @@
             </form>
          </div>
       </div>
+
+      <script>
+           document.getElementById("nik").addEventListener("input", function () {
+      this.value = this.value.replace(/\D/g, ""); // Hanya angka diperbolehkan
+  });
+
+  document.getElementById("edit-nik").addEventListener("input", function () {
+      this.value = this.value.replace(/\D/g, ""); // Hanya angka diperbolehkan
+  });
+
+  document.getElementById("add-data-form-personel").addEventListener("submit", function (event) {
+      const nikInput = document.getElementById("nik").value;
+      if (nikInput.length < 4) {
+          alert("NIK harus minimal 4 digit angka!");
+          event.preventDefault(); // Mencegah pengiriman formulir
+      }
+  });
+
+  document.getElementById("edit-data-form-personel").addEventListener("submit", function (event) {
+      const editNikInput = document.getElementById("edit-nik").value;
+      if (editNikInput.length < 4) {
+          alert("NIK harus minimal 4 digit angka!");
+          event.preventDefault();
+      }
+  });
+      </script>
       <script>
          // Fungsi Tab Navigation
          document.addEventListener("DOMContentLoaded", () => {
@@ -1220,7 +1261,7 @@
              });
          
              worksheet.addImage(imageId, {
-                 tl: { col: 0, row: 0 }, // Posisi gambar (pojok kiri atas)
+                 tl: { col: 1, row: 0 }, // Posisi gambar (pojok kiri atas)
                  ext: { width: 61, height: 61 }, // Ukuran logo lebih kecil agar tidak mengganggu teks
              });
          
@@ -1340,7 +1381,7 @@
              });
          
              worksheet.addImage(imageId, {
-                 tl: { col: 0, row: 0 }, // Posisi gambar (pojok kiri atas)
+                 tl: { col: 1, row: 0 }, // Posisi gambar (pojok kiri atas)
                  ext: { width: 61, height: 61 }, // Ukuran logo lebih kecil agar tidak mengganggu teks
              });
          
@@ -1460,7 +1501,7 @@
              });
          
              worksheet.addImage(imageId, {
-                 tl: { col: 0, row: 0 }, // Posisi gambar (pojok kiri atas)
+                 tl: { col: 1, row: 0 }, // Posisi gambar (pojok kiri atas)
                  ext: { width: 61, height: 61 }, // Ukuran logo lebih kecil agar tidak mengganggu teks
              });
          
@@ -1586,7 +1627,7 @@
              });
          
              worksheet.addImage(imageId, {
-                 tl: { col: 0, row: 0 }, // Posisi gambar (pojok kiri atas)
+                 tl: { col: 1, row: 0 }, // Posisi gambar (pojok kiri atas)
                  ext: { width: 61, height: 61 }, // Ukuran logo lebih kecil agar tidak mengganggu teks
              });
          
@@ -1642,6 +1683,130 @@
                  img.onerror = (error) => reject(error);
              });
          }
+      </script>
+      <script>
+         async function exportTableKecelakaanToXLSX(tableId, filename, selectedColumns) {
+          const table = document.getElementById(tableId);
+          const rows = table.rows;
+          const data = [];
+         
+          // Tambahkan nomor secara otomatis ke dalam data
+          for (let i = 1; i < rows.length; i++) { // Mulai dari 1 agar tidak ada header ganda
+              const row = rows[i];
+              const rowData = [i]; // Menambahkan nomor urut otomatis
+              rowData.push(...selectedColumns.map(colIndex => row.cells[colIndex].innerText));
+              data.push(rowData);
+          }
+         
+          // Buat workbook & worksheet baru
+          const workbook = new ExcelJS.Workbook();
+          const worksheet = workbook.addWorksheet("Data PERSONEL AHLI K3 & P3K");
+         
+         // --- Tambahkan Header ---
+         worksheet.mergeCells("A1:K1");
+         worksheet.getCell("A1").value = "REKAP KECELAKAAN KERJA";
+         worksheet.getCell("A1").alignment = { horizontal: "center" };
+         worksheet.getCell("A1").font = { bold: true, size: 14 };
+         
+         worksheet.mergeCells("A2:K2");
+         worksheet.getCell("A2").value = "PANITIA PEMBINA KESELAMATAN DAN KESEHATAN KERJA (P2K3)";
+         worksheet.getCell("A2").alignment = { horizontal: "center" };
+         worksheet.getCell("A2").font = { bold: true, size: 12 };
+         
+         worksheet.addRow([]); // Baris kosong sebelum tabel
+         
+          // --- Tambahkan Header Tabel ---
+          const headerRow = worksheet.addRow(["No.", "TANGGAL", "NIK", "NAMA", "JABATAN", "UNIT", "TEMPAT KEJADIAN", "KATEGORTI KECELAKAAN",
+            "TINDAK LANJUT", "PERAWATAN RS", "KETERANGAN"
+          ]);
+          headerRow.font = { bold: true, color: { argb: "FFFFFF" } }; // Warna teks putih
+          headerRow.alignment = { horizontal: "center" };
+         
+          // Tambahkan warna latar belakang pada header
+          headerRow.eachCell(cell => {
+              cell.fill = {
+                  type: "pattern",
+                  pattern: "solid",
+                  fgColor: { argb: "0070C0" } // Warna biru seperti standar tabel korporat
+              };
+              cell.border = {
+                  top: { style: "thin" },
+                  bottom: { style: "thin" },
+                  left: { style: "thin" },
+                  right: { style: "thin" }
+              };
+          });
+         
+          // --- Tambahkan Data Tabel ---
+          data.forEach(rowData => {
+              const row = worksheet.addRow(rowData);
+              row.eachCell(cell => {
+                  cell.border = {
+                      bottom: { style: "thin" }, // Border hanya sampai batas data
+                      left: { style: "thin" },
+                      right: { style: "thin" }
+                  };
+              });
+          });
+         
+          // --- Tambahkan Logo ---
+          const base64Image = await getBase64Image("jasmarLogo.png"); // Konversi gambar ke base64
+          const imageId = workbook.addImage({
+              base64: base64Image,
+              extension: "png",
+          });
+         
+          worksheet.addImage(imageId, {
+              tl: { col: 1, row: 0 }, // Posisi gambar (pojok kiri atas)
+              ext: { width: 48, height: 48 }, // Ukuran logo lebih kecil agar tidak mengganggu teks
+          });
+         
+          // --- Atur Lebar Kolom ---
+          worksheet.getColumn(1).width = 5;  // Kolom "No."
+          worksheet.getColumn(2).width = 12; // Kolom "TANGGAL"
+          worksheet.getColumn(3).width = 15; // Kolom "NIK"
+          worksheet.getColumn(4).width = 25; // Kolom "NAMA"
+          worksheet.getColumn(5).width = 35; // Kolom "JABATAN"
+          worksheet.getColumn(6).width = 30; // Kolom "UNIT"
+          worksheet.getColumn(7).width = 25; // Kolom "TEMPAT KEJADIAN"
+          worksheet.getColumn(8).width = 25; // Kolom "KATEGORI"
+          worksheet.getColumn(9).width = 30; // Kolom "TINDAK LANJUT"
+          worksheet.getColumn(10).width = 20; // Kolom "PERAWATAN RS"
+          worksheet.getColumn(11).width = 30; // Kolom "KETERANGAN"
+         
+         
+          // Simpan file
+          const buffer = await workbook.xlsx.writeBuffer();
+          const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+         
+          // Buat link download
+          const link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+         }
+         
+         // --- Konversi gambar ke Base64 ---
+         function getBase64Image(imageUrl) {
+          return new Promise((resolve, reject) => {
+              const img = new Image();
+              img.crossOrigin = "Anonymous"; // Pastikan gambar bisa diakses
+              img.src = imageUrl;
+              img.onload = () => {
+                  const canvas = document.createElement("canvas");
+                  canvas.width = img.width;
+                  canvas.height = img.height;
+                  const ctx = canvas.getContext("2d");
+                  ctx.drawImage(img, 0, 0);
+                  resolve(canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, ""));
+              };
+              img.onerror = (error) => reject(error);
+          });
+         }
+         
+         
       </script>
       <script>
          async function exportTableWithImages(tableId, filename, selectedColumns) {

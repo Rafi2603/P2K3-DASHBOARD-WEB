@@ -168,20 +168,67 @@ table tr:hover td {
 }
 
 /* Judul Navbar */
-.navbar-title {
+/* Wrapper untuk judul navbar */
+.navbar-titles-container {
   position: absolute;
-  left: 50%; /* Pindahkan ke tengah secara horizontal */
-  transform: translateX(-50%); /* Koreksi posisi agar pas di tengah */
-  font-size: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Efek gradasi warna dan bayangan untuk teks */
+.navbar-title {
+  font-size: 24px;
   font-weight: bold;
   margin: 0;
-  background: black;
+  background: linear-gradient(90deg, #0047AB, black); /* Gradasi warna biru ke kuning tua */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  z-index: 1; /* Pastikan teks di atas pseudo elemen */
-
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  transition: all 0.3s ease-in-out;
 }
+
+/* Efek hover agar lebih interaktif */
+.navbar-title:hover {
+  transform: scale(1.05);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Subjudul */
+.navbar-title-2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  background: linear-gradient(90deg, #0047AB, black); /* Gradasi oranye ke kuning */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Efek animasi masuk saat halaman dimuat */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar-title,
+.navbar-title-2 {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+
 
 
 
@@ -452,65 +499,92 @@ button.delete-btn-checklist:hover  {
   background-color: #c0392b;
 }
 
-/* MENU TAB CONTAINER */
-.tabs-container {
-  margin-bottom: 20px;
+/* Wrapper untuk layout */
+/* Wrapper untuk layout utama */
+.tabs-wrapper {
+  display: flex;
+  align-items: flex-start; /* Sejajarkan elemen ke atas */
+  height: 100vh; /* Pastikan tinggi sesuai layar */
+  overflow: hidden; /* Hindari scroll horizontal */
 }
 
+/* Sidebar Tabs */
+.tabs-container {
+  width: 350px; /* Lebar sidebar tab */
+  min-height: 100vh; /* Sepanjang layar */
+  background: #f7f7f7; /* Warna latar sidebar */
+  border-right: 2px solid #ccc;
+  padding: 10px;
+  position: sticky;
+  top: 0; /* Sticky agar tetap di tempat saat scroll */
+  overflow-y: auto; /* Jika tab terlalu banyak, bisa di-scroll */
+}
+
+/* Kontainer untuk isi tab */
+.tab-content {
+  flex-grow: 1; /* Membuat area ini fleksibel */
+  padding: 20px;
+  background: #fff; /* Warna latar konten */
+  min-width: 500px; /* Pastikan tidak terlalu kecil */
+  overflow-y: auto; /* Konten dalam tab bisa di-scroll */
+  height: 100vh; /* Isi tetap memenuhi layar */
+}
+
+/* Tab button styling */
 .tabs {
-  display: flex;
   list-style: none;
   padding: 0;
   margin: 0;
-  border-bottom: 2px solid #ccc;
 }
 
 .tabs .tab {
-  padding: 10px 20px;
+  padding: 12px 16px;
   cursor: pointer;
   font-weight: bold;
-  color: #555; /* Warna teks default */
+  color: #555;
   border: 1px solid #ccc;
   border-bottom: none;
-  background: #f7f7f7; /* Warna latar default */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Animasi transisi */
-  border-radius: 8px 8px 0 0; /* Membuat sudut atas tab melengkung */
+  background: #f0f0f0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 8px 8px 0 0;
+  display: block; /* Membuat tab vertikal */
 }
 
 .tabs .tab:hover {
-  background: #d4edda; /* Warna hijau lembut saat hover */
-  color: #333; /* Warna teks lebih gelap */
+  background: #9bb2d1;
+  color: #333;
 }
 
 .tabs .tab.active {
-  background: gray; /* Hijau solid untuk tab aktif */
-  color: white; /* Warna teks putih */
-  border-bottom: 2px solid white; /* Menghilangkan garis bawah tab aktif */
+  background: #0047AB; /* Biru lebih elegan */
+  color: white;
+  border-bottom: 2px solid white;
 }
 
-.tab-content {
-  padding-top: 10px; /* Hanya padding atas */
-  padding-right: 50px; /* Anda bisa mengatur nilai lain untuk sisi ini */
-  padding-bottom: 15px; /* Anda bisa mengatur nilai lain untuk sisi ini */
-  padding-left: 50px; /* Anda bisa mengatur nilai lain untuk sisi ini */
-  border: 1px solid #ccc;
-  background: #f9f9f9; /* Latar belakang konten */
-  border-radius: 0 0 8px 8px; /* Melengkungkan sudut bawah */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan lembut */
-  animation: fadeIn 0.3s ease-in-out; /* Animasi muncul */
+/* Buat tab-content dapat diubah ukurannya oleh user */
+.resizable {
+  resize: horizontal;
+  overflow: auto;
+  min-width: 500px;
+  max-width: 100%;
 }
 
-/* Menambahkan efek transisi saat tab berganti */
+/* Efek animasi muncul */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px); /* Sedikit bergeser ke bawah */
+    transform: translateY(-10px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
+.tab-content {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
 
 
 
