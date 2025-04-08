@@ -49,7 +49,32 @@ VALUES
 ('Frred Ferdian', 'HC Information System Department Head', 'Anggota', CURRENT_DATE),
 ('Agus Budiana', 'Industrial Relation Department Head', 'Anggota', CURRENT_DATE),
 ('Indra Alamsyah', 'Regulatory Management Department Head', 'Anggota', CURRENT_DATE),
-('Mintari Yulianingsih', 'Environmental Department Head', 'Anggota', CURRENT_DATE);
+('Mintari Yulianingsih', 'Environmental Department Head', 'Anggota', CURRENT_DATE),
+('Vera Nurpujia', 'Revenue Control Department Head', 'Anggota',CURRENT_DATE),
+('Tengku Vaisal Rizal', 'Logistic and Inventory Section Head', 'Anggota',CURRENT_DATE),
+('Stella Adelin', 'Procurement Services Senior Specialist', 'Anggota',CURRENT_DATE),
+('Aditya Rizki Dharmawan', 'Procurement Services Senior Specialist', 'Anggota',CURRENT_DATE),
+('Irra Susiyanti', 'Human Capital Development Senior Specialist', 'Anggota',CURRENT_DATE),
+('Adinda Kariz Putri', 'Learning Experience Specialist', 'Anggota',CURRENT_DATE),
+('Agung Trinanda', 'Toll Road Investment Development Specialist', 'Anggota',CURRENT_DATE),
+('Mas’adi', 'Revenue Control Specialist', 'Anggota',CURRENT_DATE),
+('Indra Rabuanawal', 'Engineering Area 2 Assistant', 'Anggota',CURRENT_DATE),
+('Tatang Supriatna', 'Employee Services Assistant', 'Anggota',CURRENT_DATE),
+('Djaswadi', 'IT Support & Services Assistant', 'Anggota',CURRENT_DATE),
+('Yudha Rizqi Gumilang', 'Operation Bussines Management Assistant', 'Anggota',CURRENT_DATE),
+('Maulana Arief Raditya', 'Quality, Health, Safety & Environment Management Assistant', 'Anggota',CURRENT_DATE),
+('Ivana Yeyet R Felle', 'Quality, Health, Safety & Environment Management Assistant', 'Anggota',CURRENT_DATE),
+('Krisna Rengga Buana', 'Internet Of Things Project Manager', 'Anggota',CURRENT_DATE),
+('Sri Anggoro Prahastono', 'Quality, Health, Safety & Environment Management Assistant', 'Anggota',CURRENT_DATE),
+('Muhamad Sihabuddin', 'Toll Collection System Evaluation Assistant', 'Anggota',CURRENT_DATE),
+('Asep Supriadi', 'Regulation Assistant', 'Anggota',CURRENT_DATE),
+('Sugeng Sutopo', 'Asset Administration Assistant', 'Anggota',CURRENT_DATE),
+('Boyke Jaguar', 'Assurance Management Senior Officer', 'Anggota',CURRENT_DATE),
+('Adek Firmansyah', 'Learning Experience Senior Officer', 'Anggota',CURRENT_DATE),
+('Dedy Sofyan', 'Employee Services Senior Officer', 'Anggota',CURRENT_DATE),
+('Yuliani Fajar Sidik', 'Corporate Banking Senior Officer', 'Anggota',CURRENT_DATE),
+('Ismail', 'Office Administration Senior Officer', 'Anggota',CURRENT_DATE);
+
 
 
 INSERT INTO struktur_organisasi_tanggap (nama_tanggap, jabatan_tanggap, posisi_tanggap, tanggal_input_tanggap)

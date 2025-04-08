@@ -504,14 +504,14 @@ button.delete-btn-checklist:hover  {
 .tabs-wrapper {
   display: flex;
   align-items: flex-start; /* Sejajarkan elemen ke atas */
-  height: 100vh; /* Pastikan tinggi sesuai layar */
+  height: 88vh; /* Pastikan tinggi sesuai layar */
   overflow: hidden; /* Hindari scroll horizontal */
 }
 
 /* Sidebar Tabs */
 .tabs-container {
-  width: 350px; /* Lebar sidebar tab */
-  min-height: 100vh; /* Sepanjang layar */
+  width: 400px; /* Lebar sidebar tab */
+  height: 300vh; /* Sepanjang layar */
   background: #f7f7f7; /* Warna latar sidebar */
   border-right: 2px solid #ccc;
   padding: 10px;
@@ -527,7 +527,7 @@ button.delete-btn-checklist:hover  {
   background: #fff; /* Warna latar konten */
   min-width: 500px; /* Pastikan tidak terlalu kecil */
   overflow-y: auto; /* Konten dalam tab bisa di-scroll */
-  height: 100vh; /* Isi tetap memenuhi layar */
+  height: 600px; /* Isi tetap memenuhi layar */
 }
 
 /* Tab button styling */

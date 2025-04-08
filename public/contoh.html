@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Excel - Struktur Organisasi</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
+<body>
+    <h2>Upload File Excel untuk Import Data Struktur Organisasi</h2>
+    <input type="file" id="excelFileInput" accept=".xlsx, .xls">
+    <button onclick="importExcel()">Upload</button>
+    
+    <script>
+        function importExcel() {
+            const fileInput = document.getElementById("excelFileInput");
+            if (fileInput.files.length === 0) {
+                alert("Pilih file Excel terlebih dahulu!");
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function (e) {
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, { type: "array" });
+                const sheetName = workbook.SheetNames[0];
+                const sheet = workbook.Sheets[sheetName];
+                const jsonData = XLSX.utils.sheet_to_json(sheet);
+                
+                fetch("http://localhost:3000/importstruktur", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(jsonData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert("Data berhasil diimpor!");
+                    console.log("Response:", data);
+                })
+                .catch(error => {
+                    console.error("Error importing data:", error);
+                    alert("Terjadi kesalahan saat mengimpor data.");
+                });
+            };
+            
+            reader.readAsArrayBuffer(file);
+        }
+    </script>
+</body>
+</html>

@@ -169,6 +169,43 @@ router.post('/addstruktur', async (req, res) => {
     }
 });
 
+// Route Import Excel
+router.post("/importstruktur", upload.single("file"), async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ message: "File tidak ditemukan" });
+        }
+
+        // Konversi buffer file ke workbook
+        const workbook = XLSX.read(req.file.buffer, { type: "buffer" });
+        const sheetName = workbook.SheetNames[0]; // Ambil sheet pertama
+        const sheetData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
+
+        if (sheetData.length === 0) {
+            return res.status(400).json({ message: "File kosong atau format tidak sesuai" });
+        }
+
+        // Looping setiap baris dan masukkan ke database
+        for (const row of sheetData) {
+            const { nama, jabatan, posisi } = row;
+
+            if (!nama || !jabatan || !posisi) {
+                continue; // Lewati baris yang tidak valid
+            }
+
+            await db.query(
+                "INSERT INTO struktur_organisasi (nama, jabatan, posisi) VALUES ($1, $2, $3)",
+                [nama, jabatan, posisi]
+            );
+        }
+
+        res.status(201).json({ message: "Data berhasil diimport" });
+    } catch (error) {
+        console.error("Error importing data:", error);
+        res.status(500).json({ message: "Gagal mengimport data" });
+    }
+});
+
 // UPDATE Struktur Organisasi
 router.put('/updatestruktur', async (req, res) => {
     const { struktur_id, nama, jabatan, posisi } = req.body;
