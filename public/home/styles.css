@@ -586,13 +586,11 @@ button.delete-btn-checklist:hover  {
 }
 
 
-
-
 .evidence-image {
-  width: 50%; /* Lebar 50% dari elemen induk */
+  width: 100%; /* Lebar 50% dari elemen induk */
   height: auto; /* Tinggi disesuaikan agar rasio aspek tetap terjaga */
   object-fit: cover; /* Sesuaikan gambar agar tetap proporsional */
-  border: 2px solid #ccc; /* Tambahkan border (opsional) */
+  border: 2px solid #cccccc; /* Tambahkan border (opsional) */
   border-radius: 5px; /* Tambahkan sudut melengkung */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Tambahkan efek bayangan */
 }
@@ -702,6 +700,9 @@ button.delete-btn-checklist:hover  {
   margin-top: 0; /* Hapus jarak tambahan agar sejajar dengan dropdown */
 
 }
+
+
+
 
 
 .rows-per-page,

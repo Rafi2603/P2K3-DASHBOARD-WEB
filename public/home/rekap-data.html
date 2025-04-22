@@ -25,837 +25,828 @@
             </li>
             <ul class="navbar-titles-container">
                <li>
-                   <h1 class="navbar-title">DASHBOARD DATA P2K3</h1>
+                  <h1 class="navbar-title">DASHBOARD DATA P2K3</h1>
                </li>
                <li>
-                   <h2 class="navbar-title-2">PANITIA PEMBINA KESELAMATAN DAN KESEHATAN KERJA (P2K3)</h2>
+                  <h2 class="navbar-title-2">PANITIA PEMBINA KESELAMATAN DAN KESEHATAN KERJA (P2K3)</h2>
                </li>
-
-           </ul>
-           
+            </ul>
          </ul>
          <button class="logout-btn" onclick="handleLogout()">Logout</button>
       </div>
       <!-- Tab Navigation -->
       <div class="tabs-wrapper">
-      <div class="tabs-container">
-         <ul class="tabs">
-            <li class="tab active" data-tab="struktur-tab">Struktur Organisasi P2K3</li>
-            <li class="tab" data-tab="struktur-tanggap-tab">Struktur Tim Tanggap Darurat</li>
-            <li class="tab" data-tab="personel-tab">Personel Ahli K3</li>
-            <li class="tab" data-tab="rekap-tab">Rekap Data K3</li>
-            <li class="tab" data-tab="kecelakaan-tab">Kecelakaan Kerja</li>
-            <li class="tab" data-tab="kejadian-darurat-tab">Kejadian Darurat</li>
-            <li class="tab" data-tab="checklist-k3-tab">Checklist K3</li>
-         </ul>
-      </div>
-
-      <!-- Tab Content -->
-      <div class="tab-content" id="struktur-tab">
-         <h1>Tabel Struktur Organisasi P2K3</h1>
-         <div class="search-container">
-            <input type="text" id="search-bar-struktur" placeholder="Search Bar">
-            <button class="add-data-btn-struktur" id="add-data-btn-struktur">
-            ✏️Tambah Data
-            </button>
-            <button class="export-csv-btn-struktur" onclick="exportTableStrukturToXLSX('struktur-table', 'StrukturOrganisasi.xlsx', [2, 3, 4])">
-            📊Export Excel</button>
-            <button id="delete-selected-btn" class="delete-selected-btn">
-            🗑️Delete Selected</button>
+         <div class="tabs-container">
+            <ul class="tabs">
+               <li class="tab active" data-tab="struktur-tab">Struktur Organisasi P2K3</li>
+               <li class="tab" data-tab="struktur-tanggap-tab">Struktur Tim Tanggap Darurat</li>
+               <li class="tab" data-tab="personel-tab">Personel Ahli K3</li>
+               <li class="tab" data-tab="rekap-tab">Rekap Data K3</li>
+               <li class="tab" data-tab="kecelakaan-tab">Kecelakaan Kerja</li>
+               <li class="tab" data-tab="kejadian-darurat-tab">Kejadian Darurat</li>
+               <li class="tab" data-tab="checklist-k3-tab">Checklist K3</li>
+            </ul>
          </div>
-         <div class="pagination-settings">
-            <div class="rows-per-page">
-               <label for="rows-per-page">Rows per page:</label>
-               <select id="rows-per-page">
-                  <option value="10">10</option>
-                  <option value="15">15</option>
-                  <option value="20">20</option>
-                  <option value="100">100</option>
-               </select>
+         <!-- Tab Content -->
+         <div class="tab-content" id="struktur-tab">
+            <h1>Tabel Struktur Organisasi P2K3</h1>
+            <div class="search-container">
+               <input type="text" id="search-bar-struktur" placeholder="Search Bar">
+               <button class="add-data-btn-struktur" id="add-data-btn-struktur">
+               ✏️Tambah Data
+               </button>
+               <button class="export-csv-btn-struktur" onclick="exportTableStrukturToXLSX('struktur-table', 'Struktur_Organisasi_P2K3.xlsx', [2, 3, 4])">
+               📊Export Excel</button>
+               <button id="delete-selected-btn" class="delete-selected-btn">
+               🗑️Delete Selected</button>
             </div>
-            <div id="pagination-container" class="pagination-container"></div>
-         </div>
-         <table id="struktur-table">
-            <thead>
-               <tr>
-                  <th><input type="checkbox" id="select-all"></th>
-                  <!-- Checkbox untuk memilih semua -->
-                  <th>Tahun</th>
-                  <th>Nama</th>
-                  <th>Jabatan</th>
-                  <th>KEDUDUKAN DALAM PANITIA</th>
-                  <th>Tanggal Input</th>
-                  <th>Action Menu</th>
-               </tr>
-            </thead>
-            <tbody id="table-body-struktur">
-               <!-- Data akan dimasukkan di sini -->
-            </tbody>
-         </table>
-         <div class="jabatan">
-            <h2>1. Ketua</h2>
-            <p><strong>Fungsi Pokok:</strong> 
-               Memimpin penerapan Sistem Manajemen K3 di lingkungan Kantor Pusat dengan menyelenggarakan kegiatan monitoring berupa pengendalian potensi bahaya, penyuluhan, pelatihan, penelitian dan pengawasan keselamatan dan kesehatan kerja serta kegiatan evaluasi berupa audit K3 dan memberi rekomendasi tindak lanjut hasil audit K3 dengan menggunakan sumber daya yang ada dan berpedoman pada peraturan yang berlaku, agar tercipta lingkungan kerja yang aman dan sehat sesuai dengan tujuan dan kebijakan perusahaan.
-            </p>
-            <p><strong>Tugas:</strong></p>
-            <ul>
-               <li>Mengendalikan pencapaian sasaran, strategi pelaksanaan dan kebijakan program - program P2K3 di lingkungan Kantor Pusat dalam rangka tercapainya tujuan P2K3 sesuai ketentuan yang berlaku;</li>
-               <li>Memimpin pelaksanaan program kerja K3 dan evaluasi atas pelaksanaan program kerja K3 di lingkungan kantor pusat dengan memperhatikan peraturan yang berlaku serta sasaran program K3 agar program keselamatan dan kesehatan kerja terlaksana dengan baik</li>
-               <li>Memimpin kegiatan pengawasan atas pelaksanaan program dan pembuatan sistem keselamatan dan kesehatan kerja di lingkungan Kantor Pusat dengan memperhatikan ketentuan yang berlaku, agar terlaksananya program-program keselamatan dan kesehatan kerja dengan baik</li>
-               <li>Melakukan  koordinasi   dengan instansi external / unit  kerja   terkait penanganan tanggap darurat.</li>
-            </ul>
-            <p><strong>Wewenang:</strong></p>
-            <ul>
-               <li>Memimpin Rapat P2K3 Kantor Pusat yang dilaksanakan minimal 1 (satu) kali dalam setiap 3 (tiga) bulan</li>
-               <li>Menetapkan pertimbangan keputusan dan saran atas berbagai permasalahan dalam pelaksanaan program keselamatan dan kesehatan kerja dengan ruang lingkup pelaksanaan di Kantor Pusat, dalam rangka meningkatkan kualitas pelaksanaan K3 sesuai sasaran</li>
-            </ul>
-            <p><strong>Tanggung Jawab:</strong></p>
-            <ul>
-               <li>Mendorong terciptanya lingkungan kerja yang aman dan sehat sesuai dengan syarat-syarat keselamatan dan kesehatan kerja baik mental maupun fisik karyawan, sebagaimana yang diatur Undang-Undang Ketenagakerjaan</li>
-               <li>Terlaksananya program-program P2K3  di lingkungan Kantor Pusat sesuai dengan syarat-syarat Keselamatan dan Kesehatan Kerja sebagaimana yang diatur dalam Undang-Undang Ketenagakerjaan</li>
-               <li>Mempertanggungjawabkan program-program P2K3 Kantor Pusat dan pelaksanaannya kepada Direksi.</li>
-            </ul>
-         </div>
-         <div class="jabatan">
-            <h2>2. Wakil Ketua</h2>
-            <p><strong>Fungsi Pokok:</strong>
-               Membantu Ketua dalam penerapan Sistem Manajemen K3 di lingkungan Kantor Pusat dengan menyelenggarakan kegiatan monitoring berupa pengendalian potensi bahaya, penyuluhan, pelatihan, penelitian dan pengawasan keselamatan dan kesehatan kerja serta kegiatan evaluasi berupa audit K3 dan memberi rekomendasi tindak lanjut hasil audit K3 dengan menggunakan sumber daya yang ada dan berpedoman pada peraturan yang berlaku, agar tercipta lingkungan kerja yang aman dan sehat sesuai dengan tujuan dan kebijakan perusahaan
-            </p>
-            <p><strong>Tugas:</strong></p>
-            <ul>
-               <li>Membantu Ketua dalam pencapaian sasaran, strategi pelaksanaan dan kebijakan program - program P2K3 di lingkungan Kantor Pusat dalam rangka tercapainya tujuan P2K3 sesuai ketentuan yang berlaku</li>
-               <li>Melakukan analisis laporan mengenai kondisi keselamatan dan kesehatan kerja di kantor pusat dengan memperhatikan peraturan yang berlaku serta sasaran program K3 agar program keselamatan dan kesehatan kerja terlaksana dengan baik</li>
-            </ul>
-            <p><strong>Wewenang:</strong></p>
-            <ul>
-               <li>Menggantikan peran Ketua apabila berhalangan hadir atau diberikan tanggung jawab langsung dalam kegiatan-kegiatan perihal K3</li>
-               <li>Menyampaikan keputusan atas permasalahan sesuai yang ditugaskan ketua P2K3</li>
-            </ul>
-            <p><strong>Tanggung Jawab:</strong>
-               Mendorong terciptanya lingkungan kerja yang aman dan sehat sesuai dengan syarat-syarat keselamatan dan kesehatan kerja baik mental maupun fisik karyawan, sebagaimana yang diatur Undang-Undang Ketenagakerjaan
-            </p>
-         </div>
-         <div class="jabatan">
-            <h2>3. Sekretaris</h2>
-            <p><strong>Fungsi Pokok:</strong> 
-               Menyelenggarakan kegiatan - kegiatan pengumpulan dan pengolahan data/ permasalahan keselamatan dan kesehatan kerja, serta melakukan koordinasi semua aktivitas program P2K3 di lingkungan kantor pusat, dengan memperhatikan peraturan yang berlaku.
-            </p>
-            <p><strong>Tugas:</strong></p>
-            <ul>
-               <li>Melaksanakan kegiatan-kegiatan pengumpulan data-data penyiapan materi rapat P2K3 dengan memperhatikan ketentuan yang berlaku, agar rapat P2K3 dapat berjalan dengan lancar sesuai tujuan</li>
-               <li>Melaksanakan kegiatan-kegiatan pengelolaan administrasi P2K3, dengan memperhatikan ketentuan yang berlaku, agar tercipta kelancaran administrasi P2K3</li>
-               <li>Melaksanakan kegiatan perencanaan program-program P2K3, dengan memperhatikan masukan-masukan dan kondisi keselamatan dan kesehatan kerja di Perusahaan, agar tercipta kelancaran program-program P2K3</li>
-               <li>Melaksanakan kegiatan koordinasi dengan anggota P2K3 dan unit kerja dengan memperhatikan ketentuan yang berlaku, agar program-program P2K3 dapat berjalan dengan lancar</li>
-            </ul>
-            <p><strong>Wewenang:</strong></p>
-            <ul>
-               <li>Memberikan masukan dan rekomendasi mengenai perbaikan sistem dan pelaksanaan program K3 di lingkungan Kantor Pusat dengan memperhatikan ketentuan yang berlaku, dengan tujuan untuk memperbaiki sistem dan kualitas pelaksanaan program keselamatan dan kesehatan</li>
-               <li>Menggantikan peran Wakil Ketua apabila berhalangan hadir atau diberikan tanggung jawab langsung dalam kegiatan-kegiatan perihal K3</li>
-               <li>Menetapkan jadwal rapat P2K3, dalam rangka pelaksanaan program-program kerja P2K3</li>
-               <li>Melakukan komunikasi dengan instansi luar terkait dalam rangka pelaksanaan program kerja P2K3 serta pemenuhan kewajiban perusaha</li>
-               <li>Mengendalikan tata persuratan P2K3, dalam rangka tertib administrasi</li>
-            </ul>
-            <p><strong>Tanggung Jawab:</strong></p>
-            <ul>
-               <li>Terlaksananya program-program P2K3 di lingkungan kantor pusat</li>
-               <li>Terlaksananya evaluasi data/permasalahan keselamatan dan kesehatan kerja di lingkungan kantor pusat</li>
-            </ul>
-         </div>
-         <div class="jabatan">
-            <h2>4. Koordinator Tanggap Darurat</h2>
-            <p><strong>Fungsi Pokok:</strong></p>
-            <ul>
-               <li>Mengkoordinir semua unsur yang terkait dengan kegiatan penanggulangan keadaan  darurat di lingkungan kantor pusat</li>
-               <li>Membuat   jadwal 	pelatihan Tim Tanggap Darurat   seperti   pemadam kebakaran, bencana alam, sabotase/teror dan kegiatan lain yang termasuk dalam kondisi darurat</li>
-               <li>Melakukan  koordinasi dengan unit  kerja terkait untuk menangani laporan tertulis pelaksanaan program P2K3 yang berdampak terhadap pencapaian sasaran kebijakan K3 di lingkungan kantor pusat</li>
-               <li>Menyelenggarakan simulasi tanggap darurat 1 (satu) kali dalam setahun</li>
-            </ul>
-            <p><strong>Wewenang:</strong></p>
-            <ul>
-               <li>Membuat skenario  penanganan kondisi darurat di lingkungan kantor pusat</li>
-               <li>Menyusun tim tanggap darurat di lingkungan kantor pusat</li>
-            </ul>
-            <p><strong>Tanggung Jawab:</strong></p>
-            <ul>
-               <li>Memastikan penanganan kondisi darurat di lingkungan kantor pusat dapat dikendalikan secara efektif dan efisien dengan memperhatikan peraturan yang berlaku</li>
-               <li>Menyusun laporan penanganan kondisi darurat di lingkungan kantor pusat dan disampaikan kepada Ketua P2K3 Kantor Pusat</li>
-            </ul>
-         </div>
-         <div class="jabatan">
-            <h2>5. Tim Tanggap Darurat</h2>
-            <p><strong>Fungsi Pokok:</strong>
-               Melaksanakan tugas sesuai dengan kewenangan sebagai Ahli K3, Petugas P3K, Safety Officer, dan Security untuk melaksanakan penanganan tanggap darurat di lingkungan kantor pusat.
-            </p>
-            <p><strong>Tanggung Jawab:</strong></p>
-            <ul>
-               <li><strong>Ahli Keselamatan dan Kesehatan Kerja (K3)</strong></li>
-               <ul>
-                  <li>Memastikan proses yang diperlukan untuk Sistem Manajemen K3 ditetapkan, diterapkan, dan dipelihara di masing-masing unit kerja sesuai penempatan tugas serta menyusunnya dalam laporan kepada Ketua P2K3 mengenai kinerja Sistem Manajemen K3 dan peluang untuk perbaikan.</li>
-                  <li>Melaksanakan inspeksi dan pemecahan masalah/kendala dalam penerapan Sistem Manajemen K3 di semua unit kerja.</li>
-                  <li>Memastikan penggunaan Standar Kerja/Acuan Kerja terkini untuk masing-masing unit kerja.</li>
-                  <li>Merencanakan, melaksanakan, serta memantau Program Audit Internal dan turut aktif dalam Tinjauan Manajemen.</li>
-                  <li>Turut serta membuat program kerja tahunan yang berkaitan dengan implementasi Sistem Manajemen K3 di lingkungan kantor pusat PT Jasa Marga (Persero) Tbk.</li>
-                  <li>Memastikan bahwa Standar Prosedur dan Instruksi Kerja yang telah ditulis dapat diterapkan di lingkungan kerja.</li>
-                  <li>Melaksanakan inspeksi Keselamatan Kerja berkala di tempat kerja.</li>
-                  <li>Menjalankan prosedur investigasi kecelakaan sesuai dengan arahan Ketua P2K3.</li>
-                  <li>Menyiapkan prosedur dan rencana Keselamatan Kerja yang diperlukan (Hazard Identification Risk Assessment & Determining Control).</li>
-                  <li>Menyiapkan materi keselamatan dan bahan untuk rapat P2K3 serta menghadiri rapat P2K3.</li>
-                  <li>Memberikan penilaian dan laporan kepada Ketua P2K3 tentang kondisi keselamatan kerja secara umum maupun cara kerja yang terkait dengan K3 serta memantau implementasi saran-saran K3 yang dibuat.</li>
-                  <li>Menyimpan dan memelihara dokumen sistem manajemen K3 secara tertib, teratur, dan mudah disajikan bila diperlukan.</li>
-               </ul>
-               <li><strong>Petugas Pertolongan Pertama Pada Kecelakaan (P3K)</strong></li>
-               <ul>
-                  <li>Melaksanakan Pertolongan Pertama Pada Kecelakaan (P3K) ketika terjadi kecelakaan kerja atau pada situasi tanggap darurat.</li>
-               </ul>
-               <li><strong>Safety Officer</strong></li>
-               <ul>
-                  <li>Melaksanakan tugas penanganan kondisi darurat sesuai dengan tugas yang diberikan dan turut membantu pelaksanaan program-program K3 perusahaan.</li>
-               </ul>
-               <li><strong>Security / Keamanan Kantor Pusat</strong></li>
-               <ul>
-                  <li>Turut mengamankan sarana dan prasarana K3 perusahaan.</li>
-                  <li>Melaporkan dengan segera apabila terjadi kondisi tanggap darurat seperti demo/huru-hara, kebakaran, bencana alam, atau kejadian darurat lainnya kepada koordinator tanggap darurat atau ketua regu pengamanan/security.</li>
-                  <li>Membantu pelaksanaan tanggap darurat sebagaimana tertuang dalam SK tanggap darurat kantor pusat.</li>
-               </ul>
-            </ul>
-         </div>
-         <div class="jabatan">
-            <h2>6. Anggota</h2>
-            <p><strong>Fungsi Pokok:</strong>Melaksanakan kegiatan untuk mencapai sasaran program K3 di lingkungan kantor pusat, dengan memperhatikan peraturan yang berlaku</p>
-            <p><strong>Uraian Tugas:</strong></p>
-            <ul>
-               <li>Mengikuti rapat-rapat rutin yang diadakan oleh P2K3, dengan memperhatikan ketentuan yang berlaku, agar program kerja P2K3 dapat berjalan dengan lancar</li>
-               <li>Melaksanakan kegiatan yang telah ditetapkan sebagai program K3 di lingkungan kantor pusat dengan memperhatikan ketentuan yang berlaku, agar para Karyawan dapat memahami dan mengerti tujuan K3</li>
-               <li>Memberikan saran tindak lanjut terhadap pelaksanaan program-program keselamatan dan kesehatan kerja di lingkungan kantor pusat, dengan memperhatikan ketentuan yang berlaku sesuai dengan ketentuan Undang-Undang Ketenagakerjaan</li>
-            </ul>
-            <p><strong>Wewenang:</strong>Memberikan usulan perbaikan pelaksanaan program K3 yang dilakukan Perusahaan, dalam rangka kepatuhan terhadap perundang-undangan ketenagakerjaan</p>
-            <p><strong>Tanggung Jawab:</strong>Terlaksananya program-program P2K3 di lingkungan kantor pusat dan di unit kerja sesuai penempatan masing-masing anggota</p>
-         </div>
-      </div>
-      <!-- Konten Struktur Organisasi Tanggap -->
-      <div class="tab-content" id="struktur-tanggap-tab" style="display: none;">
-         <h1>Tabel Struktur Tim Tanggap Darurat</h1>
-         <!-- Pencarian & Action Buttons -->
-         <div class="search-container">
-            <input type="text" id="search-bar-struktur-tanggap" placeholder="Search Bar">
-            <button class="add-data-btn-struktur-tanggap" id="add-data-btn-struktur-tanggap">
-            ✏️Tambah Data</button>
-            <button class="export-csv-btn-struktur-tanggap" onclick="exportTableTanggapToXLSX('struktur-tanggap-table', 'StrukturOrganisasiTanggap.xlsx', [2, 3, 4])">
-            📊Export Excel</button>
-            <button id="delete-selected-btn-struktur-tanggap" class="delete-selected-btn-struktur-tanggap">
-            🗑️Delete Selected</button>
-         </div>
-         <!-- Pagination Settings -->
-         <div class="pagination-settings-struktur-tanggap">
-            <div class="rows-per-page-struktur-tanggap">
-               <label for="rows-per-page-struktur-tanggap">Rows per page:</label>
-               <select id="rows-per-page-struktur-tanggap">
-                  <option value="10">10</option>
-                  <option value="15">15</option>
-                  <option value="20">20</option>
-                  <option value="100">100</option>
-               </select>
+            <div class="pagination-settings">
+               <div class="rows-per-page">
+                  <label for="rows-per-page">Rows per page:</label>
+                  <select id="rows-per-page">
+                     <option value="10">10</option>
+                     <option value="15">15</option>
+                     <option value="20">20</option>
+                     <option value="100">100</option>
+                  </select>
+               </div>
+               <div id="pagination-container" class="pagination-container"></div>
             </div>
-            <div id="pagination-container-struktur-tanggap" class="pagination-container"></div>
-         </div>
-         <!-- Tabel Struktur Organisasi Tanggap -->
-         <table id="struktur-tanggap-table">
-            <thead>
-               <tr>
-                  <th><input type="checkbox" id="select-all-struktur-tanggap"></th>
-                  <th>Tahun</th>
-                  <th>Nama</th>
-                  <th>Jabatan</th>
-                  <th>KEDUDUKAN DALAM TIM</th>
-                  <th>Tanggal Input</th>
-                  <th>Action Menu</th>
-               </tr>
-            </thead>
-            <tbody id="table-body-struktur-tanggap">
-               <!-- Data akan dimasukkan melalui JavaScript -->
-            </tbody>
-         </table>
-         <div class="jabatan">
-            <h2>1. Koordinator Tim Tanggap Darurat</h2>
-            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-            <ul>
-               <li>1. Mengkoordinasikan Tim Tanggap Darurat sesuai dengan tugas dan tanggung jawabnya.</li>
-               <li>2. Memantau perkembangan penanganan kondisi darurat dan menjembatani komunikasi antar regu.</li>
-               <li>3. Memastikan alur komunikasi antar regu Tanggap Darurat dapat dilangsungkan secara baik dan lancar.</li>
-               <li>4. Menjadwalkan pertemuan rutin maupun non-rutin tim
-                  Tanggap Darurat.
-               </li>
-               <li>5. Bersama Ketua/Sekretaris P2K3 menyusun rencana
-                  pemulihan keadaan darurat gedung.
-               </li>
-               <li>6. Melaporkan kepada Ketua/Sekretaris P2K3 terkait
-                  perkembangan penanggulangan keadaan Darurat.
-               </li>
-            </ul>
-         </div>
-         <div class="jabatan">
-            <h2>2. Regu Pengendali Api</h2>
-            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-            <ul>
-               <li> 1. Melangsungkan
-                  pemadaman
-                  menggunakan semua sarana pemadam api di
-                  lingkungan Perusahaan secara aman, selamat dan
-                  efektif.
-               </li>
-               <li> 2. Melaporkan segala kekurangan/kerusakan sarana dan
-                  prasarana pemadam api di lingkungan Perusahaan
-                  kepada Koordinator Tim Tanggap Darurat.
-               </li>
-            </ul>
-         </div>
-         <div class="jabatan">
-            <h2>3. Regu Pengendali Banjir</h2>
-            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-            <ul>
-               <li>1. Memastikan ketersediaan sistem pengendali banjir.</li>
-               <li>2. Melakukan pengkajian untuk mencegah dan
-                  memperbaiki sistem pengamanan dari bencana banjir.
-               </li>
-               <li> 3. Melaporkan dan melakukan koordinasi dengan
-                  Koordinator Tim Tanggap Darurat untuk mengatasi
-                  bencana banjir yang terulang.
-               </li>
-            </ul>
-         </div>
-         <div class="jabatan">
-            <h2>4. Regu Evakuasi</h2>
-            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-            <ul>
-               <li>1. Memimpin prosedur evakuasi secara aman, selamat
-                  dan cepat.
-               </li>
-               <li>2. Melaporkan segala kekurangan/kerusakan sarana dan
-                  prasarana evakuasi di lingkungan Perusahaan.
-               </li>
-               <li>3. Melakukan evakuasi terhadap korban tertinggal,
-                  terjebak ataupun terluka dan melaporkan kepada
-                  Koordinator Tim Tanggap Darurat.
-               </li>
-            </ul>
-         </div>
-         <div class="jabatan">
-            <h2>5. Regu Pengamanan Aset</h2>
-            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-            <ul>
-               <li>1. Memimpin prosedur evakuasi secara aman, selamat
-                  dan cepat.
-               </li>
-               <li>2. Melaporkan segala kekurangan/kerusakan sarana dan
-                  prasarana evakuasi di lingkungan Perusahaan kepada
-                  Koordinator Tim Tanggap Darurat.
-               </li>
-            </ul>
-         </div>
-         <div class="jabatan">
-            <h2>6. Regu Medis/P3K</h2>
-            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-            <ul>
-               <li>1. Melaksanakan tindakan P3K.</li>
-               <li>2. Melaporkan segala kekurangan/kerusakan sarana dan
-                  prasarana P3K di lingkungan Perusahaan kepada
-                  Koordinator Tim Tanggap Darurat.
-               </li>
-               <li>3. Melaporkan kepada Koordinator Tim Tanggap Darurat
-                  bilamana terdapat korban yang memerlukan tindakan
-                  medis dan dilanjutkan kepada pihak ke tiga di luar
-                  Perusahaan.
-               </li>
-            </ul>
-         </div>
-         <div class="jabatan">
-            <h2>7. Regu Teknik/Keberfungsian Alat</h2>
-            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-            <ul>
-               <li>1. Regu Teknik melakukan kontrol sistem instalasi
-                  kelistrikan/lift dan peralatan lain untuk mencegah
-                  terjadinya bencana/peningkatan bencana;
-               </li>
-               <li>2. Melaporkan ke Koordinator Tim Tanggap Darurat
-                  apabila ada hal-hal yang perlu diambil tindakan dalam
-                  rangka keselamatan dalam kondisi darurat
-               </li>
-            </ul>
-         </div>
-         <div class="jabatan">
-            <h2>8. Tim Pengarah Tanggap Darurat</h2>
-            <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
-            <ul>
-               <li>1. Membantu proses penanganan kondisi darurat di
-                  masing-masing unit kerja penugasan.
-               </li>
-               <li>2. Melaporkan adanya korban tertinggal, terjebak
-                  ataupun terluka kepada Regu Evakuasi di titik kumpul.
-               </li>
-            </ul>
-         </div>
-      </div>
-      <div class="tab-content" id="personel-tab" style="display: none;">
-         <h1>Tabel Personel Ahli K3 & P3K</h1>
-         <div class="search-container">
-            <input type="text" id="search-bar-personel" placeholder="Search Bar">
-            <button class="add-data-btn-personel" id="add-data-btn-personel">
-            ✏️Tambah Data</button>
-            <button class="export-csv-btn-personel" onclick="exportTablePersonelToXLSX('personel-table', 'PersonelAhliK3.xlsx', [1, 2, 3, 4])">
-            📊Export Excel</button>
-            <button id="delete-selected-btn-personel" class="delete-selected-btn-personel">
-            🗑️Delete Selected</button>
-         </div>
-         <div class="pagination-settings-personel">
-            <div class="rows-per-page-personel">
-               <label for="rows-per-page-personel">Rows per page:</label>
-               <select id="rows-per-page-personel">
-                  <option value="10">10</option>
-                  <option value="15">15</option>
-                  <option value="20">20</option>
-                  <option value="100">100</option>
-               </select>
-            </div>
-            <div id="pagination-container-personel" class="pagination-container"></div>
-         </div>
-         <table id="personel-table">
-            <thead>
-               <tr>
-                  <th><input type="checkbox" id="select-all-personel"></th>
-                  <!-- Checkbox untuk memilih semua -->
-                  <th>Nama</th>
-                  <th>Keahlian</th>
-                  <th>Keahlian (Tambahan)</th>
-                  <th>Batas Masa Berlaku</th>
-                  <th>Action Menu</th>
-               </tr>
-            </thead>
-            <tbody id="table-body-personel">
-               <!-- Data akan dimasukkan di sini -->
-            </tbody>
-         </table>
-         <div class="jabatan">
-            <h2>1. Ahli K3 Konstruksi</h2>
-            <p><strong>Fungsi Pokok:</strong></p>
-            <ul>
-              <li>Melaksanakan pengawasan dan penerapan sistem manajemen keselamatan dan kesehatan kerja (K3) pada proyek konstruksi sesuai dengan peraturan perundang-undangan yang berlaku.</li>
-            </ul>
-            <p><strong>Tugas:</strong></p>
-            <ul>
-              <li>Mengidentifikasi potensi bahaya di lokasi konstruksi.</li>
-              <li>Menyusun dan mengimplementasikan program K3 di proyek konstruksi.</li>
-              <li>Melakukan inspeksi rutin terhadap alat berat, peralatan kerja, dan kondisi lingkungan kerja.</li>
-              <li>Memberikan pelatihan K3 kepada pekerja konstruksi.</li>
-            </ul>
-            <p><strong>Wewenang:</strong></p>
-            <ul>
-              <li>Menghentikan pekerjaan yang berisiko tinggi hingga tindakan pengendalian diterapkan.</li>
-              <li>Memberikan rekomendasi terkait perbaikan sistem K3 di proyek konstruksi.</li>
-            </ul>
-            <p><strong>Tanggung Jawab:</strong></p>
-            <ul>
-              <li>Memastikan seluruh pekerja mematuhi prosedur K3.</li>
-              <li>Menyusun laporan terkait pelaksanaan K3 di proyek konstruksi.</li>
-            </ul>
-          </div>
-          
-          <div class="jabatan">
-            <h2>2. Ahli K3 Umum</h2>
-            <p><strong>Fungsi Pokok:</strong></p>
-            <ul>
-              <li>Mengawasi penerapan sistem manajemen K3 di berbagai sektor industri sesuai dengan standar nasional dan internasional.</li>
-            </ul>
-            <p><strong>Tugas:</strong></p>
-            <ul>
-              <li>Melakukan identifikasi bahaya dan penilaian risiko di tempat kerja.</li>
-              <li>Menyusun kebijakan dan prosedur K3 untuk perusahaan.</li>
-              <li>Melakukan audit internal terkait penerapan K3.</li>
-              <li>Memberikan pelatihan K3 kepada seluruh karyawan.</li>
-            </ul>
-            <p><strong>Wewenang:</strong></p>
-            <ul>
-              <li>Memberikan rekomendasi terkait perbaikan sistem K3 di perusahaan.</li>
-              <li>Menghentikan aktivitas kerja yang berisiko tinggi hingga tindakan pengendalian diterapkan.</li>
-            </ul>
-            <p><strong>Tanggung Jawab:</strong></p>
-            <ul>
-              <li>Memastikan lingkungan kerja aman dan sehat bagi seluruh karyawan.</li>
-              <li>Menyusun laporan terkait pelaksanaan K3 di perusahaan.</li>
-            </ul>
-          </div>
-          
-          <div class="jabatan">
-            <h2>3. Supervisor K3 Konstruksi Utama</h2>
-            <p><strong>Fungsi Pokok:</strong></p>
-            <ul>
-              <li>Memimpin dan mengawasi penerapan sistem manajemen K3 di proyek konstruksi berskala besar.</li>
-            </ul>
-            <p><strong>Tugas:</strong></p>
-            <ul>
-              <li>Mengkoordinasikan tim K3 di proyek konstruksi.</li>
-              <li>Melakukan inspeksi rutin terhadap alat berat, peralatan kerja, dan kondisi lingkungan kerja.</li>
-              <li>Menyusun laporan terkait pelaksanaan K3 di proyek konstruksi.</li>
-              <li>Memberikan pelatihan K3 kepada pekerja konstruksi.</li>
-            </ul>
-            <p><strong>Wewenang:</strong></p>
-            <ul>
-              <li>Menghentikan pekerjaan yang berisiko tinggi hingga tindakan pengendalian diterapkan.</li>
-              <li>Memberikan rekomendasi terkait perbaikan sistem K3 di proyek konstruksi.</li>
-            </ul>
-            <p><strong>Tanggung Jawab:</strong></p>
-            <ul>
-              <li>Memastikan seluruh pekerja mematuhi prosedur K3.</li>
-              <li>Menyusun laporan terkait pelaksanaan K3 di proyek konstruksi.</li>
-            </ul>
-          </div>
-          
-          <div class="jabatan">
-            <h2>4. Ahli Muda Keselamatan Konstruksi</h2>
-            <p><strong>Fungsi Pokok:</strong></p>
-            <ul>
-              <li>Membantu Ahli K3 Konstruksi dalam penerapan sistem manajemen K3 di proyek konstruksi.</li>
-            </ul>
-            <p><strong>Tugas:</strong></p>
-            <ul>
-              <li>Melakukan identifikasi bahaya di lokasi konstruksi.</li>
-              <li>Membantu penyusunan program K3 di proyek konstruksi.</li>
-              <li>Melakukan inspeksi terhadap alat berat dan peralatan kerja.</li>
-              <li>Memberikan pelatihan K3 kepada pekerja konstruksi.</li>
-            </ul>
-            <p><strong>Wewenang:</strong></p>
-            <ul>
-              <li>Memberikan rekomendasi terkait perbaikan sistem K3 di proyek konstruksi.</li>
-            </ul>
-            <p><strong>Tanggung Jawab:</strong></p>
-            <ul>
-              <li>Memastikan seluruh pekerja mematuhi prosedur K3.</li>
-              <li>Menyusun laporan terkait pelaksanaan K3 di proyek konstruksi.</li>
-            </ul>
-          </div>
-          
-          <div class="jabatan">
-            <h2>5. Pemadam Kebakaran Kelas D</h2>
-            <p><strong>Fungsi Pokok:</strong></p>
-            <ul>
-              <li>Melaksanakan tugas pemadaman kebakaran di lingkungan kerja sesuai dengan standar keselamatan kerja.</li>
-            </ul>
-            <p><strong>Tugas:</strong></p>
-            <ul>
-              <li>Melakukan inspeksi terhadap alat pemadam kebakaran (APAR, hydrant, dll.).</li>
-              <li>Melakukan simulasi dan pelatihan pemadaman kebakaran.</li>
-              <li>Menangani kebakaran kecil hingga menunggu bantuan dari pihak eksternal.</li>
-            </ul>
-            <p><strong>Wewenang:</strong></p>
-            <ul>
-              <li>Mengambil tindakan darurat untuk memadamkan api di lokasi kerja.</li>
-              <li>Memberikan rekomendasi terkait perbaikan sistem pencegahan kebakaran.</li>
-            </ul>
-            <p><strong>Tanggung Jawab:</strong></p>
-            <ul>
-              <li>Memastikan alat pemadam kebakaran selalu dalam kondisi siap pakai.</li>
-              <li>Menyusun laporan terkait insiden kebakaran di tempat kerja.</li>
-            </ul>
-          </div>
-          
-          <div class="jabatan">
-            <h2>6. P3K Kemnaker</h2>
-            <p><strong>Fungsi Pokok:</strong></p>
-            <ul>
-              <li>Melaksanakan pertolongan pertama pada kecelakaan kerja sesuai dengan standar Kemnaker.</li>
-            </ul>
-            <p><strong>Tugas:</strong></p>
-            <ul>
-              <li>Memberikan pertolongan pertama pada korban kecelakaan kerja.</li>
-              <li>Melakukan inspeksi terhadap fasilitas P3K di tempat kerja.</li>
-              <li>Memberikan pelatihan P3K kepada karyawan.</li>
-            </ul>
-            <p><strong>Wewenang:</strong></p>
-            <ul>
-              <li>Mengambil tindakan darurat untuk memberikan pertolongan pertama.</li>
-              <li>Memberikan rekomendasi terkait perbaikan fasilitas P3K di tempat kerja.</li>
-            </ul>
-            <p><strong>Tanggung Jawab:</strong></p>
-            <ul>
-              <li>Memastikan fasilitas P3K selalu dalam kondisi siap pakai.</li>
-              <li>Menyusun laporan terkait insiden kecelakaan kerja.</li>
-            </ul>
-          </div>
-          
-          <div class="jabatan">
-            <h2>7. Ahli Muda K3 Konstruksi</h2>
-            <p><strong>Fungsi Pokok:</strong></p>
-            <ul>
-              <li>Membantu penerapan sistem manajemen K3 di proyek konstruksi dengan fokus pada pengendalian risiko.</li>
-            </ul>
-            <p><strong>Tugas:</strong></p>
-            <ul>
-              <li>Melakukan identifikasi bahaya di lokasi konstruksi.</li>
-              <li>Membantu penyusunan program K3 di proyek konstruksi.</li>
-              <li>Melakukan inspeksi terhadap alat berat dan peralatan kerja.</li>
-              <li>Memberikan pelatihan K3 kepada pekerja konstruksi.</li>
-            </ul>
-            <p><strong>Wewenang:</strong></p>
-            <ul>
-              <li>Memberikan rekomendasi terkait perbaikan sistem K3 di proyek konstruksi.</li>
-            </ul>
-            <p><strong>Tanggung Jawab:</strong></p>
-            <ul>
-              <li>Memastikan seluruh pekerja mematuhi prosedur K3.</li>
-              <li>Menyusun laporan terkait pelaksanaan K3 di proyek konstruksi.</li>
-            </ul>
-          </div>
-          
-      </div>
-      <div class="tab-content" id="rekap-tab" style="display: none;">
-         <h1>Tabel Rekap Data K3</h1>
-         <div class="search-container">
-            <input type="text" id="search-bar-rekap" placeholder="Search Bar">
-            <button class="add-data-btn-rekap" id="add-data-btn-rekap">
-            ✏️Tambah Data
-            </button>
-            <button class="export-csv-btn-rekap" onclick="exportTableRekapToXLSX('rekap-table', 'RekapDataP2K3.xlsx', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19])">
-            📊Export ke Excel
-            </button>
-            <button id="delete-selected-btn-rekap" class="delete-selected-btn-rekap">
-            🗑️Delete Selected</button>
-         </div>
-         <div class="pagination-settings-rekap">
-            <div class="rows-per-page-rekap">
-               <label for="rows-per-page-rekap">Rows per page:</label>
-               <select id="rows-per-page-rekap">
-                  <option value="12">12</option>
-                  <option value="24">24</option>
-                  <option value="36">36</option>
-                  <option value="48">48</option>
-               </select>
-            </div>
-            <div id="pagination-container-rekap" class="pagination-container"></div>
-         </div>
-         <div style="overflow-x: auto;">
-            <table id="rekap-table">
+            <table id="struktur-table">
                <thead>
                   <tr>
-                     <th><input type="checkbox" id="select-all-rekap"></th>
+                     <th><input type="checkbox" id="select-all"></th>
                      <!-- Checkbox untuk memilih semua -->
-                     <th data-order="asc">Tahun</th>
-                     <th data-order="asc">Bulan</th>
-                     <th data-order="asc">Jumlah Karyawan</th>
-                     <th data-order="asc">Jumlah Hari Kerja</th>
-                     <th data-order="asc">Jumlah Jam Kerja</th>
-                     <th data-order="asc">Kecelakaan Berat</th>
-                     <th data-order="asc">Kecelakaan Ringan</th>
-                     <th data-order="asc">Meninggal (Akibat Kerja)</th>
-                     <th data-order="asc">Near Miss</th>
-                     <th data-order="asc">Fire Accident</th>
-                     <th data-order="asc">Damaged Property</th>
-                     <th data-order="asc">Jumlah Hari Hilang</th>
-                     <th data-order="asc">Jumlah Hari Tanpa Hilang</th>
-                     <th data-order="asc">LTI</th>
-                     <th data-order="asc">Man Hour</th>
-                     <th data-order="asc">Frequency Rate</th>
-                     <th data-order="asc">Severity Rate</th>
-                     <th data-order="asc">Inchident rate</th>
-                     <th data-order="asc">ATLR</th>
-                     <th data-order="asc">Action Menu</th>
-                  </tr>
-               </thead>
-               <tbody id="table-body-rekap">
-                  <!-- Data akan dimasukkan di sini -->
-               </tbody>
-            </table>
-         </div>
-         <div id="laporan-indikator">
-            <h2>Indikator Laporan Kegiatan K3</h2>
-            <ul>
-               <li>
-                  <strong>Jumlah Hari Kerja Tanpa Kehilangan:</strong>
-                  <p>Jumlah hari kerja yang berhasil dilewati tanpa adanya kecelakaan kerja yang menyebabkan hari kerja hilang.</p>
-                  Rumus: $$\text{Total Pekerja} \times \text{Jumlah Hari Kerja Perusahaan}$$
-               </li>
-               <li>
-                  <strong>Lost Time Injury (LTI):</strong>
-                  <p>Jumlah jam kerja yang hilang karena kecelakaan. Angka ini diperoleh dari catatan lama mangkirnya tenaga kerja akibat kecelakaan kerja.</p>
-                  Rumus: $$\text{Jumlah Jam Kerja Hilang}$$
-               </li>
-               <li>
-                  <strong>Man Hour (Jam Kerja Tanpa Kehilangan):</strong>
-                  <p>Jumlah jam kerja yang berhasil dilewati tanpa adanya kecelakaan kerja yang menyebabkan jam kerja hilang.</p>
-                  Rumus: $$\text{Jumlah Karyawan} \times 8 \times \text{Jumlah Hari Kerja}$$
-               </li>
-               <li>
-                  <strong>Frequency Rate (FR):</strong>
-                  <p>
-                     Tingkat keseringan kecelakaan kerja atau insiden kerja per 1.000.000 jam kerja orang. 
-                     Angka ini membantu memantau seberapa sering kecelakaan terjadi.
-                  </p>
-                  Rumus: $$\text{FR} = \left( \frac{\text{Total Kasus Kecelakaan Kerja}}{\text{Total Jam Kerja}} \right) \times 1.000.000$$
-               </li>
-               <li>
-                  <strong>Severity Rate (SR):</strong>
-                  <p>
-                     Tingkat keparahan kecelakaan kerja yang dihitung berdasarkan jumlah hari kerja yang hilang akibat kecelakaan kerja 
-                     per 1.000.000 jam kerja orang.
-                  </p>
-                  Rumus: $$\text{SR} = \left( \frac{\text{Total Hari Kerja Hilang}}{\text{Total Jam Kerja}} \right) \times 1.000.000$$
-               </li>
-               <li>
-                  <strong>Incident Rate (IR):</strong>
-                  <p>
-                     Persentase tingkat terjadinya kecelakaan kerja untuk setiap tenaga kerja.
-                  </p>
-                  Rumus: $$\text{IR} = \left( \frac{\text{Total Kasus Kecelakaan Kerja}}{\text{Total Tenaga Kerja}} \right) \times 100 \%$$
-               </li>
-               <li>
-                  <strong>Average Time Lost Rate (ATLR):</strong>
-                  <p>
-                     Rata-rata hilangnya hari kerja karena kecelakaan kerja untuk setiap kasus kecelakaan kerja.
-                  </p>
-                  Rumus: $$\text{ATLR} = \frac{\text{Total Hari Hilang}}{\text{Total Kasus Kecelakaan Kerja}}$$
-               </li>
-            </ul>
-         </div>
-      </div>
-      <div class="tab-content" id="kecelakaan-tab" style="display: none;">
-         <h1>Tabel Rekap Kecelakaan Kerja</h1>
-         <div class="search-container">
-            <input type="text" id="search-bar-kecelakaan" placeholder="Search Bar">
-            <button class="add-data-btn-kecelakaan" id="add-data-btn-kecelakaan">
-            ✏️Tambah Data</button>
-            <button class="export-csv-btn-kecelakaan" onclick="exportTableKecelakaanToXLSX('kecelakaan-table', 'KecelakaanKerja.xlsx', [1,2,3,4,5,6,7,8,9,10])">
-            📊Export Excel</button>
-            <button id="delete-selected-btn-kecelakaan" class="delete-selected-btn-kecelakaan">
-            🗑️Delete Selected</button>
-         </div>
-         <div class="pagination-settings-kecelakaan">
-            <div class="rows-per-page-kecelakaan">
-               <label for="rows-per-page-kecelakaan">Rows per page:</label>
-               <select id="rows-per-page-kecelakaan">
-                  <option value="5">5</option>
-                  <option value="10">10</option>
-                  <option value="15">15</option>
-                  <option value="20">20</option>
-               </select>
-            </div>
-            <div id="pagination-container-kecelakaan" class="pagination-container"></div>
-         </div>
-         <div style="overflow-x: auto;">
-            <table id="kecelakaan-table">
-               <thead>
-                  <tr>
-                     <th><input type="checkbox" id="select-all-kecelakaan"></th>
-                     <!-- Checkbox untuk memilih semua -->
-                     <th>Tanggal</th>
-                     <th>NIK</th>
+                     <th>Tahun</th>
                      <th>Nama</th>
                      <th>Jabatan</th>
-                     <th>Unit</th>
-                     <th>Tempat Kejadian</th>
-                     <th>Kategori Kecelakaan</th>
-                     <th>Tindak Lanjut</th>
-                     <th>Perawatan RS</th>
-                     <th>Keterangan</th>
-                     <th>Action</th>
+                     <th>KEDUDUKAN DALAM PANITIA</th>
+                     <th>Tanggal Input</th>
+                     <th>Action Menu</th>
                   </tr>
                </thead>
-               <tbody id="table-body-kecelakaan">
+               <tbody id="table-body-struktur">
                   <!-- Data akan dimasukkan di sini -->
                </tbody>
             </table>
-         </div>
-      </div>
-      <div class="tab-content" id="kejadian-darurat-tab" style="display: none;">
-         <h1>Tabel Rekap Kejadian Darurat</h1>
-         <div class="search-container">
-            <input type="text" id="search-bar-kejadian" placeholder="Search Bar">
-            <button class="add-data-btn-kejadian" id="add-data-btn-kejadian">
-            ✏️Tambah Data</button>
-            <button class="export-csv-btn-kejadian" onclick="exportTableWithImages('kejadian-darurat-table', 'KejadianDarurat.xlsx', [1,2,3,4,5])">
-            📊Export Excel</button>
-            <button id="delete-selected-btn-kejadian" class="delete-selected-btn-kejadian">
-            🗑️Delete Selected</button>
-         </div>
-         <div class="pagination-settings-kejadian">
-            <div class="rows-per-page-kejadian">
-               <label for="rows-per-page-kejadian">Rows per page:</label>
-               <select id="rows-per-page-kejadian">
-                  <option value="5">5</option>
-                  <option value="10">10</option>
-                  <option value="15">15</option>
-                  <option value="20">20</option>
-               </select>
+            <div class="jabatan">
+               <h2>1. Ketua</h2>
+               <p><strong>Fungsi Pokok:</strong> 
+                  Memimpin penerapan Sistem Manajemen K3 di lingkungan Kantor Pusat dengan menyelenggarakan kegiatan monitoring berupa pengendalian potensi bahaya, penyuluhan, pelatihan, penelitian dan pengawasan keselamatan dan kesehatan kerja serta kegiatan evaluasi berupa audit K3 dan memberi rekomendasi tindak lanjut hasil audit K3 dengan menggunakan sumber daya yang ada dan berpedoman pada peraturan yang berlaku, agar tercipta lingkungan kerja yang aman dan sehat sesuai dengan tujuan dan kebijakan perusahaan.
+               </p>
+               <p><strong>Tugas:</strong></p>
+               <ul>
+                  <li>Mengendalikan pencapaian sasaran, strategi pelaksanaan dan kebijakan program - program P2K3 di lingkungan Kantor Pusat dalam rangka tercapainya tujuan P2K3 sesuai ketentuan yang berlaku;</li>
+                  <li>Memimpin pelaksanaan program kerja K3 dan evaluasi atas pelaksanaan program kerja K3 di lingkungan kantor pusat dengan memperhatikan peraturan yang berlaku serta sasaran program K3 agar program keselamatan dan kesehatan kerja terlaksana dengan baik</li>
+                  <li>Memimpin kegiatan pengawasan atas pelaksanaan program dan pembuatan sistem keselamatan dan kesehatan kerja di lingkungan Kantor Pusat dengan memperhatikan ketentuan yang berlaku, agar terlaksananya program-program keselamatan dan kesehatan kerja dengan baik</li>
+                  <li>Melakukan  koordinasi   dengan instansi external / unit  kerja   terkait penanganan tanggap darurat.</li>
+               </ul>
+               <p><strong>Wewenang:</strong></p>
+               <ul>
+                  <li>Memimpin Rapat P2K3 Kantor Pusat yang dilaksanakan minimal 1 (satu) kali dalam setiap 3 (tiga) bulan</li>
+                  <li>Menetapkan pertimbangan keputusan dan saran atas berbagai permasalahan dalam pelaksanaan program keselamatan dan kesehatan kerja dengan ruang lingkup pelaksanaan di Kantor Pusat, dalam rangka meningkatkan kualitas pelaksanaan K3 sesuai sasaran</li>
+               </ul>
+               <p><strong>Tanggung Jawab:</strong></p>
+               <ul>
+                  <li>Mendorong terciptanya lingkungan kerja yang aman dan sehat sesuai dengan syarat-syarat keselamatan dan kesehatan kerja baik mental maupun fisik karyawan, sebagaimana yang diatur Undang-Undang Ketenagakerjaan</li>
+                  <li>Terlaksananya program-program P2K3  di lingkungan Kantor Pusat sesuai dengan syarat-syarat Keselamatan dan Kesehatan Kerja sebagaimana yang diatur dalam Undang-Undang Ketenagakerjaan</li>
+                  <li>Mempertanggungjawabkan program-program P2K3 Kantor Pusat dan pelaksanaannya kepada Direksi.</li>
+               </ul>
             </div>
-            <div id="pagination-container-kejadian" class="pagination-container"></div>
+            <div class="jabatan">
+               <h2>2. Wakil Ketua</h2>
+               <p><strong>Fungsi Pokok:</strong>
+                  Membantu Ketua dalam penerapan Sistem Manajemen K3 di lingkungan Kantor Pusat dengan menyelenggarakan kegiatan monitoring berupa pengendalian potensi bahaya, penyuluhan, pelatihan, penelitian dan pengawasan keselamatan dan kesehatan kerja serta kegiatan evaluasi berupa audit K3 dan memberi rekomendasi tindak lanjut hasil audit K3 dengan menggunakan sumber daya yang ada dan berpedoman pada peraturan yang berlaku, agar tercipta lingkungan kerja yang aman dan sehat sesuai dengan tujuan dan kebijakan perusahaan
+               </p>
+               <p><strong>Tugas:</strong></p>
+               <ul>
+                  <li>Membantu Ketua dalam pencapaian sasaran, strategi pelaksanaan dan kebijakan program - program P2K3 di lingkungan Kantor Pusat dalam rangka tercapainya tujuan P2K3 sesuai ketentuan yang berlaku</li>
+                  <li>Melakukan analisis laporan mengenai kondisi keselamatan dan kesehatan kerja di kantor pusat dengan memperhatikan peraturan yang berlaku serta sasaran program K3 agar program keselamatan dan kesehatan kerja terlaksana dengan baik</li>
+               </ul>
+               <p><strong>Wewenang:</strong></p>
+               <ul>
+                  <li>Menggantikan peran Ketua apabila berhalangan hadir atau diberikan tanggung jawab langsung dalam kegiatan-kegiatan perihal K3</li>
+                  <li>Menyampaikan keputusan atas permasalahan sesuai yang ditugaskan ketua P2K3</li>
+               </ul>
+               <p><strong>Tanggung Jawab:</strong>
+                  Mendorong terciptanya lingkungan kerja yang aman dan sehat sesuai dengan syarat-syarat keselamatan dan kesehatan kerja baik mental maupun fisik karyawan, sebagaimana yang diatur Undang-Undang Ketenagakerjaan
+               </p>
+            </div>
+            <div class="jabatan">
+               <h2>3. Sekretaris</h2>
+               <p><strong>Fungsi Pokok:</strong> 
+                  Menyelenggarakan kegiatan - kegiatan pengumpulan dan pengolahan data/ permasalahan keselamatan dan kesehatan kerja, serta melakukan koordinasi semua aktivitas program P2K3 di lingkungan kantor pusat, dengan memperhatikan peraturan yang berlaku.
+               </p>
+               <p><strong>Tugas:</strong></p>
+               <ul>
+                  <li>Melaksanakan kegiatan-kegiatan pengumpulan data-data penyiapan materi rapat P2K3 dengan memperhatikan ketentuan yang berlaku, agar rapat P2K3 dapat berjalan dengan lancar sesuai tujuan</li>
+                  <li>Melaksanakan kegiatan-kegiatan pengelolaan administrasi P2K3, dengan memperhatikan ketentuan yang berlaku, agar tercipta kelancaran administrasi P2K3</li>
+                  <li>Melaksanakan kegiatan perencanaan program-program P2K3, dengan memperhatikan masukan-masukan dan kondisi keselamatan dan kesehatan kerja di Perusahaan, agar tercipta kelancaran program-program P2K3</li>
+                  <li>Melaksanakan kegiatan koordinasi dengan anggota P2K3 dan unit kerja dengan memperhatikan ketentuan yang berlaku, agar program-program P2K3 dapat berjalan dengan lancar</li>
+               </ul>
+               <p><strong>Wewenang:</strong></p>
+               <ul>
+                  <li>Memberikan masukan dan rekomendasi mengenai perbaikan sistem dan pelaksanaan program K3 di lingkungan Kantor Pusat dengan memperhatikan ketentuan yang berlaku, dengan tujuan untuk memperbaiki sistem dan kualitas pelaksanaan program keselamatan dan kesehatan</li>
+                  <li>Menggantikan peran Wakil Ketua apabila berhalangan hadir atau diberikan tanggung jawab langsung dalam kegiatan-kegiatan perihal K3</li>
+                  <li>Menetapkan jadwal rapat P2K3, dalam rangka pelaksanaan program-program kerja P2K3</li>
+                  <li>Melakukan komunikasi dengan instansi luar terkait dalam rangka pelaksanaan program kerja P2K3 serta pemenuhan kewajiban perusaha</li>
+                  <li>Mengendalikan tata persuratan P2K3, dalam rangka tertib administrasi</li>
+               </ul>
+               <p><strong>Tanggung Jawab:</strong></p>
+               <ul>
+                  <li>Terlaksananya program-program P2K3 di lingkungan kantor pusat</li>
+                  <li>Terlaksananya evaluasi data/permasalahan keselamatan dan kesehatan kerja di lingkungan kantor pusat</li>
+               </ul>
+            </div>
+            <div class="jabatan">
+               <h2>4. Koordinator Tanggap Darurat</h2>
+               <p><strong>Fungsi Pokok:</strong></p>
+               <ul>
+                  <li>Mengkoordinir semua unsur yang terkait dengan kegiatan penanggulangan keadaan  darurat di lingkungan kantor pusat</li>
+                  <li>Membuat   jadwal 	pelatihan Tim Tanggap Darurat   seperti   pemadam kebakaran, bencana alam, sabotase/teror dan kegiatan lain yang termasuk dalam kondisi darurat</li>
+                  <li>Melakukan  koordinasi dengan unit  kerja terkait untuk menangani laporan tertulis pelaksanaan program P2K3 yang berdampak terhadap pencapaian sasaran kebijakan K3 di lingkungan kantor pusat</li>
+                  <li>Menyelenggarakan simulasi tanggap darurat 1 (satu) kali dalam setahun</li>
+               </ul>
+               <p><strong>Wewenang:</strong></p>
+               <ul>
+                  <li>Membuat skenario  penanganan kondisi darurat di lingkungan kantor pusat</li>
+                  <li>Menyusun tim tanggap darurat di lingkungan kantor pusat</li>
+               </ul>
+               <p><strong>Tanggung Jawab:</strong></p>
+               <ul>
+                  <li>Memastikan penanganan kondisi darurat di lingkungan kantor pusat dapat dikendalikan secara efektif dan efisien dengan memperhatikan peraturan yang berlaku</li>
+                  <li>Menyusun laporan penanganan kondisi darurat di lingkungan kantor pusat dan disampaikan kepada Ketua P2K3 Kantor Pusat</li>
+               </ul>
+            </div>
+            <div class="jabatan">
+               <h2>5. Tim Tanggap Darurat</h2>
+               <p><strong>Fungsi Pokok:</strong>
+                  Melaksanakan tugas sesuai dengan kewenangan sebagai Ahli K3, Petugas P3K, Safety Officer, dan Security untuk melaksanakan penanganan tanggap darurat di lingkungan kantor pusat.
+               </p>
+               <p><strong>Tanggung Jawab:</strong></p>
+               <ul>
+                  <li><strong>Ahli Keselamatan dan Kesehatan Kerja (K3)</strong></li>
+                  <ul>
+                     <li>Memastikan proses yang diperlukan untuk Sistem Manajemen K3 ditetapkan, diterapkan, dan dipelihara di masing-masing unit kerja sesuai penempatan tugas serta menyusunnya dalam laporan kepada Ketua P2K3 mengenai kinerja Sistem Manajemen K3 dan peluang untuk perbaikan.</li>
+                     <li>Melaksanakan inspeksi dan pemecahan masalah/kendala dalam penerapan Sistem Manajemen K3 di semua unit kerja.</li>
+                     <li>Memastikan penggunaan Standar Kerja/Acuan Kerja terkini untuk masing-masing unit kerja.</li>
+                     <li>Merencanakan, melaksanakan, serta memantau Program Audit Internal dan turut aktif dalam Tinjauan Manajemen.</li>
+                     <li>Turut serta membuat program kerja tahunan yang berkaitan dengan implementasi Sistem Manajemen K3 di lingkungan kantor pusat PT Jasa Marga (Persero) Tbk.</li>
+                     <li>Memastikan bahwa Standar Prosedur dan Instruksi Kerja yang telah ditulis dapat diterapkan di lingkungan kerja.</li>
+                     <li>Melaksanakan inspeksi Keselamatan Kerja berkala di tempat kerja.</li>
+                     <li>Menjalankan prosedur investigasi kecelakaan sesuai dengan arahan Ketua P2K3.</li>
+                     <li>Menyiapkan prosedur dan rencana Keselamatan Kerja yang diperlukan (Hazard Identification Risk Assessment & Determining Control).</li>
+                     <li>Menyiapkan materi keselamatan dan bahan untuk rapat P2K3 serta menghadiri rapat P2K3.</li>
+                     <li>Memberikan penilaian dan laporan kepada Ketua P2K3 tentang kondisi keselamatan kerja secara umum maupun cara kerja yang terkait dengan K3 serta memantau implementasi saran-saran K3 yang dibuat.</li>
+                     <li>Menyimpan dan memelihara dokumen sistem manajemen K3 secara tertib, teratur, dan mudah disajikan bila diperlukan.</li>
+                  </ul>
+                  <li><strong>Petugas Pertolongan Pertama Pada Kecelakaan (P3K)</strong></li>
+                  <ul>
+                     <li>Melaksanakan Pertolongan Pertama Pada Kecelakaan (P3K) ketika terjadi kecelakaan kerja atau pada situasi tanggap darurat.</li>
+                  </ul>
+                  <li><strong>Safety Officer</strong></li>
+                  <ul>
+                     <li>Melaksanakan tugas penanganan kondisi darurat sesuai dengan tugas yang diberikan dan turut membantu pelaksanaan program-program K3 perusahaan.</li>
+                  </ul>
+                  <li><strong>Security / Keamanan Kantor Pusat</strong></li>
+                  <ul>
+                     <li>Turut mengamankan sarana dan prasarana K3 perusahaan.</li>
+                     <li>Melaporkan dengan segera apabila terjadi kondisi tanggap darurat seperti demo/huru-hara, kebakaran, bencana alam, atau kejadian darurat lainnya kepada koordinator tanggap darurat atau ketua regu pengamanan/security.</li>
+                     <li>Membantu pelaksanaan tanggap darurat sebagaimana tertuang dalam SK tanggap darurat kantor pusat.</li>
+                  </ul>
+               </ul>
+            </div>
+            <div class="jabatan">
+               <h2>6. Anggota</h2>
+               <p><strong>Fungsi Pokok:</strong>Melaksanakan kegiatan untuk mencapai sasaran program K3 di lingkungan kantor pusat, dengan memperhatikan peraturan yang berlaku</p>
+               <p><strong>Uraian Tugas:</strong></p>
+               <ul>
+                  <li>Mengikuti rapat-rapat rutin yang diadakan oleh P2K3, dengan memperhatikan ketentuan yang berlaku, agar program kerja P2K3 dapat berjalan dengan lancar</li>
+                  <li>Melaksanakan kegiatan yang telah ditetapkan sebagai program K3 di lingkungan kantor pusat dengan memperhatikan ketentuan yang berlaku, agar para Karyawan dapat memahami dan mengerti tujuan K3</li>
+                  <li>Memberikan saran tindak lanjut terhadap pelaksanaan program-program keselamatan dan kesehatan kerja di lingkungan kantor pusat, dengan memperhatikan ketentuan yang berlaku sesuai dengan ketentuan Undang-Undang Ketenagakerjaan</li>
+               </ul>
+               <p><strong>Wewenang:</strong>Memberikan usulan perbaikan pelaksanaan program K3 yang dilakukan Perusahaan, dalam rangka kepatuhan terhadap perundang-undangan ketenagakerjaan</p>
+               <p><strong>Tanggung Jawab:</strong>Terlaksananya program-program P2K3 di lingkungan kantor pusat dan di unit kerja sesuai penempatan masing-masing anggota</p>
+            </div>
          </div>
-         <div style="overflow-x: auto;">
-            <table id="kejadian-darurat-table">
+         <!-- Konten Struktur Organisasi Tanggap -->
+         <div class="tab-content" id="struktur-tanggap-tab" style="display: none;">
+            <h1>Tabel Struktur Tim Tanggap Darurat</h1>
+            <!-- Pencarian & Action Buttons -->
+            <div class="search-container">
+               <input type="text" id="search-bar-struktur-tanggap" placeholder="Search Bar">
+               <button class="add-data-btn-struktur-tanggap" id="add-data-btn-struktur-tanggap">
+               ✏️Tambah Data</button>
+               <button class="export-csv-btn-struktur-tanggap" onclick="exportTableTanggapToXLSX('struktur-tanggap-table', 'Struktur_Organisasi_Tanggap_Darurat.xlsx', [2, 3, 4])">
+               📊Export Excel</button>
+               <button id="delete-selected-btn-struktur-tanggap" class="delete-selected-btn-struktur-tanggap">
+               🗑️Delete Selected</button>
+            </div>
+            <!-- Pagination Settings -->
+            <div class="pagination-settings-struktur-tanggap">
+               <div class="rows-per-page-struktur-tanggap">
+                  <label for="rows-per-page-struktur-tanggap">Rows per page:</label>
+                  <select id="rows-per-page-struktur-tanggap">
+                     <option value="10">10</option>
+                     <option value="15">15</option>
+                     <option value="20">20</option>
+                     <option value="100">100</option>
+                  </select>
+               </div>
+               <div id="pagination-container-struktur-tanggap" class="pagination-container"></div>
+            </div>
+            <!-- Tabel Struktur Organisasi Tanggap -->
+            <table id="struktur-tanggap-table">
                <thead>
                   <tr>
-                     <th><input type="checkbox" id="select-all-kejadian"></th>
-                     <th>Kejadian Darurat</th>
-                     <th>Lokasi</th>
-                     <th>Kronologi Kejadian</th>
-                     <th>Tindak Lanjut</th>
-                     <th>Evidence (Gambar/Foto)</th>
-                     <th>Action</th>
+                     <th><input type="checkbox" id="select-all-struktur-tanggap"></th>
+                     <th>Tahun</th>
+                     <th>Nama</th>
+                     <th>Jabatan</th>
+                     <th>KEDUDUKAN DALAM TIM</th>
+                     <th>Tanggal Input</th>
+                     <th>Action Menu</th>
                   </tr>
                </thead>
-               <tbody id="table-body-kejadian">
-                  <!-- Data akan dimasukkan di sini -->
+               <tbody id="table-body-struktur-tanggap">
+                  <!-- Data akan dimasukkan melalui JavaScript -->
                </tbody>
             </table>
-         </div>
-      </div>
-      <div class="tab-content" id="checklist-k3-tab" style="display: none;">
-         <h1>Checklist K3</h1>
-         <div class="search-container">
-            <input type="text" id="search-bar-checklist" placeholder="Search Bar">
-            <button class="add-data-btn-checklist" id="add-data-btn-checklist">
-            ✏️Tambah Data</button>
-            <button class="export-csv-btn-checklist" onclick="exportTableWithImages('checklist-k3-table', 'ChecklistK3.xlsx', [1,2,3,4,5,6,7,8,9,10,11,12,13,14])">
-            📊Export Excel</button>
-            <button id="delete-selected-btn-checklist" class="delete-selected-btn-checklist">
-            🗑️Delete Selected</button>
-         </div>
-         <div class="pagination-settings-checklist">
-            <div class="rows-per-page-checklist">
-               <label for="rows-per-page-checklist">Rows per page:</label>
-               <select id="rows-per-page-checklist">
-                  <option value="5">5</option>
-                  <option value="10">10</option>
-                  <option value="15">15</option>
-                  <option value="20">20</option>
-               </select>
+            <div class="jabatan">
+               <h2>1. Koordinator Tim Tanggap Darurat</h2>
+               <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+               <ul>
+                  <li>1. Mengkoordinasikan Tim Tanggap Darurat sesuai dengan tugas dan tanggung jawabnya.</li>
+                  <li>2. Memantau perkembangan penanganan kondisi darurat dan menjembatani komunikasi antar regu.</li>
+                  <li>3. Memastikan alur komunikasi antar regu Tanggap Darurat dapat dilangsungkan secara baik dan lancar.</li>
+                  <li>4. Menjadwalkan pertemuan rutin maupun non-rutin tim
+                     Tanggap Darurat.
+                  </li>
+                  <li>5. Bersama Ketua/Sekretaris P2K3 menyusun rencana
+                     pemulihan keadaan darurat gedung.
+                  </li>
+                  <li>6. Melaporkan kepada Ketua/Sekretaris P2K3 terkait
+                     perkembangan penanggulangan keadaan Darurat.
+                  </li>
+               </ul>
             </div>
-            <div id="pagination-container-checklist" class="pagination-container"></div>
+            <div class="jabatan">
+               <h2>2. Regu Pengendali Api</h2>
+               <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+               <ul>
+                  <li> 1. Melangsungkan
+                     pemadaman
+                     menggunakan semua sarana pemadam api di
+                     lingkungan Perusahaan secara aman, selamat dan
+                     efektif.
+                  </li>
+                  <li> 2. Melaporkan segala kekurangan/kerusakan sarana dan
+                     prasarana pemadam api di lingkungan Perusahaan
+                     kepada Koordinator Tim Tanggap Darurat.
+                  </li>
+               </ul>
+            </div>
+            <div class="jabatan">
+               <h2>3. Regu Pengendali Banjir</h2>
+               <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+               <ul>
+                  <li>1. Memastikan ketersediaan sistem pengendali banjir.</li>
+                  <li>2. Melakukan pengkajian untuk mencegah dan
+                     memperbaiki sistem pengamanan dari bencana banjir.
+                  </li>
+                  <li> 3. Melaporkan dan melakukan koordinasi dengan
+                     Koordinator Tim Tanggap Darurat untuk mengatasi
+                     bencana banjir yang terulang.
+                  </li>
+               </ul>
+            </div>
+            <div class="jabatan">
+               <h2>4. Regu Evakuasi</h2>
+               <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+               <ul>
+                  <li>1. Memimpin prosedur evakuasi secara aman, selamat
+                     dan cepat.
+                  </li>
+                  <li>2. Melaporkan segala kekurangan/kerusakan sarana dan
+                     prasarana evakuasi di lingkungan Perusahaan.
+                  </li>
+                  <li>3. Melakukan evakuasi terhadap korban tertinggal,
+                     terjebak ataupun terluka dan melaporkan kepada
+                     Koordinator Tim Tanggap Darurat.
+                  </li>
+               </ul>
+            </div>
+            <div class="jabatan">
+               <h2>5. Regu Pengamanan Aset</h2>
+               <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+               <ul>
+                  <li>1. Memimpin prosedur evakuasi secara aman, selamat
+                     dan cepat.
+                  </li>
+                  <li>2. Melaporkan segala kekurangan/kerusakan sarana dan
+                     prasarana evakuasi di lingkungan Perusahaan kepada
+                     Koordinator Tim Tanggap Darurat.
+                  </li>
+               </ul>
+            </div>
+            <div class="jabatan">
+               <h2>6. Regu Medis/P3K</h2>
+               <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+               <ul>
+                  <li>1. Melaksanakan tindakan P3K.</li>
+                  <li>2. Melaporkan segala kekurangan/kerusakan sarana dan
+                     prasarana P3K di lingkungan Perusahaan kepada
+                     Koordinator Tim Tanggap Darurat.
+                  </li>
+                  <li>3. Melaporkan kepada Koordinator Tim Tanggap Darurat
+                     bilamana terdapat korban yang memerlukan tindakan
+                     medis dan dilanjutkan kepada pihak ke tiga di luar
+                     Perusahaan.
+                  </li>
+               </ul>
+            </div>
+            <div class="jabatan">
+               <h2>7. Regu Teknik/Keberfungsian Alat</h2>
+               <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+               <ul>
+                  <li>1. Regu Teknik melakukan kontrol sistem instalasi
+                     kelistrikan/lift dan peralatan lain untuk mencegah
+                     terjadinya bencana/peningkatan bencana;
+                  </li>
+                  <li>2. Melaporkan ke Koordinator Tim Tanggap Darurat
+                     apabila ada hal-hal yang perlu diambil tindakan dalam
+                     rangka keselamatan dalam kondisi darurat
+                  </li>
+               </ul>
+            </div>
+            <div class="jabatan">
+               <h2>8. Tim Pengarah Tanggap Darurat</h2>
+               <p><strong>Wewenang dan Tanggung Jawab: </strong></p>
+               <ul>
+                  <li>1. Membantu proses penanganan kondisi darurat di
+                     masing-masing unit kerja penugasan.
+                  </li>
+                  <li>2. Melaporkan adanya korban tertinggal, terjebak
+                     ataupun terluka kepada Regu Evakuasi di titik kumpul.
+                  </li>
+               </ul>
+            </div>
          </div>
-         <div style="overflow-x: auto;">
-            <table id="checklist-k3-table">
+         <div class="tab-content" id="personel-tab" style="display: none;">
+            <h1>Tabel Personel Ahli K3 & P3K</h1>
+            <div class="search-container">
+               <input type="text" id="search-bar-personel" placeholder="Search Bar">
+               <button class="add-data-btn-personel" id="add-data-btn-personel">
+               ✏️Tambah Data</button>
+               <button class="export-csv-btn-personel" onclick="exportTablePersonelToXLSX('personel-table', 'Personel_Ahli_K3.xlsx', [1, 2, 3, 4])">
+               📊Export Excel</button>
+               <button id="delete-selected-btn-personel" class="delete-selected-btn-personel">
+               🗑️Delete Selected</button>
+            </div>
+            <div class="pagination-settings-personel">
+               <div class="rows-per-page-personel">
+                  <label for="rows-per-page-personel">Rows per page:</label>
+                  <select id="rows-per-page-personel">
+                     <option value="10">10</option>
+                     <option value="15">15</option>
+                     <option value="20">20</option>
+                     <option value="100">100</option>
+                  </select>
+               </div>
+               <div id="pagination-container-personel" class="pagination-container"></div>
+            </div>
+            <table id="personel-table">
                <thead>
                   <tr>
-                     <th><input type="checkbox" id="select-all-checklist"></th>
-                     <th>Section</th>
-                     <th>Indikator K3</th>
-                     <th>Expired Date</th>
-                     <th>Checklist Pemeriksaan</th>
-                     <th>APAR</th>
-                     <th>Rambu APAR</th>
-                     <th>Kelengkapan Box Hydrant</th>
-                     <th>Ruang Laktasi</th>
-                     <th>Ruang P3K</th>
-                     <th>Organik</th>
-                     <th>Non-Organik</th>
-                     <th>Limbah B3</th>
-                     <th>Smoking Area</th>
-                     <th>DLL</th>
-                     <th>Action</th>
+                     <th><input type="checkbox" id="select-all-personel"></th>
+                     <!-- Checkbox untuk memilih semua -->
+                     <th>Nama</th>
+                     <th>Keahlian</th>
+                     <th>Keahlian (Tambahan)</th>
+                     <th>Batas Masa Berlaku</th>
+                     <th>Action Menu</th>
                   </tr>
                </thead>
-               <tbody id="table-body-checklist">
+               <tbody id="table-body-personel">
                   <!-- Data akan dimasukkan di sini -->
                </tbody>
             </table>
+            <div class="jabatan">
+               <h2>1. Ahli K3 Konstruksi</h2>
+               <p><strong>Fungsi Pokok:</strong></p>
+               <ul>
+                  <li>Melaksanakan pengawasan dan penerapan sistem manajemen keselamatan dan kesehatan kerja (K3) pada proyek konstruksi sesuai dengan peraturan perundang-undangan yang berlaku.</li>
+               </ul>
+               <p><strong>Tugas:</strong></p>
+               <ul>
+                  <li>Mengidentifikasi potensi bahaya di lokasi konstruksi.</li>
+                  <li>Menyusun dan mengimplementasikan program K3 di proyek konstruksi.</li>
+                  <li>Melakukan inspeksi rutin terhadap alat berat, peralatan kerja, dan kondisi lingkungan kerja.</li>
+                  <li>Memberikan pelatihan K3 kepada pekerja konstruksi.</li>
+               </ul>
+               <p><strong>Wewenang:</strong></p>
+               <ul>
+                  <li>Menghentikan pekerjaan yang berisiko tinggi hingga tindakan pengendalian diterapkan.</li>
+                  <li>Memberikan rekomendasi terkait perbaikan sistem K3 di proyek konstruksi.</li>
+               </ul>
+               <p><strong>Tanggung Jawab:</strong></p>
+               <ul>
+                  <li>Memastikan seluruh pekerja mematuhi prosedur K3.</li>
+                  <li>Menyusun laporan terkait pelaksanaan K3 di proyek konstruksi.</li>
+               </ul>
+            </div>
+            <div class="jabatan">
+               <h2>2. Ahli K3 Umum</h2>
+               <p><strong>Fungsi Pokok:</strong></p>
+               <ul>
+                  <li>Mengawasi penerapan sistem manajemen K3 di berbagai sektor industri sesuai dengan standar nasional dan internasional.</li>
+               </ul>
+               <p><strong>Tugas:</strong></p>
+               <ul>
+                  <li>Melakukan identifikasi bahaya dan penilaian risiko di tempat kerja.</li>
+                  <li>Menyusun kebijakan dan prosedur K3 untuk perusahaan.</li>
+                  <li>Melakukan audit internal terkait penerapan K3.</li>
+                  <li>Memberikan pelatihan K3 kepada seluruh karyawan.</li>
+               </ul>
+               <p><strong>Wewenang:</strong></p>
+               <ul>
+                  <li>Memberikan rekomendasi terkait perbaikan sistem K3 di perusahaan.</li>
+                  <li>Menghentikan aktivitas kerja yang berisiko tinggi hingga tindakan pengendalian diterapkan.</li>
+               </ul>
+               <p><strong>Tanggung Jawab:</strong></p>
+               <ul>
+                  <li>Memastikan lingkungan kerja aman dan sehat bagi seluruh karyawan.</li>
+                  <li>Menyusun laporan terkait pelaksanaan K3 di perusahaan.</li>
+               </ul>
+            </div>
+            <div class="jabatan">
+               <h2>3. Supervisor K3 Konstruksi Utama</h2>
+               <p><strong>Fungsi Pokok:</strong></p>
+               <ul>
+                  <li>Memimpin dan mengawasi penerapan sistem manajemen K3 di proyek konstruksi berskala besar.</li>
+               </ul>
+               <p><strong>Tugas:</strong></p>
+               <ul>
+                  <li>Mengkoordinasikan tim K3 di proyek konstruksi.</li>
+                  <li>Melakukan inspeksi rutin terhadap alat berat, peralatan kerja, dan kondisi lingkungan kerja.</li>
+                  <li>Menyusun laporan terkait pelaksanaan K3 di proyek konstruksi.</li>
+                  <li>Memberikan pelatihan K3 kepada pekerja konstruksi.</li>
+               </ul>
+               <p><strong>Wewenang:</strong></p>
+               <ul>
+                  <li>Menghentikan pekerjaan yang berisiko tinggi hingga tindakan pengendalian diterapkan.</li>
+                  <li>Memberikan rekomendasi terkait perbaikan sistem K3 di proyek konstruksi.</li>
+               </ul>
+               <p><strong>Tanggung Jawab:</strong></p>
+               <ul>
+                  <li>Memastikan seluruh pekerja mematuhi prosedur K3.</li>
+                  <li>Menyusun laporan terkait pelaksanaan K3 di proyek konstruksi.</li>
+               </ul>
+            </div>
+            <div class="jabatan">
+               <h2>4. Ahli Muda Keselamatan Konstruksi</h2>
+               <p><strong>Fungsi Pokok:</strong></p>
+               <ul>
+                  <li>Membantu Ahli K3 Konstruksi dalam penerapan sistem manajemen K3 di proyek konstruksi.</li>
+               </ul>
+               <p><strong>Tugas:</strong></p>
+               <ul>
+                  <li>Melakukan identifikasi bahaya di lokasi konstruksi.</li>
+                  <li>Membantu penyusunan program K3 di proyek konstruksi.</li>
+                  <li>Melakukan inspeksi terhadap alat berat dan peralatan kerja.</li>
+                  <li>Memberikan pelatihan K3 kepada pekerja konstruksi.</li>
+               </ul>
+               <p><strong>Wewenang:</strong></p>
+               <ul>
+                  <li>Memberikan rekomendasi terkait perbaikan sistem K3 di proyek konstruksi.</li>
+               </ul>
+               <p><strong>Tanggung Jawab:</strong></p>
+               <ul>
+                  <li>Memastikan seluruh pekerja mematuhi prosedur K3.</li>
+                  <li>Menyusun laporan terkait pelaksanaan K3 di proyek konstruksi.</li>
+               </ul>
+            </div>
+            <div class="jabatan">
+               <h2>5. Pemadam Kebakaran Kelas D</h2>
+               <p><strong>Fungsi Pokok:</strong></p>
+               <ul>
+                  <li>Melaksanakan tugas pemadaman kebakaran di lingkungan kerja sesuai dengan standar keselamatan kerja.</li>
+               </ul>
+               <p><strong>Tugas:</strong></p>
+               <ul>
+                  <li>Melakukan inspeksi terhadap alat pemadam kebakaran (APAR, hydrant, dll.).</li>
+                  <li>Melakukan simulasi dan pelatihan pemadaman kebakaran.</li>
+                  <li>Menangani kebakaran kecil hingga menunggu bantuan dari pihak eksternal.</li>
+               </ul>
+               <p><strong>Wewenang:</strong></p>
+               <ul>
+                  <li>Mengambil tindakan darurat untuk memadamkan api di lokasi kerja.</li>
+                  <li>Memberikan rekomendasi terkait perbaikan sistem pencegahan kebakaran.</li>
+               </ul>
+               <p><strong>Tanggung Jawab:</strong></p>
+               <ul>
+                  <li>Memastikan alat pemadam kebakaran selalu dalam kondisi siap pakai.</li>
+                  <li>Menyusun laporan terkait insiden kebakaran di tempat kerja.</li>
+               </ul>
+            </div>
+            <div class="jabatan">
+               <h2>6. P3K Kemnaker</h2>
+               <p><strong>Fungsi Pokok:</strong></p>
+               <ul>
+                  <li>Melaksanakan pertolongan pertama pada kecelakaan kerja sesuai dengan standar Kemnaker.</li>
+               </ul>
+               <p><strong>Tugas:</strong></p>
+               <ul>
+                  <li>Memberikan pertolongan pertama pada korban kecelakaan kerja.</li>
+                  <li>Melakukan inspeksi terhadap fasilitas P3K di tempat kerja.</li>
+                  <li>Memberikan pelatihan P3K kepada karyawan.</li>
+               </ul>
+               <p><strong>Wewenang:</strong></p>
+               <ul>
+                  <li>Mengambil tindakan darurat untuk memberikan pertolongan pertama.</li>
+                  <li>Memberikan rekomendasi terkait perbaikan fasilitas P3K di tempat kerja.</li>
+               </ul>
+               <p><strong>Tanggung Jawab:</strong></p>
+               <ul>
+                  <li>Memastikan fasilitas P3K selalu dalam kondisi siap pakai.</li>
+                  <li>Menyusun laporan terkait insiden kecelakaan kerja.</li>
+               </ul>
+            </div>
+            <div class="jabatan">
+               <h2>7. Ahli Muda K3 Konstruksi</h2>
+               <p><strong>Fungsi Pokok:</strong></p>
+               <ul>
+                  <li>Membantu penerapan sistem manajemen K3 di proyek konstruksi dengan fokus pada pengendalian risiko.</li>
+               </ul>
+               <p><strong>Tugas:</strong></p>
+               <ul>
+                  <li>Melakukan identifikasi bahaya di lokasi konstruksi.</li>
+                  <li>Membantu penyusunan program K3 di proyek konstruksi.</li>
+                  <li>Melakukan inspeksi terhadap alat berat dan peralatan kerja.</li>
+                  <li>Memberikan pelatihan K3 kepada pekerja konstruksi.</li>
+               </ul>
+               <p><strong>Wewenang:</strong></p>
+               <ul>
+                  <li>Memberikan rekomendasi terkait perbaikan sistem K3 di proyek konstruksi.</li>
+               </ul>
+               <p><strong>Tanggung Jawab:</strong></p>
+               <ul>
+                  <li>Memastikan seluruh pekerja mematuhi prosedur K3.</li>
+                  <li>Menyusun laporan terkait pelaksanaan K3 di proyek konstruksi.</li>
+               </ul>
+            </div>
          </div>
-      </div>
+         <div class="tab-content" id="rekap-tab" style="display: none;">
+            <h1>Tabel Rekap Data K3</h1>
+            <div class="search-container">
+               <input type="text" id="search-bar-rekap" placeholder="Search Bar">
+               <button class="add-data-btn-rekap" id="add-data-btn-rekap">
+               ✏️Tambah Data
+               </button>
+               <button class="export-csv-btn-rekap" onclick="exportTableRekapToXLSX('rekap-table', 'Rekap_Data_P2K3.xlsx', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19])">
+               📊Export ke Excel
+               </button>
+               <button id="delete-selected-btn-rekap" class="delete-selected-btn-rekap">
+               🗑️Delete Selected</button>
+            </div>
+            <div class="pagination-settings-rekap">
+               <div class="rows-per-page-rekap">
+                  <label for="rows-per-page-rekap">Rows per page:</label>
+                  <select id="rows-per-page-rekap">
+                     <option value="12">12</option>
+                     <option value="24">24</option>
+                     <option value="36">36</option>
+                     <option value="48">48</option>
+                  </select>
+               </div>
+               <div id="pagination-container-rekap" class="pagination-container"></div>
+            </div>
+            <div style="overflow-x: auto;">
+               <table id="rekap-table">
+                  <thead>
+                     <tr>
+                        <th><input type="checkbox" id="select-all-rekap"></th>
+                        <!-- Checkbox untuk memilih semua -->
+                        <th data-order="asc">Tahun</th>
+                        <th data-order="asc">Bulan</th>
+                        <th data-order="asc">Jumlah Karyawan</th>
+                        <th data-order="asc">Jumlah Hari Kerja</th>
+                        <th data-order="asc">Jumlah Jam Kerja</th>
+                        <th data-order="asc">Kecelakaan Berat</th>
+                        <th data-order="asc">Kecelakaan Ringan</th>
+                        <th data-order="asc">Meninggal (Akibat Kerja)</th>
+                        <th data-order="asc">Near Miss</th>
+                        <th data-order="asc">Fire Accident</th>
+                        <th data-order="asc">Damaged Property</th>
+                        <th data-order="asc">Jumlah Hari Hilang</th>
+                        <th data-order="asc">Jumlah Hari Tanpa Hilang</th>
+                        <th data-order="asc">LTI</th>
+                        <th data-order="asc">Man Hour</th>
+                        <th data-order="asc">Frequency Rate</th>
+                        <th data-order="asc">Severity Rate</th>
+                        <th data-order="asc">Inchident rate</th>
+                        <th data-order="asc">ATLR</th>
+                        <th data-order="asc">Action Menu</th>
+                     </tr>
+                  </thead>
+                  <tbody id="table-body-rekap">
+                     <!-- Data akan dimasukkan di sini -->
+                  </tbody>
+               </table>
+            </div>
+            <div id="laporan-indikator">
+               <h2>Indikator Laporan Kegiatan K3</h2>
+               <ul>
+                  <li>
+                     <strong>Jumlah Hari Kerja Tanpa Kehilangan:</strong>
+                     <p>Jumlah hari kerja yang berhasil dilewati tanpa adanya kecelakaan kerja yang menyebabkan hari kerja hilang.</p>
+                     Rumus: $$\text{Total Pekerja} \times \text{Jumlah Hari Kerja Perusahaan}$$
+                  </li>
+                  <li>
+                     <strong>Lost Time Injury (LTI):</strong>
+                     <p>Jumlah jam kerja yang hilang karena kecelakaan. Angka ini diperoleh dari catatan lama mangkirnya tenaga kerja akibat kecelakaan kerja.</p>
+                     Rumus: $$\text{Jumlah Jam Kerja Hilang}$$
+                  </li>
+                  <li>
+                     <strong>Man Hour (Jam Kerja Tanpa Kehilangan):</strong>
+                     <p>Jumlah jam kerja yang berhasil dilewati tanpa adanya kecelakaan kerja yang menyebabkan jam kerja hilang.</p>
+                     Rumus: $$\text{Jumlah Karyawan} \times 8 \times \text{Jumlah Hari Kerja}$$
+                  </li>
+                  <li>
+                     <strong>Frequency Rate (FR):</strong>
+                     <p>
+                        Tingkat keseringan kecelakaan kerja atau insiden kerja per 1.000.000 jam kerja orang. 
+                        Angka ini membantu memantau seberapa sering kecelakaan terjadi.
+                     </p>
+                     Rumus: $$\text{FR} = \left( \frac{\text{Total Kasus Kecelakaan Kerja}}{\text{Total Jam Kerja}} \right) \times 1.000.000$$
+                  </li>
+                  <li>
+                     <strong>Severity Rate (SR):</strong>
+                     <p>
+                        Tingkat keparahan kecelakaan kerja yang dihitung berdasarkan jumlah hari kerja yang hilang akibat kecelakaan kerja 
+                        per 1.000.000 jam kerja orang.
+                     </p>
+                     Rumus: $$\text{SR} = \left( \frac{\text{Total Hari Kerja Hilang}}{\text{Total Jam Kerja}} \right) \times 1.000.000$$
+                  </li>
+                  <li>
+                     <strong>Incident Rate (IR):</strong>
+                     <p>
+                        Persentase tingkat terjadinya kecelakaan kerja untuk setiap tenaga kerja.
+                     </p>
+                     Rumus: $$\text{IR} = \left( \frac{\text{Total Kasus Kecelakaan Kerja}}{\text{Total Tenaga Kerja}} \right) \times 100 \%$$
+                  </li>
+                  <li>
+                     <strong>Average Time Lost Rate (ATLR):</strong>
+                     <p>
+                        Rata-rata hilangnya hari kerja karena kecelakaan kerja untuk setiap kasus kecelakaan kerja.
+                     </p>
+                     Rumus: $$\text{ATLR} = \frac{\text{Total Hari Hilang}}{\text{Total Kasus Kecelakaan Kerja}}$$
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="tab-content" id="kecelakaan-tab" style="display: none;">
+            <h1>Tabel Rekap Kecelakaan Kerja</h1>
+            <div class="search-container">
+               <input type="text" id="search-bar-kecelakaan" placeholder="Search Bar">
+               <button class="add-data-btn-kecelakaan" id="add-data-btn-kecelakaan">
+               ✏️Tambah Data</button>
+               <button class="export-csv-btn-kecelakaan" onclick="exportTableKecelakaanToXLSX('kecelakaan-table', 'Kecelakaan_Kerja.xlsx', [1,2,3,4,5,6,7,8,9,10])">
+               📊Export Excel</button>
+               <button id="delete-selected-btn-kecelakaan" class="delete-selected-btn-kecelakaan">
+               🗑️Delete Selected</button>
+            </div>
+            <div class="pagination-settings-kecelakaan">
+               <div class="rows-per-page-kecelakaan">
+                  <label for="rows-per-page-kecelakaan">Rows per page:</label>
+                  <select id="rows-per-page-kecelakaan">
+                     <option value="5">5</option>
+                     <option value="10">10</option>
+                     <option value="15">15</option>
+                     <option value="20">20</option>
+                  </select>
+               </div>
+               <div id="pagination-container-kecelakaan" class="pagination-container"></div>
+            </div>
+            <div style="overflow-x: auto;">
+               <table id="kecelakaan-table">
+                  <thead>
+                     <tr>
+                        <th><input type="checkbox" id="select-all-kecelakaan"></th>
+                        <!-- Checkbox untuk memilih semua -->
+                        <th>Tanggal</th>
+                        <th>NIK</th>
+                        <th>Nama</th>
+                        <th>Jabatan</th>
+                        <th>Unit</th>
+                        <th>Tempat Kejadian</th>
+                        <th>Kategori Kecelakaan</th>
+                        <th>Tindak Lanjut</th>
+                        <th>Perawatan RS</th>
+                        <th>Keterangan</th>
+                        <th>Action</th>
+                     </tr>
+                  </thead>
+                  <tbody id="table-body-kecelakaan">
+                     <!-- Data akan dimasukkan di sini -->
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="tab-content" id="kejadian-darurat-tab" style="display: none;">
+            <h1>Tabel Rekap Kejadian Darurat</h1>
+            <div class="search-container">
+               <input type="text" id="search-bar-kejadian" placeholder="Search Bar">
+               <button class="add-data-btn-kejadian" id="add-data-btn-kejadian">
+               ✏️Tambah Data</button>
+               <button class="export-csv-btn-kejadian" onclick="exportTableKejadianToXLSX('kejadian-darurat-table', 'Kejadian_Darurat.xlsx', [1,2,3,4,5])">
+               📊Export Excel</button>
+               <button id="delete-selected-btn-kejadian" class="delete-selected-btn-kejadian">
+               🗑️Delete Selected</button>
+            </div>
+            <div class="pagination-settings-kejadian">
+               <div class="rows-per-page-kejadian">
+                  <label for="rows-per-page-kejadian">Rows per page:</label>
+                  <select id="rows-per-page-kejadian">
+                     <option value="5">5</option>
+                     <option value="10">10</option>
+                     <option value="15">15</option>
+                     <option value="20">20</option>
+                     <option value="100">100</option>
+                  </select>
+               </div>
+               <div id="pagination-container-kejadian" class="pagination-container"></div>
+            </div>
+            <div style="overflow-x: auto;">
+               <table id="kejadian-darurat-table">
+                  <thead>
+                     <tr>
+                        <th><input type="checkbox" id="select-all-kejadian"></th>
+                        <th>Kejadian Darurat</th>
+                        <th>Lokasi</th>
+                        <th>Kronologi Kejadian</th>
+                        <th>Tindak Lanjut</th>
+                        <th>Evidence (Gambar/Foto)</th>
+                        <th>Action</th>
+                     </tr>
+                  </thead>
+                  <tbody id="table-body-kejadian">
+                     <!-- Data akan dimasukkan di sini -->
+                  </tbody>
+               </table>
+            </div>
+         </div>
+         <div class="tab-content" id="checklist-k3-tab" style="display: none;">
+            <h1>Checklist K3</h1>
+            <div class="search-container">
+               <input type="text" id="search-bar-checklist" placeholder="Search Bar">
+               <button class="add-data-btn-checklist" id="add-data-btn-checklist">
+               ✏️Tambah Data</button>
+               <button class="export-csv-btn-checklist" onclick="exportTableWithImages('checklist-k3-table', 'Checklist_K3.xlsx', [1,2,3,4,5,6,7,8,9,10,11,12,13,14])">
+               📊Export Excel</button>
+               <button id="delete-selected-btn-checklist" class="delete-selected-btn-checklist">
+               🗑️Delete Selected</button>
+            </div>
+            <div class="pagination-settings-checklist">
+               <div class="rows-per-page-checklist">
+                  <label for="rows-per-page-checklist">Rows per page:</label>
+                  <select id="rows-per-page-checklist">
+                     <option value="5">5</option>
+                     <option value="10">10</option>
+                     <option value="15">15</option>
+                     <option value="20">20</option>
+                  </select>
+               </div>
+               <div id="pagination-container-checklist" class="pagination-container"></div>
+            </div>
+            <div style="overflow-x: auto;">
+               <table id="checklist-k3-table">
+                  <thead>
+                     <tr>
+                        <th><input type="checkbox" id="select-all-checklist"></th>
+                        <th>Section</th>
+                        <th>Indikator K3</th>
+                        <th>Expired Date</th>
+                        <th>Checklist Pemeriksaan</th>
+                        <th>APAR</th>
+                        <th>Rambu APAR</th>
+                        <th>Kelengkapan Box Hydrant</th>
+                        <th>Ruang Laktasi</th>
+                        <th>Ruang P3K</th>
+                        <th>Organik</th>
+                        <th>Non-Organik</th>
+                        <th>Limbah B3</th>
+                        <th>Smoking Area</th>
+                        <th>DLL</th>
+                        <th>Action</th>
+                     </tr>
+                  </thead>
+                  <tbody id="table-body-checklist">
+                     <!-- Data akan dimasukkan di sini -->
+                  </tbody>
+               </table>
+            </div>
+         </div>
       </div>
       <!-- Modal Tambah Data STRUKTUR -->
       <div id="add-data-modal-struktur" class="modal">
@@ -1081,10 +1072,8 @@
             <form id="add-data-form-kecelakaan">
                <label for="tanggal">Tanggal:</label>
                <input type="date" id="tanggal" name="tanggal" required>
-
                <label for="nik">NIK:</label>
                <input type="text" id="nik" name="nik" pattern="^\d{4,}$" title="Minimal 4 digit angka" required>
-
                <label for="nama">Nama:</label>
                <input type="text" id="nama-kecelakaan" name="nama" required>
                <label for="jabatan">Jabatan:</label>
@@ -1121,11 +1110,8 @@
                <input type="hidden" id="edit-id-kecelakaan" name="kecelakaankerja_id">
                <label for="edit-tanggal">Tanggal:</label>
                <input type="date" id="edit-tanggal" name="tanggal" required>
-
                <label for="edit-nik">NIK:</label>
                <input type="text" id="edit-nik" name="nik" pattern="^\d{4,}$" title="Minimal 4 digit angka" required>
-               
-
                <label for="edit-nama">Nama:</label>
                <input type="text" id="edit-nama-kecelakaan" name="nama" required>
                <label for="jabatan">Jabatan:</label>
@@ -1266,31 +1252,30 @@
             </form>
          </div>
       </div>
-
       <script>
-           document.getElementById("nik").addEventListener("input", function () {
-      this.value = this.value.replace(/\D/g, ""); // Hanya angka diperbolehkan
-  });
-
-  document.getElementById("edit-nik").addEventListener("input", function () {
-      this.value = this.value.replace(/\D/g, ""); // Hanya angka diperbolehkan
-  });
-
-  document.getElementById("add-data-form-kecelakaan").addEventListener("submit", function (event) {
-      const nikInput = document.getElementById("nik").value;
-      if (nikInput.length < 4) {
-          alert("NIK harus minimal 4 digit angka!");
-          event.preventDefault(); // Mencegah pengiriman formulir
-      }
-  });
-
-  document.getElementById("edit-data-form-kecelakaan").addEventListener("submit", function (event) {
-      const editNikInput = document.getElementById("edit-nik").value;
-      if (editNikInput.length < 4) {
-          alert("NIK harus minimal 4 digit angka!");
-          event.preventDefault();
-      }
-  });
+         document.getElementById("nik").addEventListener("input", function () {
+         this.value = this.value.replace(/\D/g, ""); // Hanya angka diperbolehkan
+         });
+         
+         document.getElementById("edit-nik").addEventListener("input", function () {
+         this.value = this.value.replace(/\D/g, ""); // Hanya angka diperbolehkan
+         });
+         
+         document.getElementById("add-data-form-kecelakaan").addEventListener("submit", function (event) {
+         const nikInput = document.getElementById("nik").value;
+         if (nikInput.length < 4) {
+         alert("NIK harus minimal 4 digit angka!");
+         event.preventDefault(); // Mencegah pengiriman formulir
+         }
+         });
+         
+         document.getElementById("edit-data-form-kecelakaan").addEventListener("submit", function (event) {
+         const editNikInput = document.getElementById("edit-nik").value;
+         if (editNikInput.length < 4) {
+         alert("NIK harus minimal 4 digit angka!");
+         event.preventDefault();
+         }
+         });
       </script>
       <script>
          // Fungsi Tab Navigation
@@ -1976,81 +1961,158 @@
               img.onerror = (error) => reject(error);
           });
          }
-         
-         
+            
       </script>
       <script>
-         async function exportTableWithImages(tableId, filename, selectedColumns) {
-         const table = document.getElementById(tableId); // Ambil tabel berdasarkan ID
-         const rows = table.rows; // Ambil semua baris di tabel
-         //const ExcelJS = await import("exceljs"); // Impor ExcelJS (untuk memastikan file script modern)
+         async function exportTableKejadianToXLSX(tableId, filename, selectedColumns) {
+           const table = document.getElementById(tableId);
+           const rows = table.rows;
          
-         const ExcelJS = window.ExcelJS;
+           const workbook = new ExcelJS.Workbook();
+           const worksheet = workbook.addWorksheet("Data KEJADIAN DARURAT");
          
+           // Header Judul
+           worksheet.mergeCells("A1:F1");
+           worksheet.getCell("A1").value = "REKAP KEJADIAN DARURAT";
+           worksheet.getCell("A1").alignment = { horizontal: "center" };
+           worksheet.getCell("A1").font = { bold: true, size: 14 };
          
-         const workbook = new ExcelJS.Workbook(); // Buat workbook baru
-         const worksheet = workbook.addWorksheet("Kejadian Darurat"); // Tambahkan worksheet baru
+           worksheet.mergeCells("A2:F2");
+           worksheet.getCell("A2").value = "PANITIA PEMBINA KESELAMATAN DAN KESEHATAN KERJA (P2K3)";
+           worksheet.getCell("A2").alignment = { horizontal: "center" };
+           worksheet.getCell("A2").font = { bold: true, size: 12 };
          
-         const imageData = []; // Array untuk menyimpan data gambar
+           worksheet.addRow([]); // Baris kosong
          
-         // Loop melalui setiap baris untuk mengambil data dan gambar
-         for (let i = 0; i < rows.length; i++) {
-           const row = rows[i];
-           const rowData = [];
+           // Header Tabel
+           const headerRow = worksheet.addRow([
+             "No.",
+             "KEJADIAN DARURAT",
+             "LOKASI",
+             "KRONOLOGI KEJADIAN",
+             "TINDAK LANJUT",
+             "EVIDENCE"
+           ]);
+           headerRow.font = { bold: true, color: { argb: "FFFFFF" } };
+           headerRow.alignment = { horizontal: "center" };
+           headerRow.eachCell(cell => {
+             cell.fill = {
+               type: "pattern",
+               pattern: "solid",
+               fgColor: { argb: "0070C0" }
+             };
+             cell.border = {
+               top: { style: "thin" },
+               bottom: { style: "thin" },
+               left: { style: "thin" },
+               right: { style: "thin" }
+             };
+           });
          
-           selectedColumns.forEach((colIndex) => {
-             const cell = row.cells[colIndex];
+           // Isi Data Tabel
+           for (let i = 1; i < rows.length; i++) {
+             const row = rows[i];
+             const rowData = [i]; // nomor urut
+             let evidenceImgSrc = null;
          
-             if (cell.querySelector("img")) {
+             selectedColumns.forEach((colIndex, idx) => {
+               const cell = row.cells[colIndex];
                const img = cell.querySelector("img");
-               const imgSrc = img.src; // URL gambar
-               rowData.push("Gambar"); // Tambahkan placeholder teks ke tabel
          
-               // Simpan data gambar
-               imageData.push({
-                 row: i + 1, // Baris Excel (Excel mulai dari 1)
-                 col: colIndex + 1, // Kolom Excel
-                 imgSrc, // URL gambar
+               if (img) {
+                 evidenceImgSrc = img.src; // Ambil base64 image
+                 rowData.push(null); // Placeholder untuk kolom evidence
+               } else {
+                 rowData.push(cell.innerText);
+               }
+             });
+         
+             const newRow = worksheet.addRow(rowData);
+         
+             newRow.eachCell(cell => {
+         cell.border = {
+         bottom: { style: "thin" },
+         left: { style: "thin" },
+         right: { style: "thin" }
+         };
+         cell.alignment = {
+         vertical: "middle", // tengah secara vertikal
+         wrapText: true      // biar teks panjang nggak keluar
+         };
+         });
+         
+         
+             // Tambahkan gambar jika ada
+             if (evidenceImgSrc) {
+               const imageBase64 = await getBase64Image(evidenceImgSrc);
+               const imageId = workbook.addImage({
+                 base64: imageBase64,
+                 extension: "png"
                });
-             } else {
-               rowData.push(cell.innerText); // Ambil teks dari sel lainnya
+         
+               worksheet.addImage(imageId, {
+                 tl: { col: 5, row: newRow.number - 1 },
+                 ext: { width: 444, height: 294 } // rasio 4:3 ukuran kecil
+               });
+         
+               // Atur tinggi baris agar gambar tidak terpotong
+               worksheet.getRow(newRow.number).height = 294;
+         
+               // Set lebar kolom "EVIDENCE" agar gambar tidak terpotong (sekitar 80px → lebar 18-20)
+                worksheet.getColumn(6).width = 444;
              }
+           }
+         
+           // Tambahkan logo
+           const base64Logo = await getBase64Image("jasmarLogo.png");
+           const logoId = workbook.addImage({
+             base64: base64Logo,
+             extension: "png"
+           });
+           worksheet.addImage(logoId, {
+             tl: { col: 0, row: 0 },
+             ext: { width: 48, height: 48 }
            });
          
-           worksheet.addRow(rowData); // Tambahkan data baris ke worksheet
-         }
+           // Set lebar kolom
+           worksheet.getColumn(1).width = 5;   // No
+           worksheet.getColumn(2).width = 30;  // Kejadian
+           worksheet.getColumn(3).width = 25;  // Lokasi
+           worksheet.getColumn(4).width = 40;  // Kronologi
+           worksheet.getColumn(5).width = 30;  // Tindak lanjut
+           worksheet.getColumn(6).width = 63;  // Evidence (gambar)
          
-         // Tambahkan gambar ke worksheet
-         for (const imgInfo of imageData) {
-           const { row, col, imgSrc } = imgInfo;
-         
-           // Ambil gambar sebagai Blob
-           const response = await fetch(imgSrc);
-           const buffer = await response.arrayBuffer();
-         
-           // Tambahkan gambar ke workbook
-           const imageId = workbook.addImage({
-             buffer,
-             extension: "png", // Atau format lain seperti jpg
+           // Export file
+           const buffer = await workbook.xlsx.writeBuffer();
+           const blob = new Blob([buffer], {
+             type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
            });
          
-           // Atur gambar di worksheet
-           worksheet.addImage(imageId, {
-             tl: { col: col - 1, row: row - 1 }, // Posisi gambar di Excel
-             ext: { width: 100, height: 100 }, // Ukuran gambar
+           const link = document.createElement("a");
+           link.href = URL.createObjectURL(blob);
+           link.download = filename;
+           document.body.appendChild(link);
+           link.click();
+           document.body.removeChild(link);
+         }
+         
+         // Konversi gambar ke base64
+         function getBase64Image(imageUrl) {
+           return new Promise((resolve, reject) => {
+             const img = new Image();
+             img.crossOrigin = "Anonymous";
+             img.src = imageUrl;
+             img.onload = () => {
+               const canvas = document.createElement("canvas");
+               canvas.width = img.width;
+               canvas.height = img.height;
+               const ctx = canvas.getContext("2d");
+               ctx.drawImage(img, 0, 0);
+               resolve(canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, ""));
+             };
+             img.onerror = (err) => reject(err);
            });
          }
-         
-         // Simpan file Excel
-         const buffer = await workbook.xlsx.writeBuffer();
-         const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
-         const url = URL.createObjectURL(blob);
-         const a = document.createElement("a");
-         a.href = url;
-         a.download = filename;
-         a.click();
-         }
-         
       </script>
       <script>
          $(document).ready(function() {
