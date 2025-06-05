@@ -788,8 +788,6 @@ router.put("/updaterekap", async (req, res) => {
 
       //const inchident_rate = ((total_kecelakaan / jumlah_karyawan) * 10000);
       const inchident_rate = ((total_kecelakaan / jumlah_karyawan) * 100);
-
-
       const atlr = jumlah_hari_hilang / (total_kecelakaan || 1);
 
       // Update data ke database
